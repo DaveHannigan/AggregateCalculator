@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textUs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Our scores"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/textThem"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textThem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/textUs"
+        android:text="Their score"/>
+
+    <TextView
+        android:id="@+id/textMatch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textUs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/textUs"
+        android:text="Match 1"/>
+
+    <TextView
+        android:id="@+id/ourScore1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textUs"
+        app:layout_constraintStart_toEndOf="@id/textMatch1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/textMatch1"
+        android:text="0"/>
+
+    <TextView
+        android:id="@+id/theirScore1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textThem"
+        app:layout_constraintStart_toEndOf="@id/ourScore1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/ourScore1"
+        android:text="0"/>
+
+    <TextView
+        android:id="@+id/textMatch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textMatch1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ourScore2"
+        app:layout_constraintLeft_toRightOf="@id/textUs"
+        android:text="Match 2"/>
+
+    <TextView
+        android:id="@+id/ourScore2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ourScore1"
+        app:layout_constraintStart_toEndOf="@id/textMatch2"
+        app:layout_constraintEnd_toStartOf="@id/ourScore2"
+        app:layout_constraintLeft_toRightOf="@id/textMatch2"
+        android:text="0"/>
+
+    <TextView
+        android:id="@+id/theirScore2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/theirScore1"
+        app:layout_constraintStart_toEndOf="@id/ourScore2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/ourScore2"
+        android:text="0"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
