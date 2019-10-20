@@ -10,78 +10,392 @@
         android:id="@+id/textUs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Our scores"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/textThem"
-        app:layout_constraintTop_toTopOf="parent" />
+
+        android:text="@string/our_score"
+
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/margin_top"
+
+        android:layout_marginEnd="@dimen/margin_mid"
+        android:layout_marginRight="@dimen/margin_mid"
+
+        app:layout_constraintEnd_toStartOf="@id/textThem"
+        app:layout_constraintRight_toLeftOf="@id/textThem" />
+
+
     <TextView
         android:id="@+id/textThem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:text="@string/their_score"
+
+        android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginRight="@dimen/margin_end"
+
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/textUs"
-        android:text="Their score"/>
+
+         />
 
     <TextView
         android:id="@+id/textMatch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textUs"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/textUs"
-        android:text="Match 1"/>
 
-    <TextView
+        android:text="@string/match_1"
+
+        app:layout_constraintTop_toTopOf="@id/ourScore1"
+        app:layout_constraintBottom_toBottomOf="@id/ourScore1"
+
+
+        app:layout_constraintEnd_toStartOf="@+id/ourScore1"
+        app:layout_constraintStart_toStartOf="parent"
+         />
+
+    <EditText
         android:id="@+id/ourScore1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textUs"
-        app:layout_constraintStart_toEndOf="@id/textMatch1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/textMatch1"
-        android:text="0"/>
+        android:inputType="number"
 
-    <TextView
+        android:text="@string/initial_score"
+
+        app:layout_constraintTop_toBottomOf="@+id/textUs"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/textUs"
+        app:layout_constraintEnd_toEndOf="@id/textUs"
+         />
+
+    <EditText
         android:id="@+id/theirScore1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textThem"
-        app:layout_constraintStart_toEndOf="@id/ourScore1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/ourScore1"
-        android:text="0"/>
+        android:inputType="number"
+
+        android:text="@string/initial_score"
+
+        app:layout_constraintTop_toBottomOf="@+id/textThem"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/textThem"
+        app:layout_constraintEnd_toEndOf="@id/textThem"
+
+
+         />
 
     <TextView
         android:id="@+id/textMatch2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textMatch1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/ourScore2"
-        app:layout_constraintLeft_toRightOf="@id/textUs"
-        android:text="Match 2"/>
 
-    <TextView
-        android:id="@+id/ourScore2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ourScore1"
-        app:layout_constraintStart_toEndOf="@id/textMatch2"
-        app:layout_constraintEnd_toStartOf="@id/ourScore2"
-        app:layout_constraintLeft_toRightOf="@id/textMatch2"
-        android:text="0"/>
+        android:text="@string/match_2"
 
-    <TextView
+        app:layout_constraintTop_toTopOf="@id/ourScore2"
+        app:layout_constraintBottom_toBottomOf="@id/ourScore2"
+
+        app:layout_constraintStart_toStartOf="@id/textMatch1"
+        app:layout_constraintEnd_toEndOf="@id/textMatch1"
+
+ />
+
+    <EditText
         android:id="@+id/theirScore2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:text="@string/initial_score"
+
         app:layout_constraintTop_toBottomOf="@id/theirScore1"
-        app:layout_constraintStart_toEndOf="@id/ourScore2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/ourScore2"
-        android:text="0"/>
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/theirScore1"
+        app:layout_constraintEnd_toEndOf="@id/theirScore1"
+        />
+
+    <EditText
+        android:id="@+id/ourScore2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+
+        android:text="@string/initial_score"
+
+        app:layout_constraintTop_toBottomOf="@id/ourScore1"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/ourScore1"
+        app:layout_constraintEnd_toEndOf="@id/ourScore1"
+        />
+
+    <TextView
+        android:id="@+id/textMatch3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/match_3"
+
+        app:layout_constraintTop_toTopOf="@id/ourScore3"
+        app:layout_constraintBottom_toBottomOf="@id/ourScore3"
+
+        app:layout_constraintStart_toStartOf="@id/textMatch2"
+        app:layout_constraintEnd_toEndOf="@id/textMatch2"
+        />
+    <EditText
+        android:id="@+id/ourScore3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+
+        android:text="@string/initial_score"
+
+        app:layout_constraintTop_toBottomOf="@id/ourScore2"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintEnd_toEndOf="@id/ourScore2"
+        app:layout_constraintStart_toStartOf="@id/ourScore2"
+        />
+
+    <EditText
+        android:id="@+id/theirScore3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+
+        android:text="@string/initial_score"
+
+        app:layout_constraintTop_toBottomOf="@id/theirScore2"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/theirScore2"
+        app:layout_constraintEnd_toEndOf="@id/theirScore2"
+        />
+
+    <TextView
+        android:id="@+id/textMatch4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/match_4"
+
+        app:layout_constraintTop_toTopOf="@id/ourScore4"
+        app:layout_constraintBottom_toBottomOf="@id/ourScore4"
+
+        app:layout_constraintStart_toStartOf="@id/textMatch3"
+        app:layout_constraintEnd_toEndOf="@id/textMatch3"
+        />
+
+    <EditText
+        android:id="@+id/ourScore4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+
+        android:text="@string/initial_score"
+
+        app:layout_constraintTop_toBottomOf="@id/ourScore3"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/ourScore3"
+        app:layout_constraintEnd_toEndOf="@id/ourScore3"
+        />
+
+    <EditText
+        android:id="@+id/theirScore4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+
+        android:text="@string/initial_score"
+
+        app:layout_constraintTop_toBottomOf="@id/theirScore3"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/theirScore3"
+        app:layout_constraintEnd_toEndOf="@id/theirScore3"
+        />
+
+
+        <TextView
+            android:id="@+id/textMatch5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/match_5"
+
+            app:layout_constraintTop_toTopOf="@id/ourScore5"
+            app:layout_constraintBottom_toBottomOf="@id/ourScore5"
+
+            app:layout_constraintStart_toStartOf="@id/textMatch4"
+            app:layout_constraintEnd_toEndOf="@id/textMatch4"
+            />
+
+        <EditText
+            android:id="@+id/ourScore5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+
+            android:text="@string/initial_score"
+
+            app:layout_constraintTop_toBottomOf="@id/ourScore4"
+            android:layout_marginTop="@dimen/margin_top"
+
+            app:layout_constraintStart_toStartOf="@id/ourScore4"
+            app:layout_constraintEnd_toEndOf="@id/ourScore4"
+            />
+
+        <EditText
+            android:id="@+id/theirScore5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+
+            android:text="@string/initial_score"
+
+            app:layout_constraintTop_toBottomOf="@id/theirScore4"
+            android:layout_marginTop="@dimen/margin_top"
+
+            app:layout_constraintStart_toStartOf="@id/theirScore4"
+            app:layout_constraintEnd_toEndOf="@id/theirScore4"
+            />
+
+    <TextView
+        android:id="@+id/textMatch6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/match_6"
+
+        app:layout_constraintTop_toTopOf="@id/ourScore6"
+        app:layout_constraintBottom_toBottomOf="@id/ourScore6"
+
+        app:layout_constraintStart_toStartOf="@id/textMatch5"
+        app:layout_constraintEnd_toEndOf="@id/textMatch5"
+        />
+
+    <EditText
+        android:id="@+id/ourScore6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+
+        android:text="@string/initial_score"
+
+        app:layout_constraintTop_toBottomOf="@id/ourScore5"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/ourScore5"
+        app:layout_constraintEnd_toEndOf="@id/ourScore5"
+        />
+
+    <EditText
+        android:id="@+id/theirScore6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+
+        android:text="@string/initial_score"
+
+        app:layout_constraintTop_toBottomOf="@id/theirScore5"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/theirScore5"
+        app:layout_constraintEnd_toEndOf="@id/theirScore5"
+        />
+
+    <TextView
+        android:id="@+id/textMatch7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/match_7"
+
+        app:layout_constraintTop_toTopOf="@id/ourScore7"
+        app:layout_constraintBottom_toBottomOf="@id/ourScore7"
+
+        app:layout_constraintStart_toStartOf="@id/textMatch6"
+        app:layout_constraintEnd_toEndOf="@id/textMatch6"
+        />
+
+    <EditText
+        android:id="@+id/ourScore7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+
+        android:text="@string/initial_score"
+
+        app:layout_constraintTop_toBottomOf="@id/ourScore6"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/ourScore6"
+        app:layout_constraintEnd_toEndOf="@id/ourScore6"
+        />
+
+    <EditText
+        android:id="@+id/theirScore7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+
+        android:text="@string/initial_score"
+
+        app:layout_constraintTop_toBottomOf="@id/theirScore6"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/theirScore6"
+        app:layout_constraintEnd_toEndOf="@id/theirScore6"
+        />
+
+    <TextView
+        android:id="@+id/textMatch8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/match_8"
+
+        app:layout_constraintTop_toTopOf="@id/ourScore8"
+        app:layout_constraintBottom_toBottomOf="@id/ourScore8"
+
+        app:layout_constraintStart_toStartOf="@id/textMatch7"
+        app:layout_constraintEnd_toEndOf="@id/textMatch7"
+        />
+
+    <EditText
+        android:id="@+id/ourScore8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+
+        android:text="@string/initial_score"
+
+        app:layout_constraintTop_toBottomOf="@id/ourScore7"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/ourScore7"
+        app:layout_constraintEnd_toEndOf="@id/ourScore7"
+        />
+
+    <EditText
+        android:id="@+id/theirScore8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+
+        android:text="@string/initial_score"
+
+        app:layout_constraintTop_toBottomOf="@id/theirScore7"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/theirScore7"
+        app:layout_constraintEnd_toEndOf="@id/theirScore7"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

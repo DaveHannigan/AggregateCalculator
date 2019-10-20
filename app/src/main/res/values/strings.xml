@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Aggregate Calculator</string>
+    <string name="initial_score">0</string>
+    <string name="our_score">Our score</string>
+    <string name="their_score">Their score</string>
+    <string name="match_1">Match 1</string>
+    <string name="match_2">Match 2</string>
+    <string name="match_3">Match 3</string>
+    <string name="match_4">Match 4</string>
+    <string name="match_5">Match 5</string>
+    <string name="match_6">Match 6</string>
+    <string name="match_7">Match 7</string>
+    <string name="match_8">Match 8</string>
+    <string name="match_9">Match 9</string>
 </resources>
