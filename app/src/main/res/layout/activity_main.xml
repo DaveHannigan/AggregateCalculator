@@ -78,7 +78,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@+id/textThem"
         android:layout_marginTop="@dimen/margin_top"
@@ -108,8 +107,8 @@
         android:id="@+id/theirScore2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/theirScore1"
         android:layout_marginTop="@dimen/margin_top"
@@ -124,7 +123,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/ourScore1"
         android:layout_marginTop="@dimen/margin_top"
@@ -138,10 +136,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="@string/match_3"
 
         app:layout_constraintTop_toTopOf="@id/ourScore3"
-        app:layout_constraintBottom_toBottomOf="@id/ourScore3"
+        app:layout_constraintBottom_toBottomOf="@+id/ourScore3"
 
         app:layout_constraintStart_toStartOf="@id/textMatch2"
         app:layout_constraintEnd_toEndOf="@id/textMatch2"
@@ -152,7 +149,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/ourScore2"
         android:layout_marginTop="@dimen/margin_top"
@@ -167,7 +163,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/theirScore2"
         android:layout_marginTop="@dimen/margin_top"
@@ -196,7 +191,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/ourScore3"
         android:layout_marginTop="@dimen/margin_top"
@@ -211,7 +205,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/theirScore3"
         android:layout_marginTop="@dimen/margin_top"
@@ -241,7 +234,6 @@
             android:layout_height="wrap_content"
             android:inputType="number"
 
-            android:text="@string/initial_score"
 
             app:layout_constraintTop_toBottomOf="@id/ourScore4"
             android:layout_marginTop="@dimen/margin_top"
@@ -256,7 +248,6 @@
             android:layout_height="wrap_content"
             android:inputType="number"
 
-            android:text="@string/initial_score"
 
             app:layout_constraintTop_toBottomOf="@id/theirScore4"
             android:layout_marginTop="@dimen/margin_top"
@@ -285,7 +276,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/ourScore5"
         android:layout_marginTop="@dimen/margin_top"
@@ -300,7 +290,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/theirScore5"
         android:layout_marginTop="@dimen/margin_top"
@@ -329,7 +318,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/ourScore6"
         android:layout_marginTop="@dimen/margin_top"
@@ -344,7 +332,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/theirScore6"
         android:layout_marginTop="@dimen/margin_top"
@@ -373,7 +360,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/ourScore7"
         android:layout_marginTop="@dimen/margin_top"
@@ -388,7 +374,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/theirScore7"
         android:layout_marginTop="@dimen/margin_top"
