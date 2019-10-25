@@ -63,7 +63,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@+id/textUs"
         android:layout_marginTop="@dimen/margin_top"
@@ -78,7 +77,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@+id/textThem"
         android:layout_marginTop="@dimen/margin_top"
@@ -102,14 +100,15 @@
         app:layout_constraintStart_toStartOf="@id/textMatch1"
         app:layout_constraintEnd_toEndOf="@id/textMatch1"
 
+
  />
 
     <EditText
         android:id="@+id/theirScore2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/theirScore1"
         android:layout_marginTop="@dimen/margin_top"
@@ -124,7 +123,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/ourScore1"
         android:layout_marginTop="@dimen/margin_top"
@@ -152,7 +150,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/ourScore2"
         android:layout_marginTop="@dimen/margin_top"
@@ -167,7 +164,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/theirScore2"
         android:layout_marginTop="@dimen/margin_top"
@@ -196,7 +192,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/ourScore3"
         android:layout_marginTop="@dimen/margin_top"
@@ -211,7 +206,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/theirScore3"
         android:layout_marginTop="@dimen/margin_top"
@@ -241,7 +235,6 @@
             android:layout_height="wrap_content"
             android:inputType="number"
 
-            android:text="@string/initial_score"
 
             app:layout_constraintTop_toBottomOf="@id/ourScore4"
             android:layout_marginTop="@dimen/margin_top"
@@ -256,7 +249,6 @@
             android:layout_height="wrap_content"
             android:inputType="number"
 
-            android:text="@string/initial_score"
 
             app:layout_constraintTop_toBottomOf="@id/theirScore4"
             android:layout_marginTop="@dimen/margin_top"
@@ -285,7 +277,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/ourScore5"
         android:layout_marginTop="@dimen/margin_top"
@@ -300,7 +291,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/theirScore5"
         android:layout_marginTop="@dimen/margin_top"
@@ -329,7 +319,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/ourScore6"
         android:layout_marginTop="@dimen/margin_top"
@@ -344,7 +333,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/theirScore6"
         android:layout_marginTop="@dimen/margin_top"
@@ -373,7 +361,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/ourScore7"
         android:layout_marginTop="@dimen/margin_top"
@@ -388,7 +375,6 @@
         android:layout_height="wrap_content"
         android:inputType="number"
 
-        android:text="@string/initial_score"
 
         app:layout_constraintTop_toBottomOf="@id/theirScore7"
         android:layout_marginTop="@dimen/margin_top"
@@ -396,6 +382,75 @@
         app:layout_constraintStart_toStartOf="@id/theirScore7"
         app:layout_constraintEnd_toEndOf="@id/theirScore7"
         />
+
+    <Button
+        android:id="@+id/updateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/update_button"
+
+        app:layout_constraintTop_toBottomOf="@id/textMatch8"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/textMatch8"
+        app:layout_constraintEnd_toEndOf="@id/textMatch8"
+
+        android:onClick="updateAggregate"
+        />
+
+    <TextView
+        android:id="@+id/ourAgg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/ourScore8"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/ourScore8"
+        app:layout_constraintEnd_toEndOf="@id/ourScore8"
+
+        android:text="@string/initial_score"
+        />
+
+    <TextView
+        android:id="@+id/theirAgg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@+id/theirScore8"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/theirScore8"
+        app:layout_constraintEnd_toEndOf="@id/theirScore8"
+
+        android:text="@string/initial_score"/>
+
+    <TextView
+        android:id="@+id/aggregateDifference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@+id/updateButton"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@+id/updateButton"
+        app:layout_constraintEnd_toEndOf="@+id/updateButton"
+
+        android:text="Aggregate difference"/>
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@+id/theirAgg"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@+id/theirAgg"
+        app:layout_constraintEnd_toEndOf="@+id/theirAgg"/>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
