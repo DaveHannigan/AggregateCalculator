@@ -13,4 +13,5 @@
     <string name="match_8">Match 8</string>
     <string name="match_9">Match 9</string>
     <string name="update_button">Update</string>
+    <string name="clear_scores">Clear all scores</string>
 </resources>
