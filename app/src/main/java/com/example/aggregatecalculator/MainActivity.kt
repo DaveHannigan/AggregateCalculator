@@ -16,6 +16,50 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        val editText1 = findViewById<EditText>(R.id.ourScore1)
+        editText1.setOnFocusChangeListener{_, b ->  focusChanged(b)}
+        val editText2 = findViewById<EditText>(R.id.theirScore1)
+        editText2.setOnFocusChangeListener{_, b -> focusChanged(b)}
+        val editText3 = findViewById<EditText>(R.id.ourScore2)
+        editText3.setOnFocusChangeListener{_, b ->  focusChanged(b)}
+        val editText4 = findViewById<EditText>(R.id.theirScore2)
+        editText4.setOnFocusChangeListener{_, b -> focusChanged(b)}
+        val editText5 = findViewById<EditText>(R.id.ourScore3)
+        editText5.setOnFocusChangeListener{_, b ->  focusChanged(b)}
+        val editText6 = findViewById<EditText>(R.id.theirScore3)
+        editText6.setOnFocusChangeListener{_, b -> focusChanged(b)}
+        val editText7 = findViewById<EditText>(R.id.ourScore4)
+        editText7.setOnFocusChangeListener{_, b ->  focusChanged(b)}
+        val editText8 = findViewById<EditText>(R.id.theirScore4)
+        editText8.setOnFocusChangeListener{_, b -> focusChanged(b)}
+        val editText9 = findViewById<EditText>(R.id.ourScore5)
+        editText9.setOnFocusChangeListener{_, b ->  focusChanged(b)}
+        val editText10 = findViewById<EditText>(R.id.theirScore5)
+        editText10.setOnFocusChangeListener{_, b -> focusChanged(b)}
+        val editText11 = findViewById<EditText>(R.id.ourScore6)
+        editText11.setOnFocusChangeListener{_, b ->  focusChanged(b)}
+        val editText12 = findViewById<EditText>(R.id.theirScore6)
+        editText12.setOnFocusChangeListener{_, b -> focusChanged(b)}
+        val editText13 = findViewById<EditText>(R.id.ourScore7)
+        editText13.setOnFocusChangeListener{_, b ->  focusChanged(b)}
+        val editText14 = findViewById<EditText>(R.id.theirScore7)
+        editText14.setOnFocusChangeListener{_, b -> focusChanged(b)}
+        val editText15 = findViewById<EditText>(R.id.ourScore8)
+        editText15.setOnFocusChangeListener{_, b ->  focusChanged(b)}
+        val editText16 = findViewById<EditText>(R.id.theirScore8)
+        editText16.setOnFocusChangeListener{_, b -> focusChanged(b)}
+        editText16.setOnClickListener{updateAggregate(editText1)}
+
+
+
+    }
+
+    fun focusChanged(state :Boolean){
+        if(!state) {
+            val v = findViewById<View>(R.id.ourScore1)
+            updateAggregate(v)
+        }
+
     }
 
     fun updateAggregate(view: View){
@@ -158,14 +202,7 @@ class MainActivity : AppCompatActivity() {
             null-> return 0
             else -> return score
         }
-/*
-      if(score != null){
-          return score
-     }else{
-          return 0
-      }
 
-*/
 
     }
 }
