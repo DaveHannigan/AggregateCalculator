@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "428695204193",
+    "firebase_url": "https://aggregate-calculator-4f302.firebaseio.com",
+    "project_id": "aggregate-calculator-4f302",
+    "storage_bucket": "aggregate-calculator-4f302.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428695204193:android:d4e65bf8a6dc00fd4b5520",
+        "android_client_info": {
+          "package_name": "com.example.aggregatecalculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428695204193-u9ssnpr73p6gu6i747flir6jraq0hram.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aggregatecalculator",
+            "certificate_hash": "dafec05989b75eb8a876f4253a5802afde78a1ef"
+          }
+        },
+        {
+          "client_id": "428695204193-72h6dg7us7br5osu20cd0a6fiq0497bs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEsqfKUyxq4CJSf_w-_C8o0CMNc6MrAKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428695204193-72h6dg7us7br5osu20cd0a6fiq0497bs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
