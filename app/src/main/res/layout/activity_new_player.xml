@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewPlayer">
+
+    <TextView
+        android:id="@+id/addNewPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/enter_player"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/textAddPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/enter_player_name"
+
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/addNewPlayer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editTextNewPlayer"/>
+
+    <EditText
+        android:id="@+id/editTextNewPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_player_name"
+        app:layout_constraintTop_toTopOf="@id/textAddPlayer"
+        app:layout_constraintBottom_toBottomOf="@id/textAddPlayer"
+        android:layout_marginLeft="@dimen/margin_mid"
+        android:layout_marginRight="@dimen/margin_end"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/textAddHandicap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/enter_player_handicap"
+
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintTop_toBottomOf="@id/textAddPlayer"
+        app:layout_constraintStart_toStartOf="@id/textAddPlayer"
+        app:layout_constraintEnd_toEndOf="@id/textAddPlayer"/>
+
+    <EditText
+        android:id="@+id/editTextHandicap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:hint="@string/enter_player_handicap"
+        android:inputType="number"
+
+        app:layout_constraintTop_toTopOf="@id/textAddHandicap"
+        app:layout_constraintBottom_toBottomOf="@id/textAddHandicap"
+
+        app:layout_constraintStart_toStartOf="@id/editTextNewPlayer"
+        app:layout_constraintEnd_toEndOf="@id/editTextNewPlayer"/>
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/save"
+
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/textAddHandicap"
+        app:layout_constraintStart_toStartOf="@id/textAddHandicap"
+        app:layout_constraintEnd_toEndOf="@+id/textAddHandicap"/>
+
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/cancel"
+
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toTopOf="@id/buttonSave"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonSave"
+        android:layout_marginLeft="@dimen/margin_mid"
+        android:layout_marginRight="@dimen/margin_end"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

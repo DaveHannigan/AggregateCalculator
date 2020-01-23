@@ -9,16 +9,17 @@
     android:fillViewport="true">
 
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textUs"
+        android:id="@+id/homeTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="@string/our_score"
+        android:text="@string/home_team"
 
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/margin_top"
@@ -26,16 +27,16 @@
         android:layout_marginEnd="@dimen/margin_mid"
         android:layout_marginRight="@dimen/margin_mid"
 
-        app:layout_constraintEnd_toStartOf="@id/textThem"
-        app:layout_constraintRight_toLeftOf="@id/textThem" />
+        app:layout_constraintEnd_toStartOf="@id/awayTeam"
+        app:layout_constraintRight_toLeftOf="@id/awayTeam" />
 
 
     <TextView
-        android:id="@+id/textThem"
+        android:id="@+id/awayTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="@string/their_score"
+        android:text="@string/away_team"
 
         android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintTop_toTopOf="parent"
@@ -45,9 +46,31 @@
 
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/textUs"
+        app:layout_constraintLeft_toRightOf="@id/homeTeam"
 
          />
+
+    <Spinner
+        android:id="@+id/spinHomeTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/homeTeam"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/homeTeam"
+        app:layout_constraintEnd_toEndOf="@id/homeTeam"/>
+
+    <Spinner
+        android:id="@+id/spinAwayTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/awayTeam"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/awayTeam"
+        app:layout_constraintEnd_toEndOf="@id/awayTeam"/>
 
     <TextView
         android:id="@+id/textMatch1"
@@ -72,11 +95,12 @@
         android:nextFocusDown="@id/theirScore1"
 
 
-        app:layout_constraintTop_toBottomOf="@+id/textUs"
+
+        app:layout_constraintTop_toBottomOf="@id/spinHomeTeam"
         android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/textUs"
-        app:layout_constraintEnd_toEndOf="@id/textUs"
+        app:layout_constraintStart_toStartOf="@id/homeTeam"
+        app:layout_constraintEnd_toEndOf="@id/homeTeam"
          />
 
     <EditText
@@ -86,11 +110,11 @@
         android:inputType="number"
         android:nextFocusDown="@id/ourScore2"
 
-        app:layout_constraintTop_toBottomOf="@+id/textThem"
+        app:layout_constraintTop_toBottomOf="@id/spinAwayTeam"
         android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/textThem"
-        app:layout_constraintEnd_toEndOf="@id/textThem"
+        app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayTeam"
 
 
          />
@@ -404,21 +428,7 @@
         app:layout_constraintEnd_toEndOf="@id/theirScore7"
         />
 
-    <Button
-        android:id="@+id/updateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:text="@string/update_button"
-
-        app:layout_constraintTop_toBottomOf="@id/textMatch8"
-        android:layout_marginTop="@dimen/margin_top"
-
-        app:layout_constraintStart_toStartOf="@id/textMatch8"
-        app:layout_constraintEnd_toEndOf="@id/textMatch8"
-
-        android:onClick="updateAggregate"
-        />
 
     <TextView
         android:id="@+id/ourAgg"
@@ -451,13 +461,13 @@
         android:id="@+id/gamesScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Games score"
+        android:text="@string/frame_score"
 
-        app:layout_constraintTop_toBottomOf="@id/updateButton"
+        app:layout_constraintTop_toBottomOf="@id/ourAgg"
         android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/updateButton"
-        app:layout_constraintEnd_toEndOf="@id/updateButton"/>
+        app:layout_constraintStart_toStartOf="@id/textMatch8"
+        app:layout_constraintEnd_toEndOf="@id/textMatch8"/>
 
     <TextView
         android:id="@+id/ourGamesWon"
@@ -465,8 +475,8 @@
         android:layout_height="wrap_content"
         android:text="@string/initial_score"
 
-        app:layout_constraintTop_toBottomOf="@id/ourAgg"
-        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toTopOf="@id/gamesScore"
+        app:layout_constraintBottom_toBottomOf="@id/gamesScore"
 
         app:layout_constraintStart_toStartOf="@id/ourAgg"
         app:layout_constraintEnd_toEndOf="@id/ourAgg"/>
@@ -477,8 +487,8 @@
         android:layout_height="wrap_content"
         android:text="@string/initial_score"
 
-        app:layout_constraintTop_toBottomOf="@id/theirAgg"
-        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toTopOf="@id/gamesScore"
+        app:layout_constraintBottom_toBottomOf="@id/gamesScore"
 
         app:layout_constraintStart_toStartOf="@id/theirAgg"
         app:layout_constraintEnd_toEndOf="@id/theirAgg"/>
@@ -487,7 +497,7 @@
         android:id="@+id/matchScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Match score"
+        android:text="@string/match_score"
 
         app:layout_constraintTop_toBottomOf="@id/gamesScore"
         android:layout_marginTop="@dimen/margin_top"
@@ -530,7 +540,7 @@
         app:layout_constraintStart_toStartOf="@+id/matchScore"
         app:layout_constraintEnd_toEndOf="@+id/matchScore"
 
-        android:text="Aggregate difference"/>
+        android:text="@string/aggregate_difference"/>
 
     <TextView
         android:id="@+id/result"
@@ -558,6 +568,17 @@
         app:layout_constraintEnd_toEndOf="@id/result"
 
         />
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:onClick="saveInfo"
+
+        app:layout_constraintTop_toTopOf="@id/clearButton"
+        app:layout_constraintBottom_toBottomOf="@id/clearButton"
+
+        app:layout_constraintEnd_toStartOf="@id/clearButton"/>
 
 
 

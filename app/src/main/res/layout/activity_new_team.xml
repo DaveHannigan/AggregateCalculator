@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textNewTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/new_team"
+
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/newTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/enter_team"
+
+        app:layout_constraintTop_toBottomOf="@id/textNewTeam"
+        android:layout_marginTop="@dimen/margin_top"
+
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/editTextNewTeamName"/>
+
+    <EditText
+        android:id="@+id/editTextNewTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:hint="@string/enter_team"
+
+        app:layout_constraintTop_toTopOf="@id/newTeamName"
+        app:layout_constraintBottom_toBottomOf="@id/newTeamName"
+        app:layout_constraintStart_toEndOf="@id/newTeamName"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/newTeamDivision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/enter_division"
+
+        android:layout_marginTop="@dimen/margin_top"
+
+
+        app:layout_constraintTop_toBottomOf="@id/newTeamName"
+        app:layout_constraintStart_toStartOf="@id/newTeamName"
+        app:layout_constraintEnd_toEndOf="@id/newTeamName"
+
+        />
+
+    <Spinner
+        android:id="@+id/spinnerNewTeamDivision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        app:layout_constraintTop_toTopOf="@id/newTeamDivision"
+        app:layout_constraintBottom_toBottomOf="@id/newTeamDivision"
+        app:layout_constraintStart_toEndOf="@id/newTeamDivision"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/save"
+
+        app:layout_constraintTop_toBottomOf="@id/newTeamDivision"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintStart_toStartOf="@id/newTeamDivision"
+        app:layout_constraintEnd_toEndOf="@id/newTeamDivision"
+        android:onClick="save"
+        />
+
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/cancel"
+
+        app:layout_constraintTop_toTopOf="@id/buttonSave"
+        app:layout_constraintBottom_toBottomOf="@id/buttonSave"
+
+        app:layout_constraintStart_toStartOf="@id/spinnerNewTeamDivision"
+        app:layout_constraintEnd_toEndOf="@id/spinnerNewTeamDivision"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
