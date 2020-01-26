@@ -1,62 +1,179 @@
 package com.example.aggregatecalculator
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.view.ViewParent
+import android.widget.*
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Integer.parseInt
+import java.time.temporal.ValueRange
+//import com.google.firebase.firestore.ktx
+
 
 class MainActivity : AppCompatActivity() {
 
+        //lateinit var db: DocumentReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        val editText1 = findViewById<EditText>(R.id.ourScore1)
+            getTeams(findViewById(R.id.constLayout))
+           // onResume((findViewById(R.id.constLayout))
+            updateAggregate(findViewById<EditText>(R.id.constLayout))
+            //val homeSpinner = findViewById<Spinner>(R.id.spinHomeTeam)
+           // homeSpinner.setOnItemSelectedListener(this)
+
+
+
+
+
+
+
+
+
+        val editText1 = findViewById<EditText>(R.id.homeScore1)
         editText1.setOnFocusChangeListener{_, b ->  focusChanged(b)}
-        val editText2 = findViewById<EditText>(R.id.theirScore1)
+
+        val editText2 = findViewById<EditText>(R.id.awayScore1)
         editText2.setOnFocusChangeListener{_, b -> focusChanged(b)}
-        val editText3 = findViewById<EditText>(R.id.ourScore2)
+
+        val editText3 = findViewById<EditText>(R.id.homeScore2)
         editText3.setOnFocusChangeListener{_, b ->  focusChanged(b)}
-        val editText4 = findViewById<EditText>(R.id.theirScore2)
+
+        val editText4 = findViewById<EditText>(R.id.awayScore2)
         editText4.setOnFocusChangeListener{_, b -> focusChanged(b)}
-        val editText5 = findViewById<EditText>(R.id.ourScore3)
+
+        val editText5 = findViewById<EditText>(R.id.homeScore3)
         editText5.setOnFocusChangeListener{_, b ->  focusChanged(b)}
-        val editText6 = findViewById<EditText>(R.id.theirScore3)
+
+        val editText6 = findViewById<EditText>(R.id.awayScore3)
         editText6.setOnFocusChangeListener{_, b -> focusChanged(b)}
-        val editText7 = findViewById<EditText>(R.id.ourScore4)
+
+        val editText7 = findViewById<EditText>(R.id.homeScore4)
         editText7.setOnFocusChangeListener{_, b ->  focusChanged(b)}
-        val editText8 = findViewById<EditText>(R.id.theirScore4)
+
+        val editText8 = findViewById<EditText>(R.id.awayScore4)
         editText8.setOnFocusChangeListener{_, b -> focusChanged(b)}
-        val editText9 = findViewById<EditText>(R.id.ourScore5)
+
+        val editText9 = findViewById<EditText>(R.id.homeScore5)
         editText9.setOnFocusChangeListener{_, b ->  focusChanged(b)}
-        val editText10 = findViewById<EditText>(R.id.theirScore5)
+
+        val editText10 = findViewById<EditText>(R.id.awayScore5)
         editText10.setOnFocusChangeListener{_, b -> focusChanged(b)}
-        val editText11 = findViewById<EditText>(R.id.ourScore6)
+
+        val editText11 = findViewById<EditText>(R.id.homeScore6)
         editText11.setOnFocusChangeListener{_, b ->  focusChanged(b)}
-        val editText12 = findViewById<EditText>(R.id.theirScore6)
+
+        val editText12 = findViewById<EditText>(R.id.awayScore6)
         editText12.setOnFocusChangeListener{_, b -> focusChanged(b)}
-        val editText13 = findViewById<EditText>(R.id.ourScore7)
+
+        val editText13 = findViewById<EditText>(R.id.homeScore7)
         editText13.setOnFocusChangeListener{_, b ->  focusChanged(b)}
-        val editText14 = findViewById<EditText>(R.id.theirScore7)
+
+        val editText14 = findViewById<EditText>(R.id.awayScore7)
         editText14.setOnFocusChangeListener{_, b -> focusChanged(b)}
-        val editText15 = findViewById<EditText>(R.id.ourScore8)
+
+        val editText15 = findViewById<EditText>(R.id.homeScore8)
         editText15.setOnFocusChangeListener{_, b ->  focusChanged(b)}
-        val editText16 = findViewById<EditText>(R.id.theirScore8)
+
+        val editText16 = findViewById<EditText>(R.id.awayScore8)
         editText16.setOnFocusChangeListener{_, b -> focusChanged(b)}
+
         editText16.setOnClickListener{updateAggregate(editText1)}
 
+
+
+
+
+    }
+
+    fun getTeams(view: View){
+        val db = FirebaseFirestore.getInstance()
+        db.collection("snookerTeams")
+            .get()
+            .addOnSuccessListener {task  ->
+                val teamsArray = arrayListOf<String>()
+                for (  docList in   task) {
+                    val team = docList["teamName"]
+                    teamsArray.add(team.toString())
+                }
+
+                teamsArray.add("New team")
+                val homeSpinner = findViewById<Spinner>(R.id.spinHomeTeam)
+                ArrayAdapter(this, android.R.layout.simple_spinner_item, teamsArray)
+                    .also { adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+                        homeSpinner.adapter = adapter
+                    }
+                homeSpinner.onItemSelectedListener =  object : AdapterView.OnItemSelectedListener{
+
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        p1: View?,
+                        position: Int,
+                        p3: Long
+                    ) {
+                        val selectedItem = parent.getItemAtPosition(position).toString()
+                        if(selectedItem == "New team") {
+                            val intent = Intent(this@MainActivity,NewTeam::class.java)
+                            startActivity(intent)
+                            Toast.makeText(this@MainActivity, selectedItem, Toast.LENGTH_LONG)
+                                .show()
+                        }
+
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>) {
+
+                    }
+                }
+
+
+
+
+
+
+                val awaySpinner = findViewById<Spinner>(R.id.spinAwayTeam)
+                ArrayAdapter(this,android.R.layout.simple_spinner_item, teamsArray)
+                    .also { adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+                        awaySpinner.adapter = adapter
+                    }
+
+            }
+
+    }
+
+    fun saveInfo(view: View){
+
+        val db = FirebaseFirestore.getInstance()
+        val data = hashMapOf(
+            "teamName" to "The Brunswick",
+            "division" to "Div 4"
+        )
+        Toast.makeText(this, db.toString(), Toast.LENGTH_SHORT).show()
+        Log.i("in save info", "in place of toast")
+
+        db.collection("snookerTeams").document("Brunswick")
+            .set(data)
+            .addOnSuccessListener { Log.d("in saved info", "Success")
+
+            }
+           .addOnFailureListener{e -> Log.w("in saved info", "Failure", e)}
 
 
     }
 
     fun focusChanged(state :Boolean){
         if(!state) {
-            val v = findViewById<View>(R.id.ourScore1)
+            val v = findViewById<View>(R.id.homeScore1)
             updateAggregate(v)
         }
 
@@ -118,6 +235,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
     fun gamesScore(){
         val ourScores = getOurScores()
         val theirScores = getTheirScores()
@@ -167,17 +285,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         updateAggregate(view)
-        val focus = findViewById<EditText>(R.id.ourScore1)
+        val focus = findViewById<EditText>(R.id.homeScore1)
         focus.requestFocus()
 
     }
 
     fun getOurScores():Array<EditText>{
 
-        val ourScores = arrayOf(findViewById<EditText>(R.id.ourScore1),findViewById(R.id.ourScore2),
-            findViewById(R.id.ourScore3), findViewById(R.id.ourScore4),
-            findViewById(R.id.ourScore5), findViewById(R.id.ourScore6),
-            findViewById(R.id.ourScore7), findViewById(R.id.ourScore8))
+        val ourScores = arrayOf(findViewById<EditText>(R.id.homeScore1),findViewById(R.id.homeScore2),
+            findViewById(R.id.homeScore3), findViewById(R.id.homeScore4),
+            findViewById(R.id.homeScore5), findViewById(R.id.homeScore6),
+            findViewById(R.id.homeScore7), findViewById(R.id.homeScore8))
 
         return ourScores
 
@@ -185,10 +303,10 @@ class MainActivity : AppCompatActivity() {
 
     fun getTheirScores():Array<EditText>{
 
-        val theirScores = arrayOf(findViewById<EditText>(R.id.theirScore1), findViewById(R.id.theirScore2),
-            findViewById(R.id.theirScore3), findViewById(R.id.theirScore4),
-            findViewById(R.id.theirScore5), findViewById(R.id.theirScore6),
-            findViewById(R.id.theirScore7),findViewById(R.id.theirScore8))
+        val theirScores = arrayOf(findViewById<EditText>(R.id.awayScore1), findViewById(R.id.awayScore2),
+            findViewById(R.id.awayScore3), findViewById(R.id.awayScore4),
+            findViewById(R.id.awayScore5), findViewById(R.id.awayScore6),
+            findViewById(R.id.awayScore7),findViewById(R.id.awayScore8))
 
         return theirScores
 
@@ -205,4 +323,11 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+   // companion object{
+     //   private val TAG: String? = MainActivity::class.simpleName
+    //}
 }
+
+//class SnookerTeam(val teamName: String, val division: String)
+
+

@@ -14,4 +14,23 @@
     <string name="match_9">Match 9</string>
     <string name="update_button">Update</string>
     <string name="clear_scores">Clear all scores</string>
+    <string name="save">save</string>
+    <string name="aggregate_difference">Aggregate difference</string>
+    <string name="match_score">Match score</string>
+    <string name="frame_score">Frame score</string>
+    <string name="away_team">Away Team</string>
+    <string name="home_team">Home Team</string>
+    <string name="enter_player">Add new Player</string>
+    <string name="enter_player_name">Enter new players name</string>
+    <string name="enter_player_handicap">Enter player handicap</string>
+    <string name="cancel">Cancel</string>
+    <string name="new_team">New Team</string>
+    <string name="enter_team">Enter new team</string>
+    <string name="enter_division">Enter new team\'s division</string>
+    <string-array name="divisions">
+        <item>Division 1</item>
+        <item>Division 2</item>
+        <item>Division 3</item>
+        <item>Division 4</item>
+    </string-array>
 </resources>
