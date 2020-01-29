@@ -3,5 +3,6 @@
     <dimen name="margin_top">15dp</dimen>
     <dimen name="margin_end">50dp</dimen>
     <dimen name="margin_mid">50dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
 
 </resources>
