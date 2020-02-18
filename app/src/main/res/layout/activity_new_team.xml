@@ -94,7 +94,8 @@
         app:layout_constraintBottom_toBottomOf="@id/buttonSave"
 
         app:layout_constraintStart_toStartOf="@id/spinnerNewTeamDivision"
-        app:layout_constraintEnd_toEndOf="@id/spinnerNewTeamDivision"/>
+        app:layout_constraintEnd_toEndOf="@id/spinnerNewTeamDivision"
+        android:onClick="cancelNewTeam"/>
 
 
 

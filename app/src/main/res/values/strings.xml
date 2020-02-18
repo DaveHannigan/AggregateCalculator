@@ -23,6 +23,15 @@
     <string name="new_team">New Team</string>
     <string name="enter_team">Enter new team</string>
     <string name="enter_division">Enter new team\'s division</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email_address">Enter email address</string>
+    <string name="password">Enter Password</string>
+    <string name="password2">Re-enter Password</string>
+    <string name="first_name">First Name</string>
+    <string name="surname">Surname</string>
+    <string name="edit_teams">Edit Teams</string>
+    <string name="go_to_score_sheet">Enter Result</string>
     <string-array name="divisions">
         <item>Division 1</item>
         <item>Division 2</item>

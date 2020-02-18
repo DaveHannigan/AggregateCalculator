@@ -6,4 +6,78 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <TextView
+        android:id="@+id/text_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/editUserName"
+
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_marginRight="@dimen/margin_end"
+        android:layout_marginLeft="@dimen/margin_end"
+        android:textAlignment="center"
+        android:text="@string/login"/>
+
+
+    <EditText
+        android:id="@+id/editUserName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/margin_top"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@id/text_login"
+
+        app:layout_constraintStart_toStartOf="@id/text_login"
+
+
+        app:layout_constraintTop_toBottomOf="@id/text_login" />
+
+    <EditText
+        android:id="@+id/editPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/margin_top"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@id/text_login"
+
+        app:layout_constraintStart_toStartOf="@id/text_login"
+
+        app:layout_constraintTop_toBottomOf="@id/editUserName" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/margin_top"
+        android:text="@string/login"
+        android:textAlignment="center"
+
+        app:layout_constraintEnd_toEndOf="@id/text_login"
+
+        app:layout_constraintStart_toStartOf="@id/text_login"
+        app:layout_constraintTop_toBottomOf="@id/editPassword"
+        android:onClick="login"/>
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:text="@string/register"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@id/text_login"
+
+        app:layout_constraintStart_toStartOf="@id/text_login"
+        app:layout_constraintTop_toBottomOf="@id/buttonLogin"
+
+        android:onClick="register"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
