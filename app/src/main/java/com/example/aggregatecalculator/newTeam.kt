@@ -100,8 +100,8 @@ class NewTeam : AppCompatActivity() {
         }
 
     }
-
-    fun standardiseNames(str :String) :String{
+/*
+    public fun standardiseNames(str :String) :String{
         str.trim().toLowerCase()
 
         val words = str.split(" ").toMutableList()
@@ -122,5 +122,5 @@ class NewTeam : AppCompatActivity() {
             output += word.capitalize()
         }
         return output
-    }
+    }*/
 }

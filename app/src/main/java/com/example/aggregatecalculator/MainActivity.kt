@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
 
             getTeams(findViewById(R.id.constLayout))
+            getPlayers(findViewById(R.id.constLayout))
            // onResume((findViewById(R.id.constLayout))
             updateAggregate(findViewById<EditText>(R.id.constLayout))
             //val homeSpinner = findViewById<Spinner>(R.id.spinHomeTeam)
@@ -94,6 +95,47 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    }
+
+    fun getPlayers(view: View){
+        val db = FirebaseFirestore.getInstance()
+        db.collection("snookerPlayer")
+            .get()
+            .addOnSuccessListener { task ->
+                val playersArray = arrayListOf<String>()
+                for (docList in task){
+                    val player = docList["playerName"]
+                    playersArray.add(player.toString())
+                }
+                playersArray.add("New Player")
+
+                val homePlayer1Spinner = findViewById<Spinner>(R.id.spinHomePlayer1)
+                val homePlayer2Spinner = findViewById<Spinner>(R.id.spinHomePlayer2)
+                ArrayAdapter(this,   android.R.layout.simple_spinner_item, playersArray)
+                    .also { adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+                    homePlayer1Spinner.adapter = adapter
+                    homePlayer2Spinner.adapter = adapter}
+
+                homePlayer1Spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        p1: View?,
+                        position: Int,
+                        p3: Long){
+
+                         val selectedItem = parent.getItemAtPosition(position).toString()
+                        if(selectedItem == "New Player"){
+                            val intent = Intent(this@MainActivity, NewPlayer::class.java)
+                            startActivity(intent)
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+                }
+            }
     }
 
     fun getTeams(view: View){
