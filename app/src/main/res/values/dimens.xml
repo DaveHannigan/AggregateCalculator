@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_top">15dp</dimen>
-    <dimen name="margin_end">50dp</dimen>
+    <dimen name="margin_end">40dp</dimen>
     <dimen name="margin_mid">50dp</dimen>
+    <dimen name="margin_mid_score">4dp</dimen>
+    <dimen name="padding">3dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
 
 </resources>

@@ -4,26 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DashboardActivity">
+    tools:context=".DashboardActivity"
+    android:background="@color/colorGreen">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginTop="@dimen/margin_top"
+            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/buttonEnterResults"
             android:textAlignment="center"
             android:text="@string/go_to_score_sheet"
-            android:onClick="enterScores"/>
+            android:onClick="enterScores"
+            android:padding="@dimen/padding"
+            android:background="@drawable/rounded"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginEnd="@dimen/margin_end"
+            app:layout_constraintTop_toBottomOf="@id/buttonEnterResults"
+            app:layout_constraintStart_toStartOf="@id/buttonEnterResults"
+            app:layout_constraintEnd_toEndOf="@id/buttonEnterResults"
             android:id="@+id/buttonEditTeams"
             android:textAlignment="center"
             android:text="@string/edit_teams"
+            android:padding="@dimen/padding"
+            android:background="@drawable/rounded"
             android:onClick="editTeam"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChooseLeague"
+    android:background="@color/colorGreen">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/textChooseLeagueTeam"
+
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginRight="@dimen/margin_end"
+
+        android:layout_marginStart="@dimen/margin_end"
+        android:layout_marginLeft="@dimen/margin_end"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+
+        android:text="@string/choose_league_team"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/textChooseLeague"
+
+        app:layout_constraintTop_toBottomOf="@id/textChooseLeagueTeam"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintStart_toStartOf="@id/textChooseLeagueTeam"
+
+        app:layout_constraintEnd_toStartOf="@+id/spinnerChooseLeague"
+        android:layout_marginEnd="@dimen/margin_mid"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+
+        android:text="@string/choose_league"/>
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinnerChooseLeague"
+
+        app:layout_constraintTop_toTopOf="@id/textChooseLeague"
+        app:layout_constraintBottom_toBottomOf="@id/textChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/textChooseLeagueTeam"
+        android:layout_marginStart="@dimen/margin_mid"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/textChooseDivision"
+
+        app:layout_constraintTop_toBottomOf="@id/textChooseLeague"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/textChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/textChooseLeague"
+
+
+        android:text="@string/chooseDivision"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+
+        android:visibility="invisible"/>
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinnerChooseDivision"
+
+        app:layout_constraintTop_toTopOf="@id/textChooseDivision"
+        app:layout_constraintBottom_toBottomOf="@id/textChooseDivision"
+        app:layout_constraintEnd_toEndOf="@id/spinnerChooseLeague"
+        app:layout_constraintStart_toStartOf="@id/spinnerChooseLeague"
+
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/textChooseHomeTeam"
+
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/textChooseDivision"
+        app:layout_constraintStart_toStartOf="@id/textChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/textChooseDivision"
+
+
+        android:text="@string/choose_home_team"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        android:visibility="invisible"/>
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinChooseHomeTeam"
+
+        app:layout_constraintTop_toTopOf="@id/textChooseHomeTeam"
+        app:layout_constraintBottom_toBottomOf="@id/textChooseHomeTeam"
+
+        app:layout_constraintStart_toStartOf="@id/spinnerChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/spinnerChooseLeague"
+
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+
+        android:visibility="visible"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/textChooseAwayTeam"
+
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/textChooseHomeTeam"
+
+        app:layout_constraintStart_toStartOf="@id/textChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/textChooseLeague"
+
+        android:text="@string/choose_away_team"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+
+        android:visibility="invisible"/>
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinnerChooseAwayTeam"
+
+        app:layout_constraintTop_toTopOf="@id/textChooseAwayTeam"
+        app:layout_constraintBottom_toBottomOf="@id/textChooseAwayTeam"
+        app:layout_constraintStart_toStartOf="@id/spinnerChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/spinnerChooseLeague"
+
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+
+        android:visibility="invisible"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/buttonCancel"
+
+        app:layout_constraintTop_toBottomOf="@id/textChooseAwayTeam"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintStart_toStartOf="@id/textChooseLeagueTeam"
+        app:layout_constraintEnd_toEndOf="@+id/textChooseLeague"
+        android:text="@string/cancel"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+
+        android:visibility="visible"
+        android:onClick="cancel"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/buttonSave"
+
+        app:layout_constraintTop_toTopOf="@id/buttonCancel"
+        app:layout_constraintBottom_toBottomOf="@id/buttonCancel"
+
+        app:layout_constraintStart_toStartOf="@id/spinnerChooseLeague"
+
+        app:layout_constraintEnd_toEndOf="@id/spinnerChooseLeague"
+
+        android:text="@string/results"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+
+        android:onClick="cancel"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

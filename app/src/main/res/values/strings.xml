@@ -23,7 +23,9 @@
     <string name="new_team">New Team</string>
     <string name="enter_team">Enter new team</string>
     <string name="enter_division">Enter new team\'s division</string>
+    <string name="login_greet">Enter email address and password below</string>
     <string name="login">Login</string>
+    <string name="results">Enter results</string>
     <string name="register">Register</string>
     <string name="email_address">Enter email address</string>
     <string name="password">Enter Password</string>
@@ -32,11 +34,30 @@
     <string name="surname">Surname</string>
     <string name="edit_teams">Edit Teams</string>
     <string name="go_to_score_sheet">Enter Result</string>
+    <string name="team_league">League the team play in</string>
+    <string name="choose_team">Choose team</string>
+    <string name="choose_league_team">Choose League and Division you are playing in</string>
+    <string name="choose_league">Which League</string>
+    <string name="chooseDivision">Which division?</string>
+    <string name="choose_home_team">Choose the home team</string>
+    <string name="choose_away_team">Choose the away team</string>
+    <string name="add_new_player">Add a new player to team below</string>
+    <string name="division_team_play_in">Division the team play in</string>
+    <string name="teamName">Team Name</string>
     <string-array name="divisions">
+        <item>Please Choose a division</item>
         <item>Division 1</item>
         <item>Division 2</item>
         <item>Division 3</item>
         <item>Division 4</item>
     </string-array>
+    <string-array name="league">
+        <item>Please choose a league</item>
+        <item>Big Table Monday</item>
+        <item>Small Table Thursday</item>
+    </string-array>
     <string name="title_activity_login">Sign in</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

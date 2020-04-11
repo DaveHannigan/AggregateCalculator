@@ -13,9 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".DashboardActivity">
-
-        </activity>
+        <activity android:name=".ChooseLeague"></activity>
+        <activity android:name=".DashboardActivity"></activity>
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

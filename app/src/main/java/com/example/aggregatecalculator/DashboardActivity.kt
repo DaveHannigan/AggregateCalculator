@@ -17,7 +17,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     fun enterScores(view: View){
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, ChooseLeague::class.java)
         startActivity(intent)
     }
 }

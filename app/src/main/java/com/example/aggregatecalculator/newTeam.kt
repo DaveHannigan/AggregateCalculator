@@ -1,5 +1,6 @@
 package com.example.aggregatecalculator
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,7 +17,7 @@ class NewTeam : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_team)
-        val spinner = findViewById<Spinner>(R.id.spinnerNewTeamDivision)
+        val spinner =  findViewById<Spinner>(R.id.spinnerNewTeamDivision)
         ArrayAdapter.createFromResource(
             this,
             R.array.divisions,
@@ -25,6 +26,20 @@ class NewTeam : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
             spinner.adapter = adapter
         }
+        val spinnerLeague = findViewById<Spinner>(R.id.spinNewTeamLeague)
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.league,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+            spinnerLeague.adapter = adapter
+        }
+    }
+
+    fun cancelNewTeam(view: View){
+        val intent = Intent(this, MainActivity ::class.java)
+        startActivity(intent)
     }
 
     fun save(view: View){
@@ -64,10 +79,12 @@ class NewTeam : AppCompatActivity() {
                 }
 
         if(saveTeam){
-            var teamDiv = ""
+            //var teamDiv = ""
             val db = FirebaseFirestore.getInstance()
             val div = findViewById<Spinner>(R.id.spinnerNewTeamDivision)
-            teamDiv = div.selectedItem.toString()
+            var teamDiv = div.selectedItem.toString()
+            val league = findViewById<Spinner>(R.id.spinNewTeamLeague)
+            var teamLeague = league.selectedItem.toString()
             div.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
                 override fun onItemSelected(parent: AdapterView<*>, p1: View?, p2: Int, p3: Long) {
                     val teamDiv = parent.getItemAtPosition(p2).toString()
@@ -84,10 +101,11 @@ class NewTeam : AppCompatActivity() {
 
             val data = hashMapOf(
                 "teamName" to teams,
-                "division" to teamDiv)
+                "division" to teamDiv,
+                "league" to teamLeague)
 
 
-            db.collection("snookerTeams").document(docName)
+            db.collection("snookerTeams").document()
                 .set(data)
                 .addOnSuccessListener { Log.d("in saved info", "Success")
 

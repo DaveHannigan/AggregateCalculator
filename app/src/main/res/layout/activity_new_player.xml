@@ -60,10 +60,62 @@
         android:id="@+id/editTextPlayerHandicap"
 
         android:hint="@string/enter_player_handicap"
-        android:inputType="number"
+        android:inputType="numberSigned"
 
         app:layout_constraintTop_toTopOf="@id/textAddHandicap"
         app:layout_constraintBottom_toBottomOf="@id/textAddHandicap"
+
+        app:layout_constraintStart_toStartOf="@id/editTextNewPlayer"
+        app:layout_constraintEnd_toEndOf="@id/editTextNewPlayer"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/textChooseLeague"
+
+        app:layout_constraintTop_toBottomOf="@id/textAddHandicap"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/textAddPlayer"
+        app:layout_constraintEnd_toEndOf="@id/textAddPlayer"
+
+        android:text="@string/team_league"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinChooseLeague"
+
+        app:layout_constraintTop_toTopOf="@id/textChooseLeague"
+        app:layout_constraintBottom_toBottomOf="@id/textChooseLeague"
+
+        app:layout_constraintStart_toStartOf="@id/editTextNewPlayer"
+        app:layout_constraintEnd_toEndOf="@id/editTextNewPlayer"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/textChooseTeam"
+
+        app:layout_constraintTop_toBottomOf="@id/textChooseLeague"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/textAddPlayer"
+        app:layout_constraintEnd_toEndOf="@id/textAddPlayer"
+
+        android:text="@string/choose_team"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinChooseTeam"
+
+        app:layout_constraintTop_toTopOf="@id/textChooseTeam"
+        app:layout_constraintBottom_toBottomOf="@id/textChooseTeam"
 
         app:layout_constraintStart_toStartOf="@id/editTextNewPlayer"
         app:layout_constraintEnd_toEndOf="@id/editTextNewPlayer"/>
@@ -76,7 +128,7 @@
         android:text="@string/save"
 
         android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintTop_toBottomOf="@id/textAddHandicap"
+        app:layout_constraintTop_toBottomOf="@id/textChooseTeam"
         app:layout_constraintStart_toStartOf="@id/textAddHandicap"
         app:layout_constraintEnd_toEndOf="@+id/textAddHandicap"
 
@@ -93,7 +145,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/buttonSave"
         android:layout_marginLeft="@dimen/margin_mid"
         android:layout_marginRight="@dimen/margin_end"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="cancel"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
