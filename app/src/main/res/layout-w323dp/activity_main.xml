@@ -19,6 +19,8 @@
     tools:context=".MainActivity"
     android:background="@color/colorGreen">
 
+
+
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -26,11 +28,12 @@
         android:id="@+id/textLeague"
 
         android:layout_marginTop="@dimen/margin_top"
+        android:layout_marginStart="@dimen/margin_mid_score"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textDivision"
-        android:layout_marginStart="@dimen/margin_end"
+        app:layout_constraintEnd_toEndOf="parent"
         android:textAlignment="center"
 
         android:background="@drawable/rounded"
@@ -42,13 +45,12 @@
 
         android:id="@+id/textDivision"
 
-        android:layout_marginStart="@dimen/margin_end"
-        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginStart="@dimen/margin_mid_score"
+        android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintTop_toTopOf="@id/textLeague"
-        app:layout_constraintBottom_toBottomOf="@id/textLeague"
+        app:layout_constraintTop_toBottomOf="@id/textLeague"
 
-        app:layout_constraintStart_toEndOf="@id/textLeague"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/textMatchDate"
 
         android:textAlignment="center"
@@ -63,11 +65,13 @@
 
         android:id="@+id/textMatchDate"
 
-        app:layout_constraintTop_toTopOf="@id/textLeague"
-        app:layout_constraintBottom_toBottomOf="@id/textLeague"
+        app:layout_constraintTop_toTopOf="@id/textDivision"
+        app:layout_constraintBottom_toBottomOf="@id/textDivision"
         app:layout_constraintStart_toEndOf="@id/textDivision"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/margin_end"
+
+        android:layout_marginEnd="@dimen/margin_mid_score"
+        android:layout_marginStart="@dimen/margin_mid_score"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
@@ -86,15 +90,10 @@
         android:text="@string/home_team"
         android:textAlignment="center"
 
-        app:layout_constraintTop_toBottomOf="@id/textLeague"
+        app:layout_constraintTop_toBottomOf="@id/textDivision"
         android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintStart_toStartOf="parent"
-
-        android:layout_marginStart="@dimen/margin_end"
-        android:layout_marginEnd="@dimen/margin_mid"
-
-        app:layout_constraintEnd_toStartOf="@id/awayTeam"
-        app:layout_constraintRight_toLeftOf="@id/awayTeam"
+        app:layout_constraintStart_toStartOf="@id/textDivision"
+        app:layout_constraintEnd_toEndOf="@id/textDivision"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
@@ -113,11 +112,8 @@
         app:layout_constraintTop_toTopOf="@id/homeTeam"
         app:layout_constraintBottom_toBottomOf="@id/homeTeam"
 
-        android:layout_marginEnd="@dimen/margin_end"
-        android:layout_marginStart="@dimen/margin_mid"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/homeTeam"
+        app:layout_constraintEnd_toEndOf="@id/textMatchDate"
+        app:layout_constraintStart_toStartOf="@id/textMatchDate"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
@@ -158,24 +154,41 @@
 
     <Spinner
         android:id="@+id/spinHomePlayer1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:text="@string/match_1"
 
         android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintTop_toBottomOf="@id/spinHomeTeam"
-        android:layout_marginStart="@dimen/margin_end"
-        android:layout_marginEnd="@dimen/margin_mid_score"
 
-        app:layout_constraintEnd_toStartOf="@+id/editHomePlayer1Handicap"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
 
         android:textAlignment="viewStart"
+
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
 
          />
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinAwayPlayer1"
+
+        android:spinnerMode="dropdown"
+
+        app:layout_constraintTop_toTopOf="@id/spinHomePlayer1"
+        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer1"
+        app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayTeam"
+
+        android:textAlignment="viewStart"
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
 
     <EditText
         android:layout_width="0dp"
@@ -183,11 +196,10 @@
 
         android:id="@+id/editHomePlayer1Handicap"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer1"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer1"
-        app:layout_constraintStart_toEndOf="@id/spinHomePlayer1"
+        app:layout_constraintTop_toBottomOf="@id/spinHomePlayer1"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintStart_toStartOf="@id/spinHomePlayer1"
         app:layout_constraintEnd_toStartOf="@id/homeScore1"
-        android:layout_marginStart="@dimen/margin_mid_score"
         android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
@@ -204,13 +216,12 @@
         android:layout_height="wrap_content"
         android:nextFocusDown="@id/awayScore1"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer1"
-        app:layout_constraintBottom_toBottomOf="@+id/spinHomePlayer1"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer1Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer1Handicap"
 
         app:layout_constraintStart_toEndOf="@id/editHomePlayer1Handicap"
-        app:layout_constraintEnd_toStartOf="@id/spinAwayPlayer1"
+        app:layout_constraintEnd_toEndOf="@id/spinHomePlayer1"
         android:layout_marginStart="@dimen/margin_mid_score"
-        android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:singleLine="true"
@@ -220,25 +231,7 @@
         android:padding="@dimen/padding"
         />
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:id="@+id/spinAwayPlayer1"
-
-        android:spinnerMode="dropdown"
-
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer1"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer1"
-        app:layout_constraintStart_toEndOf="@id/homeScore1"
-        app:layout_constraintEnd_toStartOf="@id/editAwayPlayer1Handicap"
-        android:layout_marginStart="@dimen/margin_mid_score"
-        android:layout_marginEnd="@dimen/margin_mid_score"
-
-        android:textAlignment="viewStart"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
-        />
 
     <EditText
         android:layout_width="0dp"
@@ -246,11 +239,10 @@
 
         android:id="@+id/editAwayPlayer1Handicap"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer1"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer1"
-        app:layout_constraintStart_toEndOf="@id/spinAwayPlayer1"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer1Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer1Handicap"
+        app:layout_constraintStart_toStartOf="@id/spinAwayPlayer1"
         app:layout_constraintEnd_toStartOf="@id/awayScore1"
-        android:layout_marginStart="@dimen/margin_mid_score"
         android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
@@ -268,12 +260,11 @@
 
         android:nextFocusDown="@id/homeScore2"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer1"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer1"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer1Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer1Handicap"
 
         app:layout_constraintStart_toEndOf="@id/editAwayPlayer1Handicap"
-        android:layout_marginEnd="@dimen/margin_end"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayPlayer1"
         android:layout_marginStart="@dimen/margin_mid_score"
 
 
@@ -285,64 +276,24 @@
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinHomePlayer2"
 
-        android:text="@string/match_2"
-
         android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintTop_toBottomOf="@id/spinHomePlayer1"
-        app:layout_constraintStart_toStartOf="@id/spinHomePlayer1"
-        app:layout_constraintEnd_toEndOf="@id/spinHomePlayer1"
+        app:layout_constraintTop_toBottomOf="@id/editHomePlayer1Handicap"
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
 
         android:textAlignment="viewStart"
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
         />
 
-    <EditText
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:id="@+id/editHomePlayer2Handicap"
-
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer2"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer2"
-
-        app:layout_constraintStart_toStartOf="@id/editHomePlayer1Handicap"
-        app:layout_constraintEnd_toEndOf="@id/editHomePlayer1Handicap"
-
-        android:inputType="numberSigned"
-        android:textAlignment="center"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
-        />
-
-    <EditText
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:id="@+id/homeScore2"
-
-        android:nextFocusDown="@id/awayScore2"
-
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer2"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer2"
-
-        app:layout_constraintStart_toStartOf="@id/homeScore1"
-        app:layout_constraintEnd_toEndOf="@+id/homeScore1"
-
-        android:inputType="numberSigned"
-        android:textAlignment="center"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
-        />
-
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinAwayPlayer2"
@@ -361,12 +312,56 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
+        android:id="@+id/editHomePlayer2Handicap"
+
+        app:layout_constraintTop_toBottomOf="@id/spinHomePlayer2"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toStartOf="@id/homeScore2"
+        android:layout_marginEnd="@dimen/margin_mid_score"
+
+        android:inputType="numberSigned"
+        android:textAlignment="center"
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/homeScore2"
+
+        android:nextFocusDown="@id/awayScore2"
+
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer2Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer2Handicap"
+
+        app:layout_constraintStart_toEndOf="@id/editHomePlayer2Handicap"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
+        android:layout_marginStart="@dimen/margin_mid_score"
+
+        android:inputType="numberSigned"
+        android:textAlignment="center"
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
+
+
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
         android:id="@+id/editAwayPlayer2Handicap"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer2"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer2"
-        app:layout_constraintStart_toStartOf="@id/editAwayPlayer1Handicap"
-        app:layout_constraintEnd_toEndOf="@id/editAwayPlayer1Handicap"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer2Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer2Handicap"
+
+        app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
+        app:layout_constraintEnd_toEndOf="@id/awayScore2"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -382,11 +377,12 @@
         android:nextFocusDown="@id/homeScore3"
 
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer2"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer2"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer2Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer2Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/awayScore1"
-        app:layout_constraintEnd_toEndOf="@id/awayScore1"
+        app:layout_constraintStart_toEndOf="@id/editAwayPlayer2Handicap"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayTeam"
+        android:layout_marginStart="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -395,18 +391,36 @@
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinHomePlayer3"
 
         android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintTop_toBottomOf="@id/spinHomePlayer2"
+        app:layout_constraintTop_toBottomOf="@id/editHomePlayer2Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/spinHomePlayer2"
-        app:layout_constraintEnd_toEndOf="@id/spinHomePlayer2"
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
 
         android:textAlignment="viewStart"
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinAwayPlayer3"
+
+        app:layout_constraintTop_toTopOf="@id/spinHomePlayer3"
+        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer3"
+
+        app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayTeam"
+
+        android:textAlignment="viewStart"
+
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
         />
@@ -417,10 +431,12 @@
 
         android:id="@+id/editHomePlayer3Handicap"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer3"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer3"
-        app:layout_constraintStart_toStartOf="@id/editHomePlayer1Handicap"
-        app:layout_constraintEnd_toEndOf="@id/editHomePlayer1Handicap"
+        app:layout_constraintTop_toBottomOf="@id/spinHomePlayer3"
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toStartOf="@id/homeScore3"
+
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -437,11 +453,12 @@
         android:nextFocusDown="@id/awayScore3"
 
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer3"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer3"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer3Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer3Handicap"
 
-        app:layout_constraintEnd_toEndOf="@id/homeScore2"
-        app:layout_constraintStart_toStartOf="@id/homeScore2"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
+        app:layout_constraintStart_toEndOf="@id/editHomePlayer3Handicap"
+        android:layout_marginStart="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -450,23 +467,7 @@
         android:padding="@dimen/padding"
         />
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:id="@+id/spinAwayPlayer3"
-
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer3"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer3"
-
-        app:layout_constraintStart_toStartOf="@id/spinAwayPlayer2"
-        app:layout_constraintEnd_toEndOf="@id/spinAwayPlayer2"
-
-        android:textAlignment="viewStart"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
-        />
 
     <EditText
         android:layout_width="0dp"
@@ -474,11 +475,12 @@
 
         android:id="@+id/editAwayPlayer3Handicap"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer3"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer3"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer3Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer3Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/editAwayPlayer1Handicap"
-        app:layout_constraintEnd_toEndOf="@id/editAwayPlayer1Handicap"
+        app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
+        app:layout_constraintEnd_toStartOf="@id/awayScore3"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -495,11 +497,12 @@
         android:nextFocusDown="@id/homeScore4"
 
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer3"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer3"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer3Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer3Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/awayScore2"
-        app:layout_constraintEnd_toEndOf="@id/awayScore2"
+        app:layout_constraintStart_toEndOf="@id/editAwayPlayer3Handicap"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayTeam"
+        android:layout_marginStart="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -509,16 +512,33 @@
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinHomePlayer4"
 
         android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintTop_toBottomOf="@id/spinHomePlayer3"
+        app:layout_constraintTop_toBottomOf="@id/editHomePlayer3Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/spinHomePlayer3"
-        app:layout_constraintEnd_toEndOf="@id/spinHomePlayer3"
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
+
+        android:textAlignment="viewStart"
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinAwayPlayer4"
+
+        app:layout_constraintTop_toTopOf="@id/spinHomePlayer4"
+        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer4"
+
+        app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayTeam"
 
         android:textAlignment="viewStart"
         android:background="@drawable/rounded"
@@ -531,11 +551,12 @@
 
         android:id="@+id/editHomePlayer4Handicap"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer4"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer4"
+        app:layout_constraintTop_toBottomOf="@id/spinHomePlayer4"
+        android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/editHomePlayer1Handicap"
-        app:layout_constraintEnd_toEndOf="@id/editHomePlayer1Handicap"
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toStartOf="@id/homeScore4"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -550,11 +571,12 @@
         android:id="@+id/homeScore4"
         android:nextFocusDown="@id/awayScore4"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer4"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer4"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer4Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer4Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/homeScore3"
-        app:layout_constraintEnd_toEndOf="@id/homeScore3"
+        app:layout_constraintStart_toEndOf="@id/editHomePlayer4Handicap"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
+        android:layout_marginStart="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -562,22 +584,7 @@
         android:padding="@dimen/padding"
         />
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:id="@+id/spinAwayPlayer4"
-
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer4"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer4"
-
-        app:layout_constraintStart_toStartOf="@id/spinAwayPlayer3"
-        app:layout_constraintEnd_toEndOf="@id/spinAwayPlayer3"
-
-        android:textAlignment="viewStart"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
-        />
 
     <EditText
         android:layout_width="0dp"
@@ -585,11 +592,12 @@
 
         android:id="@+id/editAwayPlayer4Handicap"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer4"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer4"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer4Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer4Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/editAwayPlayer1Handicap"
-        app:layout_constraintEnd_toEndOf="@+id/editAwayPlayer1Handicap"
+        app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
+        app:layout_constraintEnd_toStartOf="@id/awayScore4"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -606,11 +614,12 @@
         android:nextFocusDown="@id/homeScore5"
 
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer4"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer4"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer4Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer4Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/awayScore3"
-        app:layout_constraintEnd_toEndOf="@id/awayScore3"
+        app:layout_constraintStart_toEndOf="@id/editAwayPlayer4Handicap"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayTeam"
+        android:layout_marginStart="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -619,15 +628,34 @@
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinHomePlayer5"
 
         android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintTop_toBottomOf="@id/spinHomePlayer4"
-        app:layout_constraintStart_toStartOf="@id/spinHomePlayer4"
-        app:layout_constraintEnd_toEndOf="@id/spinHomePlayer4"
+        app:layout_constraintTop_toBottomOf="@id/editHomePlayer4Handicap"
+
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
+
+        android:textAlignment="viewStart"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinAwayPlayer5"
+
+        app:layout_constraintTop_toTopOf="@+id/spinHomePlayer5"
+        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer5"
+
+        app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayTeam"
 
         android:textAlignment="viewStart"
 
@@ -641,11 +669,12 @@
 
         android:id="@+id/editHomePlayer5Handicap"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer5"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer5"
+        app:layout_constraintTop_toBottomOf="@id/spinHomePlayer5"
+        android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/editHomePlayer1Handicap"
-        app:layout_constraintEnd_toEndOf="@id/editHomePlayer1Handicap"
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toStartOf="@id/homeScore5"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -661,12 +690,13 @@
         android:id="@+id/homeScore5"
         android:nextFocusDown="@id/awayScore5"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer5"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer5"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer5Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer5Handicap"
 
 
-        app:layout_constraintStart_toStartOf="@id/homeScore4"
-        app:layout_constraintEnd_toEndOf="@id/homeScore4"
+        app:layout_constraintStart_toEndOf="@id/editHomePlayer5Handicap"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
+        android:layout_marginStart="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -675,23 +705,7 @@
         android:padding="@dimen/padding"
         />
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:id="@+id/spinAwayPlayer5"
-
-        app:layout_constraintTop_toTopOf="@+id/spinHomePlayer5"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer5"
-
-        app:layout_constraintStart_toStartOf="@id/spinAwayPlayer4"
-        app:layout_constraintEnd_toEndOf="@id/spinAwayPlayer4"
-
-        android:textAlignment="viewStart"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
-        />
 
     <EditText
         android:layout_width="0dp"
@@ -699,11 +713,12 @@
 
         android:id="@+id/editAwayPlayer5Handicap"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer5"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer5"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer5Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer5Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/editAwayPlayer1Handicap"
-        app:layout_constraintEnd_toEndOf="@id/editAwayPlayer1Handicap"
+        app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
+        app:layout_constraintEnd_toStartOf="@id/awayScore5"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -720,11 +735,12 @@
         android:nextFocusDown="@id/homeScore6"
 
 
-        app:layout_constraintTop_toTopOf="@+id/spinHomePlayer5"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer5"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer5Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer5Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/awayScore4"
-        app:layout_constraintEnd_toEndOf="@id/awayScore4"
+        app:layout_constraintStart_toEndOf="@id/editAwayPlayer5Handicap"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayTeam"
+        android:layout_marginStart="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -734,33 +750,54 @@
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinHomePlayer6"
 
-        app:layout_constraintTop_toBottomOf="@id/spinHomePlayer5"
+        app:layout_constraintTop_toBottomOf="@id/editHomePlayer5Handicap"
         android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/spinHomePlayer5"
-        app:layout_constraintEnd_toEndOf="@id/spinHomePlayer5"
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
 
         android:textAlignment="viewStart"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
         />
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinAwayPlayer6"
+
+        app:layout_constraintTop_toTopOf="@id/spinHomePlayer6"
+        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer6"
+
+        app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayTeam"
+
+        android:textAlignment="viewStart"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
+
+
     <EditText
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/editHomePlayer6Handicap"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer6"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer6"
+        app:layout_constraintTop_toBottomOf="@id/spinHomePlayer6"
+        android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/editHomePlayer1Handicap"
-        app:layout_constraintEnd_toEndOf="@id/editHomePlayer1Handicap"
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toStartOf="@id/homeScore6"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -776,11 +813,12 @@
         android:id="@+id/homeScore6"
         android:nextFocusDown="@id/awayScore6"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer6"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer6"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer6Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer6Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/homeScore5"
-        app:layout_constraintEnd_toEndOf="@id/homeScore5"
+        app:layout_constraintStart_toEndOf="@id/editHomePlayer6Handicap"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
+        android:layout_marginStart="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -789,23 +827,7 @@
         android:padding="@dimen/padding"
         />
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:id="@+id/spinAwayPlayer6"
-
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer6"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer6"
-
-        app:layout_constraintStart_toStartOf="@id/spinAwayPlayer5"
-        app:layout_constraintEnd_toEndOf="@id/spinAwayPlayer5"
-
-        android:textAlignment="viewStart"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
-        />
 
     <EditText
         android:layout_width="0dp"
@@ -813,11 +835,12 @@
 
         android:id="@+id/editAwayPlayer6Handicap"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer6"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer6"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer6Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer6Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/editAwayPlayer1Handicap"
-        app:layout_constraintEnd_toEndOf="@id/editAwayPlayer1Handicap"
+        app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
+        app:layout_constraintEnd_toStartOf="@id/awayScore6"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -833,11 +856,12 @@
         android:id="@+id/awayScore6"
         android:nextFocusDown="@id/homeScore7"
 
-        app:layout_constraintTop_toTopOf="@+id/spinHomePlayer6"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer6"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer6Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer6Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/awayScore5"
-        app:layout_constraintEnd_toEndOf="@id/awayScore5"
+        app:layout_constraintStart_toEndOf="@id/editAwayPlayer6Handicap"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayTeam"
+        android:layout_marginStart="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -847,15 +871,33 @@
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinHomePlayer7"
 
         android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintTop_toBottomOf="@id/spinHomePlayer6"
-        app:layout_constraintStart_toStartOf="@id/spinHomePlayer6"
-        app:layout_constraintEnd_toEndOf="@id/spinHomePlayer6"
+        app:layout_constraintTop_toBottomOf="@id/editAwayPlayer6Handicap"
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
+
+        android:textAlignment="viewStart"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinAwayPlayer7"
+
+        app:layout_constraintTop_toTopOf="@id/spinHomePlayer7"
+        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer7"
+
+        app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayTeam"
 
         android:textAlignment="viewStart"
 
@@ -869,11 +911,12 @@
 
         android:id="@+id/editHomePlayer7Handicap"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer7"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer7"
+        app:layout_constraintTop_toBottomOf="@id/spinHomePlayer7"
+        android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/editHomePlayer1Handicap"
-        app:layout_constraintEnd_toEndOf="@id/editHomePlayer1Handicap"
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toStartOf="@id/homeScore7"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -881,6 +924,8 @@
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
         />
+
+
 
     <EditText
         android:layout_width="0dp"
@@ -890,11 +935,12 @@
         android:nextFocusDown="@id/awayScore7"
 
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer7"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer7"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer7Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer7Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/homeScore6"
-        app:layout_constraintEnd_toEndOf="@id/homeScore6"
+        app:layout_constraintStart_toEndOf="@id/editHomePlayer7Handicap"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -903,23 +949,7 @@
         android:padding="@dimen/padding"
         />
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:id="@+id/spinAwayPlayer7"
-
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer7"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer7"
-
-        app:layout_constraintStart_toStartOf="@id/spinAwayPlayer6"
-        app:layout_constraintEnd_toEndOf="@id/spinAwayPlayer6"
-
-        android:textAlignment="viewStart"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
-        />
 
     <EditText
         android:layout_width="0dp"
@@ -927,11 +957,12 @@
 
         android:id="@+id/editAwayPlayer7Handicap"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer7"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer7"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer7Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer7Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/editAwayPlayer1Handicap"
-        app:layout_constraintEnd_toEndOf="@id/editAwayPlayer1Handicap"
+        app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
+        app:layout_constraintEnd_toStartOf="@id/awayScore7"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -948,11 +979,12 @@
         android:id="@+id/awayScore7"
         android:nextFocusDown="@id/homeScore8"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer7"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer7"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer7Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer7Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/awayScore6"
-        app:layout_constraintEnd_toEndOf="@id/awayScore6"
+        app:layout_constraintStart_toEndOf="@id/editAwayPlayer7Handicap"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayTeam"
+        android:layout_marginStart="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -962,15 +994,33 @@
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinHomePlayer8"
 
         android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintTop_toBottomOf="@id/spinHomePlayer7"
-        app:layout_constraintStart_toStartOf="@id/spinHomePlayer7"
-        app:layout_constraintEnd_toEndOf="@id/spinHomePlayer7"
+        app:layout_constraintTop_toBottomOf="@id/editHomePlayer7Handicap"
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
+
+        android:textAlignment="viewStart"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinAwayPlayer8"
+
+        app:layout_constraintTop_toTopOf="@id/spinHomePlayer8"
+        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer8"
+
+        app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayTeam"
 
         android:textAlignment="viewStart"
 
@@ -984,11 +1034,12 @@
 
         android:id="@+id/editHomePlayer8Handicap"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer8"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer8"
+        app:layout_constraintTop_toBottomOf="@id/spinHomePlayer8"
+        android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/editHomePlayer1Handicap"
-        app:layout_constraintEnd_toEndOf="@id/editHomePlayer1Handicap"
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toStartOf="@id/homeScore8"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -1004,12 +1055,13 @@
         android:id="@+id/homeScore8"
         android:nextFocusDown="@id/awayScore8"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer8"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer8"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer8Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer8Handicap"
 
 
-        app:layout_constraintStart_toStartOf="@id/homeScore7"
-        app:layout_constraintEnd_toEndOf="@id/homeScore7"
+        app:layout_constraintStart_toEndOf="@id/editHomePlayer8Handicap"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
+        android:layout_marginStart="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -1018,23 +1070,7 @@
         android:padding="@dimen/padding"
         />
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:id="@+id/spinAwayPlayer8"
-
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer8"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer8"
-
-        app:layout_constraintStart_toStartOf="@id/spinAwayPlayer7"
-        app:layout_constraintEnd_toEndOf="@id/spinAwayPlayer7"
-
-        android:textAlignment="viewStart"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
-        />
 
     <EditText
         android:layout_width="0dp"
@@ -1042,11 +1078,12 @@
 
         android:id="@+id/editAwayPlayer8Handicap"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer8"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer8"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer8Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer8Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/editAwayPlayer1Handicap"
-        app:layout_constraintEnd_toEndOf="@id/editAwayPlayer1Handicap"
+        app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
+        app:layout_constraintEnd_toStartOf="@id/awayScore8"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -1061,11 +1098,12 @@
 
         android:id="@+id/awayScore8"
 
-        app:layout_constraintTop_toTopOf="@id/spinHomePlayer8"
-        app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer8"
+        app:layout_constraintTop_toTopOf="@id/editHomePlayer8Handicap"
+        app:layout_constraintBottom_toBottomOf="@id/editHomePlayer8Handicap"
 
-        app:layout_constraintStart_toStartOf="@id/awayScore7"
-        app:layout_constraintEnd_toEndOf="@id/awayScore7"
+        app:layout_constraintStart_toEndOf="@id/editAwayPlayer8Handicap"
+        app:layout_constraintEnd_toEndOf="@id/spinAwayTeam"
+        android:layout_marginStart="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
         android:textAlignment="center"
@@ -1121,10 +1159,11 @@
         app:layout_constraintTop_toBottomOf="@id/ourAgg"
         android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/spinHomePlayer8"
-        app:layout_constraintEnd_toEndOf="@id/spinHomePlayer8"
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toStartOf="@id/ourGamesWon"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
@@ -1139,8 +1178,9 @@
         app:layout_constraintTop_toTopOf="@id/gamesScore"
         app:layout_constraintBottom_toBottomOf="@id/gamesScore"
 
-        app:layout_constraintStart_toStartOf="@id/ourAgg"
-        app:layout_constraintEnd_toEndOf="@id/ourAgg"
+        app:layout_constraintStart_toEndOf="@id/gamesScore"
+        app:layout_constraintEnd_toEndOf="@id/spinHomeTeam"
+        android:layout_marginStart="@dimen/margin_mid_score"
 
         android:textAlignment="center"
 
@@ -1175,10 +1215,11 @@
         app:layout_constraintTop_toBottomOf="@id/gamesScore"
         android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/gamesScore"
-        app:layout_constraintEnd_toEndOf="@id/gamesScore"
+        app:layout_constraintStart_toStartOf="@id/spinHomeTeam"
+        app:layout_constraintEnd_toStartOf="@id/ourMatchScore"
+        android:layout_marginEnd="@dimen/margin_mid_score"
 
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
@@ -1195,6 +1236,7 @@
 
         app:layout_constraintStart_toStartOf="@id/ourGamesWon"
         app:layout_constraintEnd_toEndOf="@id/ourGamesWon"
+        android:layout_marginStart="@dimen/margin_mid_score"
 
         android:textAlignment="center"
 
