@@ -17,7 +17,7 @@ class NewTeam : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_team)
-        val spinner =  findViewById<Spinner>(R.id.spinnerNewTeamDivision)
+        val spinner = findViewById<Spinner>(R.id.spinnerNewTeamDivision)
         ArrayAdapter.createFromResource(
             this,
             R.array.divisions,
