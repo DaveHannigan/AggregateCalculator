@@ -360,7 +360,7 @@
         app:layout_constraintBottom_toBottomOf="@id/editHomePlayer2Handicap"
 
         app:layout_constraintStart_toStartOf="@id/spinAwayTeam"
-        app:layout_constraintEnd_toEndOf="@id/awayScore2"
+        app:layout_constraintEnd_toStartOf="@id/awayScore2"
         android:layout_marginEnd="@dimen/margin_mid_score"
 
         android:inputType="numberSigned"
