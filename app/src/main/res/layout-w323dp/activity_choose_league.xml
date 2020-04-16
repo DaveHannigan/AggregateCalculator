@@ -43,7 +43,7 @@
         app:layout_constraintStart_toStartOf="@id/textChooseLeagueTeam"
 
         app:layout_constraintEnd_toEndOf="@id/textChooseLeagueTeam"
-        android:layout_marginEnd="@dimen/margin_mid"
+        android:textAlignment="center"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
@@ -57,10 +57,11 @@
         android:id="@+id/spinnerChooseLeague"
 
         app:layout_constraintTop_toBottomOf="@id/textChooseLeague"
+        android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintEnd_toEndOf="@id/textChooseLeague"
-        app:layout_constraintStart_toEndOf="@id/textChooseLeague"
-        android:layout_marginStart="@dimen/margin_mid"
+        app:layout_constraintStart_toStartOf="@id/textChooseLeague"
 
+        android:textAlignment="center"
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
         />
@@ -71,14 +72,15 @@
 
         android:id="@+id/textChooseDivision"
 
-        app:layout_constraintTop_toBottomOf="@id/textChooseLeague"
+        app:layout_constraintTop_toBottomOf="@id/spinnerChooseLeague"
         android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/textChooseLeague"
-        app:layout_constraintEnd_toEndOf="@id/textChooseLeague"
+        app:layout_constraintStart_toStartOf="@id/textChooseLeagueTeam"
+        app:layout_constraintEnd_toEndOf="@id/textChooseLeagueTeam"
 
 
         android:text="@string/chooseDivision"
+        android:textAlignment="center"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
@@ -91,12 +93,13 @@
 
         android:id="@+id/spinnerChooseDivision"
 
-        app:layout_constraintTop_toTopOf="@id/textChooseDivision"
-        app:layout_constraintBottom_toBottomOf="@id/textChooseDivision"
-        app:layout_constraintEnd_toEndOf="@id/spinnerChooseLeague"
-        app:layout_constraintStart_toStartOf="@id/spinnerChooseLeague"
+        app:layout_constraintTop_toBottomOf="@id/textChooseDivision"
+        android:layout_marginTop="@dimen/margin_top"
 
+        app:layout_constraintEnd_toEndOf="@id/textChooseLeagueTeam"
+        app:layout_constraintStart_toStartOf="@id/textChooseLeagueTeam"
 
+        android:textAlignment="center"
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
         android:visibility="invisible"/>
@@ -108,12 +111,13 @@
         android:id="@+id/textChooseHomeTeam"
 
         android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintTop_toBottomOf="@id/textChooseDivision"
-        app:layout_constraintStart_toStartOf="@id/textChooseLeague"
-        app:layout_constraintEnd_toEndOf="@id/textChooseDivision"
+        app:layout_constraintTop_toBottomOf="@id/spinnerChooseDivision"
+        app:layout_constraintStart_toStartOf="@id/textChooseLeagueTeam"
+        app:layout_constraintEnd_toEndOf="@id/textChooseLeagueTeam"
 
 
         android:text="@string/choose_home_team"
+        android:textAlignment="center"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
@@ -125,17 +129,17 @@
 
         android:id="@+id/spinChooseHomeTeam"
 
-        app:layout_constraintTop_toTopOf="@id/textChooseHomeTeam"
-        app:layout_constraintBottom_toBottomOf="@id/textChooseHomeTeam"
+        app:layout_constraintTop_toBottomOf="@id/textChooseHomeTeam"
+        android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/spinnerChooseLeague"
-        app:layout_constraintEnd_toEndOf="@id/spinnerChooseLeague"
+        app:layout_constraintStart_toStartOf="@id/textChooseLeagueTeam"
+        app:layout_constraintEnd_toEndOf="@id/textChooseLeagueTeam"
 
-
+        android:textAlignment="center"
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
 
-        android:visibility="visible"/>
+        android:visibility="invisible"/>
 
     <TextView
         android:layout_width="0dp"
@@ -144,12 +148,13 @@
         android:id="@+id/textChooseAwayTeam"
 
         android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintTop_toBottomOf="@id/textChooseHomeTeam"
+        app:layout_constraintTop_toBottomOf="@id/spinChooseHomeTeam"
 
-        app:layout_constraintStart_toStartOf="@id/textChooseLeague"
-        app:layout_constraintEnd_toEndOf="@id/textChooseLeague"
+        app:layout_constraintStart_toStartOf="@id/textChooseLeagueTeam"
+        app:layout_constraintEnd_toEndOf="@id/textChooseLeagueTeam"
 
         android:text="@string/choose_away_team"
+        android:textAlignment="center"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
@@ -162,12 +167,13 @@
 
         android:id="@+id/spinnerChooseAwayTeam"
 
-        app:layout_constraintTop_toTopOf="@id/textChooseAwayTeam"
-        app:layout_constraintBottom_toBottomOf="@id/textChooseAwayTeam"
-        app:layout_constraintStart_toStartOf="@id/spinnerChooseLeague"
-        app:layout_constraintEnd_toEndOf="@id/spinnerChooseLeague"
+        app:layout_constraintTop_toBottomOf="@id/textChooseAwayTeam"
+        android:layout_marginTop="@dimen/margin_top"
 
+        app:layout_constraintStart_toStartOf="@id/textChooseLeagueTeam"
+        app:layout_constraintEnd_toEndOf="@id/textChooseLeagueTeam"
 
+        android:textAlignment="center"
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
 
@@ -179,11 +185,12 @@
 
         android:id="@+id/buttonCancel"
 
-        app:layout_constraintTop_toBottomOf="@id/textChooseAwayTeam"
+        app:layout_constraintTop_toBottomOf="@id/spinnerChooseAwayTeam"
         android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintStart_toStartOf="@id/textChooseLeagueTeam"
-        app:layout_constraintEnd_toEndOf="@+id/textChooseLeague"
+        app:layout_constraintEnd_toStartOf="@id/buttonSave"
         android:text="@string/cancel"
+        android:textAlignment="center"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
@@ -201,14 +208,17 @@
         app:layout_constraintTop_toTopOf="@id/buttonCancel"
         app:layout_constraintBottom_toBottomOf="@id/buttonCancel"
 
-        app:layout_constraintStart_toStartOf="@id/spinnerChooseLeague"
+        app:layout_constraintStart_toEndOf="@id/buttonCancel"
 
-        app:layout_constraintEnd_toEndOf="@id/spinnerChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/textChooseLeagueTeam"
 
         android:text="@string/results"
+        android:textAlignment="center"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
+
+        android:visibility="invisible"
 
         android:onClick="cancel"/>
 

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.core.view.isInvisible
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ChooseLeague : AppCompatActivity(), NewTeamFragment.OnTeamSelected{
@@ -76,6 +77,7 @@ class ChooseLeague : AppCompatActivity(), NewTeamFragment.OnTeamSelected{
                     chooseHomeTeamSpinner.visibility = View.INVISIBLE
                     chooseAwayTeamText.visibility = View.INVISIBLE
                     chooseAwayTeamSpinner.visibility = View.INVISIBLE
+                    saveButton.visibility = View.INVISIBLE
                     homeTeams.clear()
                     awayTeams.clear()
                     return
