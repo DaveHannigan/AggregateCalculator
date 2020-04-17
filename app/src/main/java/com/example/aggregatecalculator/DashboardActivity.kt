@@ -13,6 +13,8 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     fun editTeam(view: View){
+        val intent = Intent(this, NewTeam::class.java)
+        startActivity(intent)
 
     }
 

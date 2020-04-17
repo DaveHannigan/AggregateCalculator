@@ -35,10 +35,20 @@ class NewTeam : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
             spinnerLeague.adapter = adapter
         }
+
+        val teams = getTeams()
+        val listView = findViewById<ListView>(R.id.listTeams)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, teams)
+        listView.adapter = adapter
+        //val firstTeam = teams[0]
+        //Log.i("NewTeamList", "first element of array is $firstTeam")
+
     }
 
+
+
     fun cancelNewTeam(view: View){
-        val intent = Intent(this, MainActivity ::class.java)
+        val intent = Intent(this, DashboardActivity ::class.java)
         startActivity(intent)
     }
 
@@ -118,27 +128,23 @@ class NewTeam : AppCompatActivity() {
         }
 
     }
-/*
-    public fun standardiseNames(str :String) :String{
-        str.trim().toLowerCase()
 
-        val words = str.split(" ").toMutableList()
+    fun getTeams(): ArrayList<String>{
+        val teamsArray  = arrayListOf<String>()
+        val db = FirebaseFirestore.getInstance()
+        db.collection("snookerTeams")
+            .whereEqualTo("league", "Big Table Monday")
+            .get()
+            .addOnSuccessListener { task ->
+                for(docList in task){
+                    val team = docList["teamName"].toString()
+                   // Log.i("NewTeamGetTeam", "team is $team")
+                    teamsArray.add(team)
+                }
 
-        var output = ""
-        for(word in words){
-            output += word.capitalize() + " "
-        }
-        output.trim()
-        return output
+            }
+        return teamsArray
 
     }
 
-    fun stripSpaces(str :String) :String {
-        val words = str.split(" ").toMutableList()
-        var output = ""
-        for (word in words) {
-            output += word.capitalize()
-        }
-        return output
-    }*/
 }
