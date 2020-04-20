@@ -123,7 +123,7 @@
         app:layout_constraintEnd_toEndOf="@id/spinnerNewTeamDivision"
         android:onClick="cancelNewTeam"/>
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -133,7 +133,9 @@
         android:layout_marginTop="@dimen/margin_top"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingBottom="30dp"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

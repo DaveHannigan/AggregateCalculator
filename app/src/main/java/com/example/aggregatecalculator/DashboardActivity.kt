@@ -22,4 +22,9 @@ class DashboardActivity : AppCompatActivity() {
         val intent = Intent(this, ChooseLeague::class.java)
         startActivity(intent)
     }
+
+    fun editPlayers(view: View){
+        val intent = Intent(this, EditPlayers::class.java)
+        startActivity(intent)
+    }
 }

@@ -44,6 +44,8 @@
     <string name="add_new_player">Add a new player to team below</string>
     <string name="division_team_play_in">Division the team play in</string>
     <string name="teamName">Team Name</string>
+    <string name="editPlayers">Edit Players</string>
+    <string name="get_players">Get the players</string>
     <string-array name="divisions">
         <item>Please Choose a division</item>
         <item>Division 1</item>

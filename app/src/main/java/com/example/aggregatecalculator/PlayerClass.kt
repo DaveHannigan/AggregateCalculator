@@ -5,10 +5,11 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 
-class Player(val name: String): Parcelable{
+data class Player(val name: String): Parcelable{
     val playerName = name
     var playerHandicap = ""
     var playerLeague = ""
     var playerTeam = ""
+    var playerId = ""
 
 }

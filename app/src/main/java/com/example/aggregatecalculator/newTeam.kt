@@ -6,9 +6,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+//import android.support.v7.widget.LinearLayoutManager
 import androidx.core.view.get
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aggregatecalculator.R.id.newTeamName
+import com.google.firebase.firestore.FieldPath
+import com.google.firebase.firestore.FieldPath.documentId
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.model.Document
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_new_team.*
 
@@ -35,13 +40,19 @@ class NewTeam : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
             spinnerLeague.adapter = adapter
         }
-
-        val teams = getTeams()
-        val listView = findViewById<ListView>(R.id.listTeams)
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, teams)
-        listView.adapter = adapter
-        //val firstTeam = teams[0]
-        //Log.i("NewTeamList", "first element of array is $firstTeam")
+        val teams = arrayListOf<Player>()
+         getTeams(teams)
+       // Log.i("list view pop", "taems array is $teams")
+      //  val playerId = ArrayList<String>()
+        //for(x in teams){
+        //    playerId.add(x.playerLeague)
+          //  Log.i("NewTeamList", "player name is ${x.playerName}")
+      //  }
+       // val listView = findViewById<ListView>(R.id.listTeams)
+        //val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, playerId)
+        //listView.adapter = adapter
+        val firstTeam = teams.size
+        Log.i("NewTeamList", "first element of array is $firstTeam")
 
     }
 
@@ -129,21 +140,50 @@ class NewTeam : AppCompatActivity() {
 
     }
 
-    fun getTeams(): ArrayList<String>{
-        val teamsArray  = arrayListOf<String>()
+    private fun getTeams(playerArray: ArrayList<Player>){
+        //val teamsArray  = ArrayList<Player>()
+       // var playerArray = ArrayList<Player>()
+        var i = 0
         val db = FirebaseFirestore.getInstance()
-        db.collection("snookerTeams")
+        db.collection("SnookerPlayers")
             .whereEqualTo("league", "Big Table Monday")
             .get()
             .addOnSuccessListener { task ->
                 for(docList in task){
-                    val team = docList["teamName"].toString()
-                   // Log.i("NewTeamGetTeam", "team is $team")
-                    teamsArray.add(team)
+                    val playerName = docList["player"].toString()
+                   val playerId = docList.id
+                    val playerHandicap = docList["playerHandicap"].toString()
+                    val playerLeague = docList["league"].toString()
+                    val playerTeam = docList["team"].toString()
+                   Log.i("NewTeamGetTeam", "team is $playerName")
+                    val player = Player(playerName)
+                    player.playerHandicap = playerHandicap
+                    player.playerId = playerId
+                    player.playerLeague = playerLeague
+                    player.playerTeam = playerTeam
+                    playerArray.add(player)
+                    Log.i("newteamgetteam", "player array size is ${playerArray[i].playerId}")
+                    i++
+
                 }
+                var adapter: PlayerAdapter? = null
+               adapter = PlayerAdapter(this, playerArray)
+
+               val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+                 //val listView = findViewById<ListView>(R.id.listTeams)
+                listTeams.layoutManager = layoutManager
+                listTeams.adapter = adapter
+
+                  //val playerId = ArrayList<String>()
+                //for(x in playerArray){
+                  //  playerId.add(x.playerName)
+                  //Log.i("NewTeamList", "player name is ${x.playerName}")
+                 // }
+               // listView.layoutManager = LinearLayoutManager(this)
+               // val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, playerId)
+                //listView.adapter = adapter
 
             }
-        return teamsArray
 
     }
 

@@ -1,10 +1,70 @@
 package com.example.aggregatecalculator
 
-import android.app.Activity
 import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlin.coroutines.coroutineContext
+
+class PlayerAdapter (context: Context, players: List<Player>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+    var context: Context
+    var player: List<Player>
+    var TAG = "playerAdapter"
+
+
+    init {
+        this.context = context
+        this.player = players
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val inflater = LayoutInflater.from(context)
+        return PlayerHolder(inflater.inflate(R.layout.player_list_item, parent, false))
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val player1 = player[position]
+        val ph = holder as PlayerHolder
+
+        ph.pl_name.setText(player1.playerName)
+        ph.pl_handicap.setText(player1.playerHandicap)
+        ph.pl_team.setText(player1.playerTeam)
+        ph.pl_league.setText(player1.playerLeague)
+        if(position % 2 == 1){
+            holder.itemView.setBackgroundColor(context.resources.getColor(R.color.colorGreen))
+        }else{
+            holder.itemView.setBackgroundColor(context.resources.getColor(R.color.colorBeige))
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return player.size
+    }
+
+    internal class PlayerHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        var pl_name: TextView
+        var pl_handicap: TextView
+        var pl_team: TextView
+        var pl_league: TextView
+
+        init {
+            pl_name = itemView.findViewById(R.id.playerName) as TextView
+            pl_handicap = itemView.findViewById(R.id.playerHandicap) as TextView
+            pl_team = itemView.findViewById(R.id.playerTeam) as TextView
+            pl_league = itemView.findViewById(R.id.playerLeague)
+
+        }
+    }
+
+
+}
+
+
+
+
 fun savePlayer(player: String, handicap: String, team: String, league: String){
     val db = FirebaseFirestore.getInstance()
     val data = hashMapOf(
