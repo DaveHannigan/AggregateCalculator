@@ -3,15 +3,41 @@ package com.example.aggregatecalculator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.core.app.BundleCompat
 import com.google.firebase.firestore.FirebaseFirestore
+import io.grpc.internal.SharedResourceHolder
 
 class NewPlayer : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?){
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_player)
+        val TAG = "NewPlayerClass"
+
+        val saveButton = findViewById<Button>(R.id.buttonSave)
+
+
+        val name = intent.getStringExtra("name")
+        val handicap = intent.getStringExtra("handicap")
+        val league = intent.getStringExtra("league")
+        val team2 = intent.getStringExtra("team")
+        val id = intent.getStringExtra("id")
+        saveButton.setOnClickListener { save(id!!) }
+        Log.i(TAG, "player name is $handicap")
+
+        if(name != null || name != ""){
+            val editName = findViewById<EditText>(R.id.editTextNewPlayer)
+            val editHandicap = findViewById<EditText>(R.id.editTextPlayerHandicap)
+            val spinLeague = findViewById<Spinner>(R.id.spinChooseLeague)
+            val spinTeam = findViewById<Spinner>(R.id.spinChooseTeam)
+            editName.setText(name)
+            editHandicap.setText(handicap!!.toString())
+
+        }
 
 
         val spinnerLeague = findViewById<Spinner>(R.id.spinChooseLeague)
@@ -22,6 +48,11 @@ class NewPlayer : AppCompatActivity() {
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
             spinnerLeague.adapter = adapter
+            val leagueArray  = resources.getStringArray(R.array.league)
+            val index = leagueArray.indexOf(league)
+            if(index != -1){
+                spinnerLeague.setSelection(index)}
+
         }
 
         spinnerLeague.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
@@ -45,6 +76,10 @@ class NewPlayer : AppCompatActivity() {
                             .also{
                                 adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
                                 teamSpinner.adapter = adapter
+                                val index = teamArray.indexOf(team2)
+                                if(index != -1){
+                                    teamSpinner.setSelection(index)
+                                }
                             }
 
 
@@ -57,7 +92,7 @@ class NewPlayer : AppCompatActivity() {
         }
     }
 
-    fun save(view: View){
+    fun save(playerId: String){
 
         val player = findViewById<EditText>(R.id.editTextNewPlayer).text.toString()
         val handicap = findViewById<EditText>(R.id.editTextPlayerHandicap).text.toString()
@@ -79,12 +114,21 @@ class NewPlayer : AppCompatActivity() {
             "league" to league,
             "team" to team
         )
+        if(playerId != "" ){
+            db.collection("SnookerPlayers").document(playerId).set(data)
+                .addOnSuccessListener {
+                    val intent = Intent(this, EditPlayers::class.java)
+                    intent.putExtra("league", league)
+                    startActivity(intent)
+                }
 
-        db.collection("SnookerPlayers").document().set(data)
-            .addOnSuccessListener {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
+        }else {
+            db.collection("SnookerPlayers").document().set(data)
+                .addOnSuccessListener {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
+        }
 
         Toast.makeText(this, "New player is "+ playerstrip  + " and their handicap is " + handicap, Toast.LENGTH_LONG).show()
     }

@@ -33,6 +33,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        app:layout_constraintTop_toTopOf="@id/playerName"
+        app:layout_constraintBottom_toBottomOf="@id/playerName"
+        app:layout_constraintStart_toEndOf="@id/playerHandicap"
+
+        android:id="@+id/playerId"
+        android:visibility="invisible"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
         app:layout_constraintTop_toBottomOf="@id/playerName"
         android:layout_marginTop="@dimen/margin_mid_score"
         app:layout_constraintStart_toStartOf="@id/playerName"

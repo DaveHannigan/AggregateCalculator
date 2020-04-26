@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,6 +14,7 @@
     android:layout_height="match_parent"
     tools:context=".EditPlayers"
     android:background="@color/colorGreen">
+
 
     <Spinner
         android:layout_width="match_parent"
@@ -28,25 +37,23 @@
         android:background="@drawable/rounded"
         android:padding="@dimen/margin_mid_score"
         />
-
-    <Button
+    <SearchView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
-        android:id="@+id/buttonGetPlayers"
+        android:id="@+id/searchPlayers"
 
-        android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintTop_toBottomOf="@id/spinChooseLeague"
+        android:layout_marginTop="@dimen/margin_top"
 
         app:layout_constraintStart_toStartOf="@id/spinChooseLeague"
         app:layout_constraintEnd_toEndOf="@id/spinChooseLeague"
 
-        android:textAlignment="center"
-        android:text="@string/get_players"
-
         android:background="@drawable/rounded"
-        android:padding="@dimen/margin_mid_score"
+        android:padding="@dimen/padding"
         />
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="0dp"
@@ -55,14 +62,23 @@
         android:id="@+id/recyclePlayers"
 
         android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintTop_toBottomOf="@id/buttonGetPlayers"
+        app:layout_constraintTop_toBottomOf="@id/searchPlayers"
 
         app:layout_constraintStart_toStartOf="@id/spinChooseLeague"
         app:layout_constraintEnd_toEndOf="@id/spinChooseLeague"
 
         android:padding="@dimen/padding"
-        android:paddingBottom="25dp"
-
-        android:onClick="getPlayers"
+        android:paddingBottom="100dp"
         />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/recyclePlayers"
+        app:layout_constraintStart_toStartOf="@id/spinChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/spinChooseLeague"
+        android:text="testing"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -4,22 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewPlayer">
+    tools:context=".NewPlayer"
+    android:background="@color/colorGreen">
 
     <TextView
         android:id="@+id/addNewPlayer"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:text="@string/enter_player"
         android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
 
     <TextView
         android:id="@+id/textAddPlayer"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:text="@string/enter_player_name"
@@ -27,11 +31,14 @@
         android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintTop_toBottomOf="@id/addNewPlayer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNewPlayer"/>
+        app:layout_constraintEnd_toStartOf="@+id/editTextNewPlayer"
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
 
     <EditText
         android:id="@+id/editTextNewPlayer"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/enter_player_name"
         app:layout_constraintTop_toTopOf="@id/textAddPlayer"
@@ -39,11 +46,15 @@
         android:layout_marginLeft="@dimen/margin_mid"
         android:layout_marginRight="@dimen/margin_end"
         app:layout_constraintEnd_toEndOf="parent"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+
+        />
 
     <TextView
         android:id="@+id/textAddHandicap"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:text="@string/enter_player_handicap"
@@ -52,10 +63,15 @@
 
         app:layout_constraintTop_toBottomOf="@id/textAddPlayer"
         app:layout_constraintStart_toStartOf="@id/textAddPlayer"
-        app:layout_constraintEnd_toEndOf="@id/textAddPlayer"/>
+        app:layout_constraintEnd_toEndOf="@id/textAddPlayer"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+
+        />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/editTextPlayerHandicap"
 
@@ -66,10 +82,15 @@
         app:layout_constraintBottom_toBottomOf="@id/textAddHandicap"
 
         app:layout_constraintStart_toStartOf="@id/editTextNewPlayer"
-        app:layout_constraintEnd_toEndOf="@id/editTextNewPlayer"/>
+        app:layout_constraintEnd_toEndOf="@id/editTextNewPlayer"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+
+        />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/textChooseLeague"
@@ -80,10 +101,15 @@
         app:layout_constraintStart_toStartOf="@id/textAddPlayer"
         app:layout_constraintEnd_toEndOf="@id/textAddPlayer"
 
-        android:text="@string/team_league"/>
+        android:text="@string/team_league"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+
+        />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinChooseLeague"
@@ -92,10 +118,15 @@
         app:layout_constraintBottom_toBottomOf="@id/textChooseLeague"
 
         app:layout_constraintStart_toStartOf="@id/editTextNewPlayer"
-        app:layout_constraintEnd_toEndOf="@id/editTextNewPlayer"/>
+        app:layout_constraintEnd_toEndOf="@id/editTextNewPlayer"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+
+        />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/textChooseTeam"
@@ -106,10 +137,13 @@
         app:layout_constraintStart_toStartOf="@id/textAddPlayer"
         app:layout_constraintEnd_toEndOf="@id/textAddPlayer"
 
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+
         android:text="@string/choose_team"/>
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinChooseTeam"
@@ -118,7 +152,10 @@
         app:layout_constraintBottom_toBottomOf="@id/textChooseTeam"
 
         app:layout_constraintStart_toStartOf="@id/editTextNewPlayer"
-        app:layout_constraintEnd_toEndOf="@id/editTextNewPlayer"/>
+        app:layout_constraintEnd_toEndOf="@id/editTextNewPlayer"
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
 
     <Button
         android:id="@+id/buttonSave"
@@ -131,8 +168,9 @@
         app:layout_constraintTop_toBottomOf="@id/textChooseTeam"
         app:layout_constraintStart_toStartOf="@id/textAddHandicap"
         app:layout_constraintEnd_toEndOf="@+id/textAddHandicap"
-
-        android:onClick="save"/>
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -146,6 +184,9 @@
         android:layout_marginLeft="@dimen/margin_mid"
         android:layout_marginRight="@dimen/margin_end"
         app:layout_constraintEnd_toEndOf="parent"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
         android:onClick="cancel"/>
 
 
