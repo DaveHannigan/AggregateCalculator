@@ -1,14 +1,20 @@
 package com.example.aggregatecalculator
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 //import android.support.v7.widget.LinearLayoutManager
 import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.aggregatecalculator.R.id.newTeamName
 import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FieldPath.documentId
@@ -22,15 +28,7 @@ class NewTeam : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_team)
-        val spinner = findViewById<Spinner>(R.id.spinnerNewTeamDivision)
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.divisions,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
-            spinner.adapter = adapter
-        }
+
         val spinnerLeague = findViewById<Spinner>(R.id.spinNewTeamLeague)
         ArrayAdapter.createFromResource(
             this,
@@ -40,151 +38,123 @@ class NewTeam : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
             spinnerLeague.adapter = adapter
         }
-        val teams = arrayListOf<Player>()
-         getTeams(teams)
-       // Log.i("list view pop", "taems array is $teams")
-      //  val playerId = ArrayList<String>()
-        //for(x in teams){
-        //    playerId.add(x.playerLeague)
-          //  Log.i("NewTeamList", "player name is ${x.playerName}")
-      //  }
-       // val listView = findViewById<ListView>(R.id.listTeams)
-        //val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, playerId)
-        //listView.adapter = adapter
-        val firstTeam = teams.size
-        Log.i("NewTeamList", "first element of array is $firstTeam")
+        spinnerLeague.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedItem = parent?.getItemAtPosition(position).toString()
+                    getTeams(selectedItem)
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
+
 
     }
 
 
-
-    fun cancelNewTeam(view: View){
-        val intent = Intent(this, DashboardActivity ::class.java)
+    fun cancelNewTeam(view: View) {
+        val intent = Intent(this, DashboardActivity::class.java)
         startActivity(intent)
     }
 
-    fun save(view: View){
-        val teamName = findViewById<EditText>(R.id.editTextNewTeamName)
-        var teams  = teamName.text.toString()
-        teams = standardiseNames(teams)
-       // Toast.makeText(this, teams, Toast.LENGTH_LONG)
-         //   .show()
-       // val teamsArray = arrayListOf<String>()
-        var saveTeam = true
 
+
+    private fun getTeams(league: String) {
+        val teamArray = ArrayList<Team>()
 
         val db = FirebaseFirestore.getInstance()
         db.collection("snookerTeams")
+            .whereEqualTo("league", league)
             .get()
             .addOnSuccessListener { task ->
-               val teamsArray = arrayListOf<String>()
                 for (docList in task) {
-                    val team = docList["teamName"].toString()
-                    val team1 = standardiseNames(team)
-                    teamsArray.add(team1)
+                    val teamName = docList["teamName"].toString()
+                    val teamnId = docList.id
+                    val teamDivision = docList["division"].toString()
+                    Log.i("NewTeamGetTeam", "team is $teamName")
+                    val team = Team(teamName)
+                    team.teamId = teamnId
+                    team.teamDivision = teamDivision
+                    team.teamLeague = league
+                    teamArray.add(team)
+                }
+                teamArray.sortBy { team: Team -> team.teamName  }
+                val adapter = TeamAdapter(this, teamArray)
 
-                }
-                if(teamsArray.contains(teams)){
-                    Toast.makeText(this, "That team name already exists", Toast.LENGTH_LONG)
-                        .show()
-                    saveTeam = false
-                }
+                val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+                listTeams.layoutManager = layoutManager
+                listTeams.adapter = adapter
+
+
+
             }
 
+    }
+}
 
 
-                if (teams == " ") {
-                    Toast.makeText(this, "You have not entered a team name", Toast.LENGTH_LONG)
-                        .show()
-                    saveTeam = false
-                }
 
-        if(saveTeam){
-            //var teamDiv = ""
-            val db = FirebaseFirestore.getInstance()
-            val div = findViewById<Spinner>(R.id.spinnerNewTeamDivision)
-            var teamDiv = div.selectedItem.toString()
-            val league = findViewById<Spinner>(R.id.spinNewTeamLeague)
-            var teamLeague = league.selectedItem.toString()
-            div.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
-                override fun onItemSelected(parent: AdapterView<*>, p1: View?, p2: Int, p3: Long) {
-                    val teamDiv = parent.getItemAtPosition(p2).toString()
+    class TeamAdapter(context: Context, teams: ArrayList<Team>) :
+        RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        var context: Context
 
-                    Toast.makeText(this@NewTeam,teamDiv,Toast.LENGTH_LONG).show()
-                }
+        var team: ArrayList<Team>
 
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                }
+        //var filteredTeams: ArrayList<Team>
+        init {
+            this.context = context
+            this.team = teams
+            //this.filteredTeams = teams
+        }
+
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+            val inflater = LayoutInflater.from(context)
+            Log.i("myContext", "inside team adapter is ${R.layout.team_list_item}")
+            Log.i("myContext", "inflater is $inflater")
+
+            return TeamHolder(inflater.inflate(R.layout.team_list_item, parent, false))
+        }
+
+        override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+            val team1 = team[position]
+            val th = holder as TeamHolder
+
+            th.tm_name.text = team1.teamName
+            th.tm_league.text = team1.teamLeague
+            th.tm_division.text = team1.teamDivision
+            th.tm_id.text = team1.teamId
+
+            if(position %2 == 1){
+                holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.colorGreen))
+            }else{
+                holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.colorBeige))
             }
-
-            val docName = stripSpaces(teams)
-
-            val data = hashMapOf(
-                "teamName" to teams,
-                "division" to teamDiv,
-                "league" to teamLeague)
-
-
-            db.collection("snookerTeams").document()
-                .set(data)
-                .addOnSuccessListener { Log.d("in saved info", "Success")
-
-                }
-                .addOnFailureListener{e -> Log.w("in saved info", "Failure", e)}
-
-
 
 
         }
 
+        override fun getItemCount(): Int {
+            return team.size
+        }
+
+        internal class TeamHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+
+               // Log.i("my", "itemView is $tm_name")
+            var tm_name = itemView.findViewById<TextView>(R.id.teamName)
+            var tm_league = itemView.findViewById<TextView>(R.id.league)
+            var tm_division = itemView.findViewById<TextView>(R.id.division)
+            var tm_id = itemView.findViewById<TextView>(R.id.teamId)
+
+        }
     }
 
-    private fun getTeams(playerArray: ArrayList<Player>){
-        //val teamsArray  = ArrayList<Player>()
-       // var playerArray = ArrayList<Player>()
-        var i = 0
-        val db = FirebaseFirestore.getInstance()
-        db.collection("SnookerPlayers")
-            .whereEqualTo("league", "Big Table Monday")
-            .get()
-            .addOnSuccessListener { task ->
-                for(docList in task){
-                    val playerName = docList["player"].toString()
-                   val playerId = docList.id
-                    val playerHandicap = docList["playerHandicap"].toString()
-                    val playerLeague = docList["league"].toString()
-                    val playerTeam = docList["team"].toString()
-                   Log.i("NewTeamGetTeam", "team is $playerName")
-                    val player = Player(playerName)
-                    player.playerHandicap = playerHandicap
-                    player.playerId = playerId
-                    player.playerLeague = playerLeague
-                    player.playerTeam = playerTeam
-                    playerArray.add(player)
-                    Log.i("newteamgetteam", "player array size is ${playerArray[i].playerId}")
-                    i++
-
-                }
-                var adapter: PlayerAdapter? = null
-               adapter = PlayerAdapter(this, playerArray)
-
-               val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
-                 //val listView = findViewById<ListView>(R.id.listTeams)
-                listTeams.layoutManager = layoutManager
-                listTeams.adapter = adapter
-
-                  //val playerId = ArrayList<String>()
-                //for(x in playerArray){
-                  //  playerId.add(x.playerName)
-                  //Log.i("NewTeamList", "player name is ${x.playerName}")
-                 // }
-               // listView.layoutManager = LinearLayoutManager(this)
-               // val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, playerId)
-                //listView.adapter = adapter
-
-            }
-
-    }
-
-}

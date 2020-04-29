@@ -1,5 +1,6 @@
 package com.example.aggregatecalculator
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -95,9 +96,9 @@ class EditPlayers : AppCompatActivity() {
                     playersArray.sortBy {player: Player -> player.playerName }
                 }
                 //var adapter: PlayerAdapter
-                var adapter = PlayerAdapter(this, playersArray)
+                val adapter = PlayerAdapter(this, playersArray)
 
-                searchPlayers.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+/*                searchPlayers.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
                     override fun onQueryTextSubmit(query: String?): Boolean {
                         return false
                     }
@@ -108,10 +109,12 @@ class EditPlayers : AppCompatActivity() {
                     }
                 })
 
+ */
+
                 val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
                 recyclePlayers.layoutManager = layoutManager
                 recyclePlayers.adapter = adapter
-                recyclePlayers.setOnClickListener { Toast.makeText(this, "you clicked", Toast.LENGTH_LONG).show() }
+                //recyclePlayers.setOnClickListener { Toast.makeText(this, "you clicked", Toast.LENGTH_LONG).show() }
 
                 }
 
@@ -123,6 +126,11 @@ class EditPlayers : AppCompatActivity() {
 
     fun editPlayer(player: Player){
 
+    }
+
+    fun cancel(view: View) {
+        val intent = Intent(this, DashboardActivity::class.java)
+        startActivity(intent)
     }
 }
 

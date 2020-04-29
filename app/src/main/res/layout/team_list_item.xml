@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/teamName"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        android:textSize="24sp"
+        android:padding="@dimen/padding"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/league"
+
+        app:layout_constraintTop_toBottomOf="@id/teamName"
+        app:layout_constraintStart_toStartOf="parent"
+
+        android:layout_marginEnd="@dimen/margin_mid"
+
+        android:padding="@dimen/padding"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/division"
+
+        app:layout_constraintTop_toTopOf="@id/league"
+        app:layout_constraintBottom_toBottomOf="@id/league"
+
+        app:layout_constraintStart_toEndOf="@id/league"
+
+        android:layout_marginStart="@dimen/margin_mid"
+
+        android:padding="@dimen/padding"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/teamId"
+
+        app:layout_constraintTop_toTopOf="@id/league"
+        app:layout_constraintBottom_toBottomOf="@id/league"
+
+        app:layout_constraintStart_toEndOf="@id/division"
+
+        android:visibility="invisible"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

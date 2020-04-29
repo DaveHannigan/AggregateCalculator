@@ -18,20 +18,18 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 import kotlin.collections.ArrayList
 
-class PlayerAdapter (context: Context, players: ArrayList<Player>): RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filterable{
-    var context: Context
-    var player: ArrayList<Player>
+class PlayerAdapter (context: Context, players: ArrayList<Player>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+    var context: Context = context
+    var player: ArrayList<Player> = players
     var playersfiltered = ArrayList<Player>()
     var TAG = "playerAdapter"
 
 
     init {
-        this.context = context
-        this.player = players
         this.playersfiltered = players
     }
 
-    override fun getFilter(): Filter {
+/*    override fun getFilter(): Filter {
         return object : Filter(){
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val charSearch = constraint.toString()
@@ -59,6 +57,8 @@ class PlayerAdapter (context: Context, players: ArrayList<Player>): RecyclerView
         }
     }
 
+ */
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(context)
         return PlayerHolder(inflater.inflate(R.layout.player_list_item, parent, false))
@@ -83,13 +83,13 @@ class PlayerAdapter (context: Context, players: ArrayList<Player>): RecyclerView
     }
 
     override fun getItemCount(): Int {
-       // return player.size
-        return playersfiltered.size
+        return player.size
+       // return playersfiltered.size
     }
 
-     fun onClick(viewHolder: RecyclerView.ViewHolder) {
-        Toast.makeText(context, "you clicked", Toast.LENGTH_LONG).show()
-    }
+//     fun onClick(viewHolder: RecyclerView.ViewHolder) {
+//        Toast.makeText(context, "you clicked", Toast.LENGTH_LONG).show()
+//    }
 
 
     internal class PlayerHolder(itemView: View): RecyclerView.ViewHolder(itemView){

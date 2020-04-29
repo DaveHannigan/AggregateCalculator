@@ -7,11 +7,9 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".EditPlayers"
     android:background="@color/colorGreen">
 
@@ -53,6 +51,27 @@
         android:padding="@dimen/padding"
         />
 
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/buttonCancel"
+
+        android:textAlignment="center"
+        android:text="@string/cancel"
+
+        app:layout_constraintTop_toBottomOf="@id/searchPlayers"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/spinChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/spinChooseLeague"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+
+        android:onClick="cancel"
+        />
+
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -62,7 +81,7 @@
         android:id="@+id/recyclePlayers"
 
         android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintTop_toBottomOf="@id/searchPlayers"
+        app:layout_constraintTop_toBottomOf="@id/buttonCancel"
 
         app:layout_constraintStart_toStartOf="@id/spinChooseLeague"
         app:layout_constraintEnd_toEndOf="@id/spinChooseLeague"
@@ -71,14 +90,7 @@
         android:paddingBottom="100dp"
         />
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
 
-        app:layout_constraintTop_toBottomOf="@id/recyclePlayers"
-        app:layout_constraintStart_toStartOf="@id/spinChooseLeague"
-        app:layout_constraintEnd_toEndOf="@id/spinChooseLeague"
-        android:text="testing"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
