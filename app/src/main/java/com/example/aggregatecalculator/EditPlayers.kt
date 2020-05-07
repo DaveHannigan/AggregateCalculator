@@ -17,8 +17,8 @@ class EditPlayers : AppCompatActivity() {
         setContentView(R.layout.activity_edit_players)
         val passedLeague = intent.getStringExtra("league")
 
-/*        val search = findViewById<SearchView>(R.id.searchPlayers)
-        searchPlayers.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+       // val search = findViewById<SearchView>(R.id.searchPlayers)
+ /*       searchPlayers.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
@@ -28,8 +28,8 @@ class EditPlayers : AppCompatActivity() {
                 return false
             }
         })
+*/
 
- */
 
 
         val spin = findViewById<Spinner>(R.id.spinChooseLeague)
@@ -98,7 +98,7 @@ class EditPlayers : AppCompatActivity() {
                 //var adapter: PlayerAdapter
                 val adapter = PlayerAdapter(this, playersArray)
 
-/*                searchPlayers.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+                searchPlayers.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
                     override fun onQueryTextSubmit(query: String?): Boolean {
                         return false
                     }
@@ -109,7 +109,7 @@ class EditPlayers : AppCompatActivity() {
                     }
                 })
 
- */
+
 
                 val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
                 recyclePlayers.layoutManager = layoutManager
@@ -133,10 +133,12 @@ class EditPlayers : AppCompatActivity() {
         startActivity(intent)
     }
 }
-
+/*
 private fun setOnQueryTextListener() {
 
 
     Log.i("queryTextListener", "I'm here")
    // Toast.makeText(context, "inside query listener", Toast.LENGTH_LONG).show()
 }
+
+ */

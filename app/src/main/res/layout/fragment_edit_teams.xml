@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".EditTeams"
+    android:minWidth="300dp"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGreen"
+        android:minWidth="300dp"
+        >
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/textEditTeam"
+
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/margin_end"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/margin_end"
+
+        android:textAlignment="center"
+        android:text="@string/edit_teams"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
+
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinnerLeague"
+
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/textEditTeam"
+
+        app:layout_constraintStart_toStartOf="@id/textEditTeam"
+
+        app:layout_constraintEnd_toEndOf="@id/textEditTeam"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        android:textAlignment="center"
+        />
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinnerDivision"
+
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/spinnerLeague"
+        app:layout_constraintStart_toStartOf="@id/textEditTeam"
+        app:layout_constraintEnd_toEndOf="@id/textEditTeam"
+
+        android:textAlignment="center"
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/editTeam"
+
+            android:layout_marginTop="@dimen/margin_top"
+            app:layout_constraintTop_toBottomOf="@id/spinnerDivision"
+
+            app:layout_constraintStart_toStartOf="@id/textEditTeam"
+            app:layout_constraintEnd_toEndOf="@id/textEditTeam"
+
+            android:textAlignment="center"
+
+            android:background="@drawable/rounded"
+            android:padding="@dimen/padding"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/buttonSaveExisting"
+
+            android:layout_marginTop="@dimen/margin_top"
+            app:layout_constraintTop_toBottomOf="@id/editTeam"
+            app:layout_constraintStart_toStartOf="@id/textEditTeam"
+            app:layout_constraintEnd_toEndOf="@id/textEditTeam"
+
+            android:text="@string/saveExistingTeam"
+            android:textAlignment="center"
+
+            android:background="@drawable/rounded"
+            android:padding="@dimen/padding"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/buttonSaveNew"
+
+            android:layout_marginTop="@dimen/margin_top"
+            app:layout_constraintTop_toBottomOf="@id/buttonSaveExisting"
+
+            app:layout_constraintStart_toStartOf="@id/textEditTeam"
+            app:layout_constraintEnd_toEndOf="@id/textEditTeam"
+
+            android:textAlignment="center"
+            android:text="@string/save_new"
+
+            android:background="@drawable/rounded"
+            android:padding="@dimen/padding"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/buttonDelete"
+
+            android:layout_marginTop="@dimen/margin_top"
+            app:layout_constraintTop_toBottomOf="@id/buttonSaveNew"
+
+            app:layout_constraintStart_toStartOf="@id/textEditTeam"
+            app:layout_constraintEnd_toEndOf="@id/textEditTeam"
+
+            android:text="@string/delete_team"
+            android:textAlignment="center"
+
+            android:background="@drawable/rounded"
+            android:padding="@dimen/padding"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/buttonCancel"
+
+            android:layout_marginTop="@dimen/margin_top"
+            app:layout_constraintTop_toBottomOf="@id/buttonDelete"
+
+            app:layout_constraintStart_toStartOf="@id/textEditTeam"
+            app:layout_constraintEnd_toEndOf="@id/textEditTeam"
+
+            android:text="@string/cancel"
+            android:textAlignment="center"
+
+            android:background="@drawable/rounded"
+            android:padding="@dimen/padding"
+
+            android:layout_marginBottom="@dimen/margin_top"
+            />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 
 data class Team(val name: String): Parcelable{
-    val teamName =name
+    val teamName = name
     var teamLeague = ""
     var teamDivision = ""
     var teamId =""

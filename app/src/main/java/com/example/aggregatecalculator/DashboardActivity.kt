@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -26,5 +27,9 @@ class DashboardActivity : AppCompatActivity() {
     fun editPlayers(view: View){
         val intent = Intent(this, EditPlayers::class.java)
         startActivity(intent)
+    }
+
+    fun checkResults(view: View){
+        Toast.makeText(this, "your having a laugh", Toast.LENGTH_LONG).show()
     }
 }

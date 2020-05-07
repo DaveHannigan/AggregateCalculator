@@ -1,6 +1,9 @@
 package com.example.aggregatecalculator
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,12 +16,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
+import java.lang.ClassCastException
 import java.util.*
 import kotlin.collections.ArrayList
 
-class PlayerAdapter (context: Context, players: ArrayList<Player>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class PlayerAdapter (context: Context, players: ArrayList<Player>): RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filterable{
     var context: Context = context
     var player: ArrayList<Player> = players
     var playersfiltered = ArrayList<Player>()
@@ -29,7 +34,7 @@ class PlayerAdapter (context: Context, players: ArrayList<Player>): RecyclerView
         this.playersfiltered = players
     }
 
-/*    override fun getFilter(): Filter {
+    override fun getFilter(): Filter {
         return object : Filter(){
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val charSearch = constraint.toString()
@@ -57,7 +62,7 @@ class PlayerAdapter (context: Context, players: ArrayList<Player>): RecyclerView
         }
     }
 
- */
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(context)
@@ -83,8 +88,8 @@ class PlayerAdapter (context: Context, players: ArrayList<Player>): RecyclerView
     }
 
     override fun getItemCount(): Int {
-        return player.size
-       // return playersfiltered.size
+       // return player.size
+       return playersfiltered.size
     }
 
 //     fun onClick(viewHolder: RecyclerView.ViewHolder) {
@@ -108,13 +113,7 @@ class PlayerAdapter (context: Context, players: ArrayList<Player>): RecyclerView
             pl_league = itemView.findViewById(R.id.playerLeague)
             pl_Id = itemView.findViewById(R.id.playerId)
             itemView.setOnClickListener{ Log.i("inPlayerHolderClass", "You clicked ${pl_Id.text}")
-           // val player = Player(pl_name.text.toString())
-           //     player.playerHandicap = pl_handicap.text.toString()
-           //     player.playerLeague = pl_league.text.toString()
-           //     player.playerTeam = pl_team.text.toString()
-           //     player.playerId = pl_Id.text.toString()
 
-                //editPlayer(player)
                 val intent = Intent(itemView.context, NewPlayer::class.java)
                 val  b = Bundle()
                 intent.putExtra("name", pl_name.text.toString())
@@ -134,9 +133,6 @@ class PlayerAdapter (context: Context, players: ArrayList<Player>): RecyclerView
 
 
 }
-
-
-
 
 fun savePlayer(player: String, handicap: String, team: String, league: String){
     val db = FirebaseFirestore.getInstance()
@@ -222,5 +218,77 @@ fun checkTeamName(team: String, league: String, division: String, context: Conte
 
 
     return newTeamAdded
+
+}
+
+fun saveTeam(team: String, league: String, division: String, id:  String){
+    val db = FirebaseFirestore.getInstance()
+    val data = hashMapOf(
+        "teamName" to team,
+        "league" to league,
+        "division" to division
+    )
+    if (id == "") {
+        db.collection("snookerTeams").document().set(data)
+    }else{
+        db.collection("snookerTeams").document(id).set(data)
+    }
+}
+
+fun deleteTeam(teamId: String){
+    val db = FirebaseFirestore.getInstance()
+
+    db.collection("snookerTeams").document(teamId).delete()
+}
+
+class ConfirmDeleteDialog: DialogFragment(){
+
+
+
+
+
+
+    internal lateinit var listener: ConfirmDeleteListener
+
+    interface ConfirmDeleteListener{
+        fun onDialogPositiveClick(dialog: DialogFragment, teamArray: Array<String>)
+        fun onDialogNegativeClick(dialog: DialogFragment, teamArray: Array<String>)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            listener = context as ConfirmDeleteListener
+        } catch (e: ClassCastException){
+            throw ClassCastException((context.toString() + " must implement ConfirmDeleteListener"))
+        }
+    }
+
+
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
+        val args = arguments
+        val team = args?.getString("team")
+        val league = args?.getString("league")
+        val division = args?.getString("division")
+        val id = args?.getString("teamId")
+        val teamArray = arrayOf(team!!, league!!, division!!, id!!)
+
+        return activity.let {
+            val builder = AlertDialog.Builder(it)
+            builder.setMessage(R.string.dialog)
+                .setPositiveButton(R.string.dialog_yes
+                ) { dialog, which -> Toast.makeText(context, "confirm team to delete $team" +
+                        "in league $league, division $division with id of $id", Toast.LENGTH_LONG).show()
+                    listener.onDialogPositiveClick(this, teamArray )
+                }
+                .setNegativeButton(R.string.dialog_no,
+                    DialogInterface.OnClickListener { dialog, which ->
+    //                    listener.onDialogNegativeClick(this, teamArray)
+                    })
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
+    }
 
 }

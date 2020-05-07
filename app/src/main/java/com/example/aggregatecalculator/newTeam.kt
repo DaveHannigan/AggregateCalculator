@@ -9,21 +9,38 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.annotation.DrawableRes
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
-//import android.support.v7.widget.LinearLayoutManager
-import androidx.core.view.get
+import androidx.core.content.ContextCompat.startActivity
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aggregatecalculator.R.id.newTeamName
-import com.google.firebase.firestore.FieldPath
-import com.google.firebase.firestore.FieldPath.documentId
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.model.Document
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_new_team.*
+import java.util.*
+import kotlin.collections.ArrayList
 
-class NewTeam : AppCompatActivity() {
+class NewTeam : AppCompatActivity(), EditTeams.teamChanges  , ConfirmDeleteDialog.ConfirmDeleteListener {
+
+
+    override fun onDialogPositiveClick(dialog: DialogFragment, team: Array<String>) {
+
+        deleteTeam(team[3])
+        getTeams(team[1])
+    }
+
+    override fun onDialogNegativeClick(dialog: DialogFragment, team: Array<String>) {
+
+    }
+
+
+
+    override fun changedTeam(league: String) {
+        Log.i("returned", "itemid is ${league}")
+        getTeams(league)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,7 +96,6 @@ class NewTeam : AppCompatActivity() {
                     val teamName = docList["teamName"].toString()
                     val teamnId = docList.id
                     val teamDivision = docList["division"].toString()
-                    Log.i("NewTeamGetTeam", "team is $teamName")
                     val team = Team(teamName)
                     team.teamId = teamnId
                     team.teamDivision = teamDivision
@@ -88,6 +104,20 @@ class NewTeam : AppCompatActivity() {
                 }
                 teamArray.sortBy { team: Team -> team.teamName  }
                 val adapter = TeamAdapter(this, teamArray)
+
+
+                searchTeam.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+                        return false
+                    }
+
+                    override fun onQueryTextChange(newText: String?): Boolean {
+                        adapter.filter.filter(newText)
+                        return false
+                    }
+                })
+
 
                 val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
                 listTeams.layoutManager = layoutManager
@@ -102,17 +132,52 @@ class NewTeam : AppCompatActivity() {
 
 
 
+
     class TeamAdapter(context: Context, teams: ArrayList<Team>) :
-        RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filterable {
+
+        public fun test(returnedTeam: Team){
+            Log.i("TestFun", "id is ${returnedTeam.teamId}")
+        }
+
+
         var context: Context
 
         var team: ArrayList<Team>
+        var filteredTeams = ArrayList<Team>()
 
-        //var filteredTeams: ArrayList<Team>
         init {
             this.context = context
             this.team = teams
-            //this.filteredTeams = teams
+            this.filteredTeams = teams
+        }
+
+        override fun getFilter(): Filter {
+            return object : Filter(){
+                override fun performFiltering(constraint: CharSequence?): FilterResults {
+                    val charSearch = constraint.toString()
+                    if (charSearch.isEmpty()){
+                        filteredTeams = team
+                    }else{
+                        val results = ArrayList<Team>()
+                        for(row in team){
+                            if (row.teamName.toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(
+                                    Locale.ROOT)))
+                                results.add(row)
+                        }
+                    filteredTeams = results
+                    }
+                    val filterResults = FilterResults()
+                    filterResults.values = filteredTeams
+                    return filterResults
+                }
+
+                @Suppress("UNCHECKED_CAST")
+                override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                    filteredTeams = results?.values as ArrayList<Team>
+                    notifyDataSetChanged()
+                }
+            }
         }
 
 
@@ -125,7 +190,7 @@ class NewTeam : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-            val team1 = team[position]
+            val team1 = filteredTeams[position]
             val th = holder as TeamHolder
 
             th.tm_name.text = team1.teamName
@@ -143,17 +208,40 @@ class NewTeam : AppCompatActivity() {
         }
 
         override fun getItemCount(): Int {
-            return team.size
+            return filteredTeams.size
         }
+
+
 
         internal class TeamHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
-               // Log.i("my", "itemView is $tm_name")
             var tm_name = itemView.findViewById<TextView>(R.id.teamName)
             var tm_league = itemView.findViewById<TextView>(R.id.league)
             var tm_division = itemView.findViewById<TextView>(R.id.division)
             var tm_id = itemView.findViewById<TextView>(R.id.teamId)
+
+
+
+            init {
+
+                itemView.setOnClickListener {
+                    Log.i("TeamSelection", "team is ${tm_name.text.toString()}")
+                    val activty = itemView.context as NewTeam
+                    val bundle = Bundle()
+                    bundle.putString("teamName", tm_name.text.toString())
+                    bundle.putString("teamLeague", tm_league.text.toString())
+                    bundle.putString("teamDivision", tm_division.text.toString())
+                    bundle.putString("teamId", tm_id.text.toString())
+
+                    val dialog = EditTeams()
+                    val tans = activty.supportFragmentManager
+                    dialog.arguments = bundle
+                    dialog.show(tans, "NewTeamFragment" )
+                }
+            }
+
+
 
         }
     }

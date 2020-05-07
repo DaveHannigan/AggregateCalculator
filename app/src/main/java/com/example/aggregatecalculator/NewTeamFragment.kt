@@ -42,8 +42,6 @@ class NewTeamFragment : DialogFragment() {
     ): View? {
 
 
-        //companion object{}
-Log.i("New Team Fragment", "in On Create")
         val rootView = inflater.inflate(R.layout.fragment_new_team, container)
         val arg = arguments
         val league = arg?.getString("league", "No league passed ")
