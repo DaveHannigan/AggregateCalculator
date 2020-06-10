@@ -16,6 +16,7 @@ import androidx.core.text.toSpanned
 import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
+import com.example.aggregatecalculator.databinding.ActivityMainBinding
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import java.lang.Integer.parseInt
@@ -44,8 +45,9 @@ class MainActivity : AppCompatActivity(), NewPlayerFragment.onNewPlayer {
             }
 
         super.onCreate(savedInstanceState)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
 
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
 
 //            updateAggregate(findViewById<EditText>(R.id.constLayout))
@@ -54,19 +56,23 @@ class MainActivity : AppCompatActivity(), NewPlayerFragment.onNewPlayer {
             val division = passedData?.getString("division")
             val homeTeam = passedData?.getString("homeTeam")
             val awayTeam = passedData?.getString("awayTeam")
+            val matchDate1 = passedData?.getString("matchDate")
+            val matchId = passedData?.getString("matchId")
 
 
             if(league == null || division == null || homeTeam == null || awayTeam == null){
                 Toast.makeText(this, "Please make sure that all enteries are valid", Toast.LENGTH_LONG).show()
                 val intent = Intent(this, DashboardActivity::class.java)
                 startActivity(intent)
+                return
             }
+            binding.buttonSave.setOnClickListener { saveInfo(binding, matchId!!) }
             val homePlayersArray = arrayListOf<String>()
             val homePlayerObject = arrayListOf<Player>()
             val awayPlayersArray = arrayListOf<String>()
             val awayPlayerObject = arrayListOf<Player>()
             getPlayers(awayTeam!!, league!!, awayPlayerObject, awayPlayersArray, awayTeamSpinners())
-            getPlayers(homeTeam!!, league!!, homePlayerObject, homePlayersArray, homeTeamSpinners())
+            getPlayers(homeTeam!!, league, homePlayerObject, homePlayersArray, homeTeamSpinners())
             setListener(homeTeamSpinners(), league, homeTeam, division!!, homePlayersArray, homeHandicapTexts(), homePlayerObject, homeTeamSpinners())
             setListener(awayTeamSpinners(), league, awayTeam, division, awayPlayersArray, awayHandicapTexts(), awayPlayerObject, awayTeamSpinners() )
 
@@ -79,7 +85,8 @@ class MainActivity : AppCompatActivity(), NewPlayerFragment.onNewPlayer {
             val divisionText = findViewById<TextView>(R.id.textDivision)
             divisionText.text = division
             val matchDate = findViewById<TextView>(R.id.textMatchDate)
-            matchDate.text = getDate()
+            matchDate.text = matchDate1//getDate()
+            matchDate.setOnClickListener { pickDate() }
             val homeTeamText = findViewById<TextView>(R.id.spinHomeTeam)
             homeTeamText.text = homeTeam
             val awayTeamText = findViewById<TextView>(R.id.spinAwayTeam)
@@ -122,7 +129,7 @@ class MainActivity : AppCompatActivity(), NewPlayerFragment.onNewPlayer {
               ) {
                   val selectedItem = parent?.getItemAtPosition(position)
                   if(selectedItem == "New Player"){
-                      val spinnerId = parent?.id
+                      val spinnerId = parent.id
                       getNewPlayer(league, team, division, playerArray, spinnerId, playerObject)
                   }else{
                       val spin = parent?.id
@@ -182,9 +189,9 @@ class MainActivity : AppCompatActivity(), NewPlayerFragment.onNewPlayer {
 
 
 
-    fun pickDate(view: View){
+    fun pickDate(){
         val cal = Calendar.getInstance()
-
+Log.i("datePicker", "Your here")
         val dateSetListener = object : DatePickerDialog.OnDateSetListener{
             override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
                 cal.set(Calendar.YEAR, year)
@@ -278,20 +285,26 @@ class MainActivity : AppCompatActivity(), NewPlayerFragment.onNewPlayer {
 
 
 
-    fun saveInfo(view: View){
+    fun saveInfo(binding: ActivityMainBinding, matchId: String) {
 
         val dateFormat = SimpleDateFormat("dd-MM-yyyy")
         val date = findViewById<TextView>(R.id.textMatchDate).text.toString()
         val timeStamp = dateFormat.parse(date)
+        val season = getSeason(date)
 
         val data = hashMapOf(
         "date" to timeStamp,
+        "season" to season,
         "league" to  findViewById<TextView>(R.id.textLeague).text.toString(),
         "division" to findViewById<TextView>(R.id.textDivision).text.toString(),
         "homeTeam" to findViewById<TextView>(R.id.spinHomeTeam).text.toString(),
         "awayTeam" to findViewById<TextView>(R.id.spinAwayTeam).text.toString(),
         "home team score" to findViewById<TextView>(R.id.ourMatchScore).text.toString(),
         "away team score" to findViewById<TextView>(R.id.theirMatchScore).text.toString(),
+        "home aggregate" to binding.ourAgg.text.toString(),
+        "away aggregate" to binding.theirAgg.text.toString(),
+        "home frame score" to binding.ourGamesWon.text.toString(),
+        "away frame score" to binding.theirGamesWon.text.toString(),
         "home player 1" to arrayListOf(findViewById<Spinner>(R.id.spinHomePlayer1).selectedItem.toString(),
             findViewById<EditText>(R.id.editHomePlayer1Handicap).text.toString().toInt(),
             findViewById<EditText>(R.id.homeScore1).text.toString().toInt()),
@@ -346,13 +359,20 @@ class MainActivity : AppCompatActivity(), NewPlayerFragment.onNewPlayer {
 
 
         val db = FirebaseFirestore.getInstance()
-        Toast.makeText(this, db.toString(), Toast.LENGTH_SHORT).show()
-        Log.i("in save info", "in place of toast")
 
-        db.collection("snookerResults").document()
-            .set(data)
-            .addOnSuccessListener { Log.d("in saved info", "Success") }
-           .addOnFailureListener{e -> Log.w("in saved info", "Failure", e)}
+        if (matchId == "") {
+
+            db.collection("snookerResults").document()
+                .set(data)
+                .addOnSuccessListener { Log.d("in saved info", "Success") }
+                .addOnFailureListener { e -> Log.w("in saved info", "Failure", e) }
+        }else{
+            db.collection("snookerResults").document(matchId)
+                .set(data)
+                .addOnSuccessListener { Log.d("in saved info", "Success") }
+                .addOnFailureListener { e -> Log.w("in saved info", "Failure", e) }
+
+        }
 
         val intent = Intent(this, DashboardActivity:: class.java)
         startActivity(intent)

@@ -9,7 +9,7 @@ import android.widget.*
 import androidx.core.view.isInvisible
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ChooseLeague : AppCompatActivity(), NewTeamFragment.OnTeamSelected{
+class  ChooseLeague : AppCompatActivity(), NewTeamFragment.OnTeamSelected{
     override fun NewTeam(team: String, homeOrAway: String) {
 
         //call add new team & pass right array

@@ -136,7 +136,7 @@ class NewTeam : AppCompatActivity(), EditTeams.teamChanges  , ConfirmDeleteDialo
     class TeamAdapter(context: Context, teams: ArrayList<Team>) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filterable {
 
-        public fun test(returnedTeam: Team){
+        fun test(returnedTeam: Team){
             Log.i("TestFun", "id is ${returnedTeam.teamId}")
         }
 
@@ -226,7 +226,7 @@ class NewTeam : AppCompatActivity(), EditTeams.teamChanges  , ConfirmDeleteDialo
             init {
 
                 itemView.setOnClickListener {
-                    Log.i("TeamSelection", "team is ${tm_name.text.toString()}")
+                    Log.i("TeamSelection", "team is ${tm_name.text}")
                     val activty = itemView.context as NewTeam
                     val bundle = Bundle()
                     bundle.putString("teamName", tm_name.text.toString())

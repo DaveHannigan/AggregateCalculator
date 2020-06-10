@@ -73,8 +73,6 @@
         android:padding="@dimen/padding"
 
         android:textAlignment="center"
-
-        android:onClick="pickDate"
         />
 
 
@@ -172,6 +170,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         android:textAlignment="viewStart"
+
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
 
@@ -1275,11 +1274,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save"
-        android:onClick="saveInfo"
-
         app:layout_constraintTop_toTopOf="@id/clearButton"
         app:layout_constraintBottom_toBottomOf="@id/clearButton"
-
         app:layout_constraintEnd_toStartOf="@id/clearButton"/>
 
 

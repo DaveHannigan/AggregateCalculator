@@ -58,16 +58,6 @@ class RegistrationActivity : AppCompatActivity() {
 
                 }
 
-           // val providers = arrayListOf(
-           //     AuthUI.IdpConfig.EmailBuilder().build()
-           // )
-
-          //  startActivityForResult(
-          //      AuthUI.getInstance()
-           //         .createSignInIntentBuilder()
-           //         .setAvailableProviders(providers)
-           //         .build(),
-           //     RC_SIGN_IN)
         }
 
 

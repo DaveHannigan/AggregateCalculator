@@ -50,15 +50,20 @@
     <string name="get_players">Get the players</string>
     <string name="delete_team">Delete selected team</string>
     <string-array name="divisions">
-        <item>Please Choose a division</item>
+        <item>Choose division</item>
         <item>Division 1</item>
         <item>Division 2</item>
         <item>Division 3</item>
     </string-array>
     <string-array name="league">
-        <item>Please choose a league</item>
+        <item>Choose league</item>
         <item>Big Table Monday</item>
         <item>Small Table Thursday</item>
+    </string-array>
+    <string-array name="season">
+        <item>Choose Season</item>
+        <item>2019/20</item>
+        <item>2020/21</item>
     </string-array>
     <string name="title_activity_login">Sign in</string>
 
@@ -68,4 +73,16 @@
     <string name="dialog_yes">Yes</string>
     <string name="dialog_no">No</string>
     <string name="checkResults">Get results</string>
+    <string name="league_and_date">League and date</string>
+    <string name="home_player_1">player</string>
+    <string name="_0">1</string>
+    <string name="aggregate_score">Aggregate Score</string>
+    <string name="games_score">Games Score</string>
+    <string name="edit_this_result">Edit this result</string>
+    <string name="fixtures">Fixtures</string>
+    <string name="add_fixtures">See Fixtures</string>
+    <string name="enter_match_date">Enter match date</string>
+    <string name="get_possible_teams">Get possible teams</string>
+    <string name="add_as_fixture">Add as fixture</string>
+    <string name="enter_result">Enter result</string>
 </resources>

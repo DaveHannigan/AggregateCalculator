@@ -86,7 +86,6 @@
 
         android:textAlignment="center"
 
-        android:onClick="pickDate"
         />
 
 

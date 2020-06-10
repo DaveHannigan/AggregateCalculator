@@ -83,7 +83,9 @@ class NewPlayerFragment : DialogFragment(){
                     }
                     array?.add("New Player")
 
-                    newPlayerEntered.newPlayer(player, team, array!!, callingSpinner!!, playerObject!!)
+                    newPlayerEntered.newPlayer(player, team, array!!, callingSpinner!!,
+                        playerObject
+                    )
                     dialog?.dismiss()
                 }
                 dialog?.dismiss()

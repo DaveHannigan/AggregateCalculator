@@ -18,8 +18,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import java.lang.ClassCastException
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -74,11 +76,11 @@ class PlayerAdapter (context: Context, players: ArrayList<Player>): RecyclerView
         val player1 =playersfiltered[position]
         val ph = holder as PlayerHolder
 
-        ph.pl_name.setText(player1.playerName)
-        ph.pl_handicap.setText(player1.playerHandicap)
-        ph.pl_team.setText(player1.playerTeam)
-        ph.pl_league.setText(player1.playerLeague)
-        ph.pl_Id.setText(player1.playerId)
+        ph.pl_name.text = player1.playerName
+        ph.pl_handicap.text = player1.playerHandicap
+        ph.pl_team.text = player1.playerTeam
+        ph.pl_league.text = player1.playerLeague
+        ph.pl_Id.text = player1.playerId
         if(position % 2 == 1){
             holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.colorGreen))
         }else{
@@ -121,7 +123,7 @@ class PlayerAdapter (context: Context, players: ArrayList<Player>): RecyclerView
                 intent.putExtra("league", pl_league.text.toString())
                 intent.putExtra("team", pl_team.text.toString())
                 intent.putExtra("id", pl_Id.text.toString())
-                Log.i("PlayerAdapter", "bundle name is ${pl_handicap.text.toString()}")
+                Log.i("PlayerAdapter", "bundle name is ${pl_handicap.text}")
                 startActivity(itemView.context, intent,b)
 
 
@@ -243,11 +245,6 @@ fun deleteTeam(teamId: String){
 
 class ConfirmDeleteDialog: DialogFragment(){
 
-
-
-
-
-
     internal lateinit var listener: ConfirmDeleteListener
 
     interface ConfirmDeleteListener{
@@ -285,10 +282,17 @@ class ConfirmDeleteDialog: DialogFragment(){
                 }
                 .setNegativeButton(R.string.dialog_no,
                     DialogInterface.OnClickListener { dialog, which ->
-    //                    listener.onDialogNegativeClick(this, teamArray)
+    //                    listener.onD ialogNegativeClick(this, teamArray)
                     })
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 
+}
+
+fun getDate(timestamp: Timestamp): String{
+    val date = timestamp.toDate()
+    val dateformat = SimpleDateFormat("dd-MM-yyyy",  Locale.UK)
+
+    return dateformat.format(date)
 }

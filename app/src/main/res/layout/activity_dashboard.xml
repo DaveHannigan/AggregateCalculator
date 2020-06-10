@@ -87,6 +87,23 @@
             android:padding="@dimen/padding"
             android:onClick="checkResults"
             />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/buttonFixtures"
+
+                android:layout_marginTop="@dimen/margin_top"
+                app:layout_constraintTop_toBottomOf="@id/buttonCheckResults"
+
+                app:layout_constraintStart_toStartOf="@id/buttonEnterResults"
+                app:layout_constraintEnd_toEndOf="@id/buttonEnterResults"
+
+                android:textAlignment="center"
+                android:text="@string/fixtures"
+                android:background="@drawable/rounded"
+                android:padding="@dimen/padding"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
