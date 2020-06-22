@@ -20,16 +20,7 @@
     tools:context=".MainActivity"
     android:background="@color/colorGreen">
 
-    <TextView
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
 
-        android:text="this is other layout"/>
 
     <TextView
         android:layout_width="0dp"
@@ -39,7 +30,7 @@
 
         android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintTop_toTopOf="@id/test"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/textDivision"
         android:layout_marginStart="@dimen/margin_end"
