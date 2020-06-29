@@ -1,4 +1,4 @@
-package com.example.aggregatecalculator
+ package com.example.aggregatecalculator
 
 import android.content.Context
 import android.os.Bundle
@@ -11,10 +11,12 @@ import android.widget.*
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import kotlinx.android.synthetic.main.fragment_edit_teams.*
+import kotlinx.coroutines.delay
 import java.lang.ClassCastException
+import kotlin.concurrent.thread
 
 
-class EditTeams : DialogFragment() {
+ class EditTeams : DialogFragment() {
 
 /*
     override fun onDialogPositiveClick(dialog: DialogFragment) {
@@ -66,7 +68,7 @@ class EditTeams : DialogFragment() {
             val divisionSpinner = rootView.findViewById<Spinner>(R.id.spinnerDivision)
             val teamEdit = rootView.findViewById<EditText>(R.id.editTeam)
             val editTeamButton = rootView.findViewById<Button>(R.id.buttonSaveExisting)
-            val saveNewButton = rootView.findViewById<Button>(R.id.buttonSaveNew)
+            //val saveNewButton = rootView.findViewById<Button>(R.id.buttonSaveNew)
             val deleteTeamButton = rootView.findViewById<Button>(R.id.buttonDelete)
             val cancelButton = rootView.findViewById<Button>(R.id.buttonCancel)
             val popUp = dialog
@@ -95,22 +97,46 @@ class EditTeams : DialogFragment() {
                 var editButtonteam = teamEdit.text.toString()
                 val editButtonleague = leagueSpinner.selectedItem.toString()
                 val editButtondivision = divisionSpinner.selectedItem.toString()
-               editButtonteam = standardiseNames(team).trim()
+               editButtonteam = standardiseNames(editButtonteam).trim()
                 val teamReturned = Team(editButtonteam)
                teamReturned.teamLeague = editButtonleague
                teamReturned.teamDivision = editButtondivision
                teamReturned.teamId = teamId!!
+               // Log.i("saveedit", "editbutton team $editButtonteam, existing team $existingTeam," +
+                 //       "league $league, existingg league $existingLeague, team id $teamId ")
+               if (editButtonleague == "Choose league" || editButtondivision == "Choose division" || editButtonteam == ""){
+                   Toast.makeText(context, "Team must have a league, division & name to be saved", Toast.LENGTH_LONG).show()
+                   return@setOnClickListener
+               }
+               if (teamId == ""){
+                   val check = checkTeamName(editButtonteam, editButtonleague, editButtondivision, context!!)
+                   Log.i("saveedit", "after team saved check is $check")
+                   //if (check){
+                   Thread.sleep(1000)
+                   newTeam.changedTeam(teamReturned.teamLeague)
+                   //popUp?.dismiss()}
+                   popUp?.dismiss()
+                   //return@setOnClickListener
+               }else {
+                   /*             if (editButtonteam == existingTeam && league == existingLeague && teamId == ""){
+                   Toast.makeText(context, "You cannot have two teams with the same name in the " +
+                           "same league", Toast.LENGTH_LONG).show()
+                    return@setOnClickListener
+               }
 
-                saveTeam(editButtonteam, editButtonleague, editButtondivision, teamId)
-               Log.i("saveedit", "returned team ${teamReturned.teamId}")
-                newTeam.changedTeam(teamReturned.teamLeague)
+   */
+
+                   saveTeam(editButtonteam, editButtonleague, editButtondivision, teamId)
+                   Log.i("saveedit", "returned team ${teamReturned.teamId}")
+                   newTeam.changedTeam(teamReturned.teamLeague)
+               }
 
                popUp?.dismiss()
             }
 
 
 
-            saveNewButton.setOnClickListener {
+/*            saveNewButton.setOnClickListener {
                 var saveButtonTeam = editTeam.text.toString()
                 val saveButtonLeague = leagueSpinner.selectedItem.toString()
                 val saveButtonDivision = divisionSpinner.selectedItem.toString()
@@ -128,6 +154,8 @@ class EditTeams : DialogFragment() {
                 }
 
             }
+
+ */
 
             deleteTeamButton.setOnClickListener {
                 val dialog = ConfirmDeleteDialog()

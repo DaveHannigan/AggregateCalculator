@@ -25,7 +25,7 @@ class  LoginActivity : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.editPassword)
 
         val auth = FirebaseAuth.getInstance()
-        Toast.makeText(this, auth.toString(), Toast.LENGTH_LONG).show()
+        //Toast.makeText(this, auth.toString(), Toast.LENGTH_LONG).show()
 
         val emailText = email.text.toString().trim()
         val passwordText = password.text.toString().trim()

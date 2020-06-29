@@ -38,13 +38,27 @@ class NewTeam : AppCompatActivity(), EditTeams.teamChanges  , ConfirmDeleteDialo
 
 
     override fun changedTeam(league: String) {
-        Log.i("returned", "itemid is ${league}")
+        Log.i("saveteam", "itemid is ${league}")
         getTeams(league)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+       // val binding = NewTeamActivityBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_new_team)
+
+        val newTeam = findViewById<Button>(R.id.buttonNewTeam)
+        newTeam.setOnClickListener {
+            val dialog = EditTeams()
+            val tans = this.supportFragmentManager
+            val bundle = Bundle()
+            bundle.putString("teamName", "")
+            bundle.putString("teamLeague", "")
+            bundle.putString("teamDivision", "")
+            bundle.putString("teamId", "")
+            dialog.arguments = bundle
+            dialog.show(tans, "NewTeamFragment" )
+        }
 
         val spinnerLeague = findViewById<Spinner>(R.id.spinNewTeamLeague)
         ArrayAdapter.createFromResource(
@@ -94,6 +108,7 @@ class NewTeam : AppCompatActivity(), EditTeams.teamChanges  , ConfirmDeleteDialo
             .addOnSuccessListener { task ->
                 for (docList in task) {
                     val teamName = docList["teamName"].toString()
+                    Log.i("savegetTeams", "team name is $teamName")
                     val teamnId = docList.id
                     val teamDivision = docList["division"].toString()
                     val team = Team(teamName)

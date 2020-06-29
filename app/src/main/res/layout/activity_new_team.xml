@@ -51,7 +51,18 @@
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
         />
-
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonNewTeam"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/searchTeam"
+        app:layout_constraintStart_toStartOf="@id/spinNewTeamLeague"
+        app:layout_constraintEnd_toEndOf="@id/spinNewTeamLeague"
+        android:text="@string/new_team"
+        android:textAlignment="center"
+        android:background="@drawable/rounded"
+        />
 
     <Button
         android:layout_width="0dp"
@@ -60,7 +71,7 @@
         android:id="@+id/buttonCancel"
         android:text="@string/cancel"
 
-        app:layout_constraintTop_toBottomOf="@id/searchTeam"
+        app:layout_constraintTop_toBottomOf="@id/buttonNewTeam"
         android:layout_marginTop="@dimen/margin_top"
 
         app:layout_constraintStart_toStartOf="@id/spinNewTeamLeague"

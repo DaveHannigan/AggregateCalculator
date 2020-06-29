@@ -133,6 +133,18 @@
         android:text="@string/enter_result"
         android:visibility="invisible"
         />
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonCancel"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toTopOf="@id/buttonEnterResults"
+        app:layout_constraintStart_toStartOf="@id/spinChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/spinChooseLeague"
+        android:textAlignment="center"
+        android:background="@color/colorBeige"
+        android:text="@string/cancel"
+        />
 
 
 

@@ -1,6 +1,7 @@
 package com.example.aggregatecalculator
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,12 +10,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.aggregatecalculator.databinding.ActivityResultsBinding
 import com.google.android.gms.dynamic.SupportFragmentWrapper
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_results.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -24,7 +28,10 @@ class results : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_results)
+        val binding = ActivityResultsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.buttonCancel.setOnClickListener { finish() }
 
 
         val leagueSpin = findViewById<Spinner>(R.id.spinChooseLeague)
@@ -96,8 +103,11 @@ class results : AppCompatActivity() {
                     if (result.awayTeamScore == "null"){result.awayTeamScore = "0"}
                     result.matchDate = doclist["date"] as Timestamp
                     result.id = doclist.id
+                    result.league = league
+                    result.division = doclist["division"].toString()
                     resultsArray.add(result)
                 }
+                resultsArray.sortBy {result: ResultClass -> result.matchDate  }
                 val adapter = ResultsAdapter(this, resultsArray)
                 val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
@@ -170,13 +180,16 @@ class ResultsAdapter (context: Context, results: ArrayList<ResultClass>):
         rh.result_home_team_score.text = result1.homeTeamScore
         rh.result_away_team_score.text = result1.awayTeamScore
         rh.result_Id.text = result1.id
+        rh.result_league.text = result1.league
+        rh.result_division.text = result1.division
+
         val timestamp = result1.matchDate
         val date = timestamp.toDate()
         val dateformat = SimpleDateFormat("dd-MM-yyyy",  Locale.UK)
         val displayDate = dateformat.format(date)
         rh.result_date.text = displayDate
         if (position % 2 == 1){
-            holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.colorGreen))
+            holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.colorLightGreen))
 
         }else{
             holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.colorBeige))
@@ -197,9 +210,28 @@ class ResultsAdapter (context: Context, results: ArrayList<ResultClass>):
         var result_away_team_score: TextView = itemView.findViewById(R.id.awayTeamScore)
         var result_date: TextView = itemView.findViewById(R.id.date)
         var result_Id: TextView = itemView.findViewById(R.id.resultId)
+        var result_league: TextView = itemView.findViewById(R.id.textLeague)
+        var result_division: TextView = itemView.findViewById(R.id.textDivision)
 
         init {
             itemView.setOnClickListener {
+                if (result_home_team_score.text.toString().toInt() == 0 &&
+                        result_away_team_score.text.toString().toInt() == 0){
+                    val context = itemView.context
+                   // val binding = ActivityResultsBinding()
+                    //val league = binding.spinChooseLeague.selectedItem.toString()
+
+                    val intent = Intent(context, MainActivity::class.java)
+                    intent.putExtra("league", result_league.text.toString())
+                    intent.putExtra("division", result_division.text.toString())
+                    intent.putExtra("homeTeam", result_home_team.text.toString())
+                    intent.putExtra("awayTeam", result_away_team.text.toString())
+                    intent.putExtra("matchDate", result_date.text.toString())
+                    intent.putExtra("matchId", result_Id.text.toString())
+                    val bundle = Bundle()
+                    startActivity(context, intent, bundle)
+                    return@setOnClickListener
+                }
                 val activity = itemView.context as results
                 val dialog  = ResultsFragment()
                 val b = Bundle()

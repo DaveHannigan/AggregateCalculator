@@ -19,6 +19,7 @@ import androidx.core.widget.doOnTextChanged
 import com.example.aggregatecalculator.databinding.ActivityMainBinding
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.delay
 import java.lang.Integer.parseInt
 import java.text.SimpleDateFormat
 import java.util.*
@@ -52,12 +53,22 @@ class MainActivity : AppCompatActivity(), NewPlayerFragment.onNewPlayer {
 
 //            updateAggregate(findViewById<EditText>(R.id.constLayout))
             val passedData = intent.extras
-            val league = passedData?.getString("league")
-            val division = passedData?.getString("division")
-            val homeTeam = passedData?.getString("homeTeam")
-            val awayTeam = passedData?.getString("awayTeam")
-            val matchDate1 = passedData?.getString("matchDate")
+            var league = passedData?.getString("league")
+            var division = passedData?.getString("division")
+            var homeTeam = passedData?.getString("homeTeam")
+            var awayTeam = passedData?.getString("awayTeam")
+            var matchDate1 = passedData?.getString("matchDate")
             val matchId = passedData?.getString("matchId")
+
+            if (homeTeam == null && awayTeam == null && matchId != null){
+                Toast.makeText(this, "match id is $matchId", Toast.LENGTH_SHORT).show()
+                getdetails(binding, matchId)
+                //delay(1000)
+                league = binding.textLeague.text.toString()
+                homeTeam = binding.spinHomeTeam.text.toString()
+                awayTeam = binding.spinAwayTeam.text.toString()
+                division = binding.textDivision.text.toString()
+            }
 
 
             if(league == null || division == null || homeTeam == null || awayTeam == null){
@@ -66,6 +77,8 @@ class MainActivity : AppCompatActivity(), NewPlayerFragment.onNewPlayer {
                 startActivity(intent)
                 return
             }
+
+            binding.buttonCancel?.setOnClickListener { this.finish() }
             binding.buttonSave.setOnClickListener { saveInfo(binding, matchId!!) }
             val homePlayersArray = arrayListOf<String>()
             val homePlayerObject = arrayListOf<Player>()
@@ -116,6 +129,22 @@ class MainActivity : AppCompatActivity(), NewPlayerFragment.onNewPlayer {
 
     }
 
+    fun getdetails(binding: ActivityMainBinding, matchId: String){
+        val db = FirebaseFirestore.getInstance()
+
+        db.collection("snookerResults").document(matchId)
+            .get()
+            .addOnSuccessListener { task ->
+                binding.textLeague.text = task["league"].toString()
+                binding.textDivision.text = task["division"].toString()
+                binding.spinHomeTeam.text = task["homeTeam"].toString()
+                binding.spinAwayTeam.text = task["awayTeam"].toString()
+                Log.i("getdet", "${task["league"].toString()}, ${task["awayTeam"].toString()}," +
+                        "${task["homeTeam"].toString()},${task["division"].toString()}")
+            }
+
+    }
+
     fun setListener(spinners: Array<Spinner>, league: String, team: String, division: String,
                     playerArray: ArrayList<String>, editTexts: Array<EditText>, playerObject: ArrayList<Player>,
     teamSpinners: Array<Spinner>){
@@ -128,6 +157,7 @@ class MainActivity : AppCompatActivity(), NewPlayerFragment.onNewPlayer {
                   id: Long
               ) {
                   val selectedItem = parent?.getItemAtPosition(position)
+                  if (selectedItem == "Choose player"){ return}
                   if(selectedItem == "New Player"){
                       val spinnerId = parent.id
                       getNewPlayer(league, team, division, playerArray, spinnerId, playerObject)
@@ -142,7 +172,7 @@ class MainActivity : AppCompatActivity(), NewPlayerFragment.onNewPlayer {
                       }
 
 
-                      val handicap = playerObject[id.toInt()].playerHandicap
+                      val handicap = playerObject[id.toInt()-1].playerHandicap
                       editTexts[spinIndex].setText(handicap)
                   }
               }
@@ -175,9 +205,9 @@ class MainActivity : AppCompatActivity(), NewPlayerFragment.onNewPlayer {
         val index = playerArray.indexOf(player)
         Log.i("in reset spinners", "spinner index is:- $spinnerIndex and the player index is $index so")
 
-      ArrayAdapter(this, android.R.layout.simple_spinner_item,playerArray)
+      ArrayAdapter(this, R.layout.custom_spinner_item,playerArray)
             .also { adapter ->
-               adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+               adapter.setDropDownViewResource(R.layout.custom_spinner_item)
                 for(x in spinners) {
                     spinners[spinnerIndex].adapter = adapter
                 }
@@ -252,13 +282,16 @@ Log.i("datePicker", "Your here")
                     }
                 }
 
+                players.add(0,"Choose player")
                 players.add("New Player")
 
-                ArrayAdapter(this, android.R.layout.simple_spinner_item, players )
+                ArrayAdapter(this, R.layout.custom_spinner_item, players )
                     .also { adapter ->
-                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+                        adapter.setDropDownViewResource(R.layout.custom_spinner_item)
                         for(spinner in spinners) {
                             spinner.adapter = adapter
+                            //spinner.setSelection(0, false)
+                            //spinner.prompt = "Choose player"
                         }
                     }
             }
@@ -306,10 +339,16 @@ Log.i("datePicker", "Your here")
         "home frame score" to binding.ourGamesWon.text.toString(),
         "away frame score" to binding.theirGamesWon.text.toString(),
         "home player 1" to arrayListOf(findViewById<Spinner>(R.id.spinHomePlayer1).selectedItem.toString(),
-            findViewById<EditText>(R.id.editHomePlayer1Handicap).text.toString().toInt(),
-            findViewById<EditText>(R.id.homeScore1).text.toString().toInt()),
+            if (binding.editHomePlayer1Handicap.text.toString() == ""){
+                0
+            }else{
+            findViewById<EditText>(R.id.editHomePlayer1Handicap).text.toString().toInt()},
+            if (binding.homeScore1.text.toString() == ""){
+                0
+            }else{
+            findViewById<EditText>(R.id.homeScore1).text.toString().toInt()}),
         "home player 2" to arrayListOf(findViewById<Spinner>(R.id.spinHomePlayer2).selectedItem.toString(),
-            findViewById<EditText>(R.id.editHomePlayer2Handicap).text.toString().toInt(),
+              findViewById<EditText>(R.id.editHomePlayer2Handicap).text.toString().toInt(),
             findViewById<EditText>(R.id.homeScore2).text.toString().toInt()),
         "home player 3" to arrayListOf(findViewById<Spinner>(R.id.spinHomePlayer3).selectedItem.toString(),
             findViewById<EditText>(R.id.editHomePlayer3Handicap).text.toString().toInt(),

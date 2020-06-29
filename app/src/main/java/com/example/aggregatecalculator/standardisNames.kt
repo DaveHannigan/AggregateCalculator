@@ -195,9 +195,12 @@ fun checkTeamName(team: String, league: String, division: String, context: Conte
             }
     //Toast.makeText(context, teamsArray[0].teamName+ teamsArray[0].teamLeague +teamsArray[0].teamDivision + team2.teamName, Toast.LENGTH_LONG).show()
             if(teamsArray.contains(team)){
+                //Log.i("savecheck", "new team $team teams array $teamsArray ")
                 Toast.makeText(context,"That team already exists", Toast.LENGTH_LONG).show()
+                return@addOnSuccessListener
 
             }else{
+                Log.i("savecheck", "save check teams save")
                 val data = hashMapOf(
                     "teamName" to team,
                     "league" to league,

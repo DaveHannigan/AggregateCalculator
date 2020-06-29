@@ -109,24 +109,7 @@
             android:padding="@dimen/padding"
             />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
 
-            android:id="@+id/buttonSaveNew"
-
-            android:layout_marginTop="@dimen/margin_top"
-            app:layout_constraintTop_toBottomOf="@id/buttonSaveExisting"
-
-            app:layout_constraintStart_toStartOf="@id/textEditTeam"
-            app:layout_constraintEnd_toEndOf="@id/textEditTeam"
-
-            android:textAlignment="center"
-            android:text="@string/save_new"
-
-            android:background="@drawable/rounded"
-            android:padding="@dimen/padding"
-            />
 
         <Button
             android:layout_width="0dp"
@@ -135,7 +118,7 @@
             android:id="@+id/buttonDelete"
 
             android:layout_marginTop="@dimen/margin_top"
-            app:layout_constraintTop_toBottomOf="@id/buttonSaveNew"
+            app:layout_constraintTop_toBottomOf="@id/buttonSaveExisting"
 
             app:layout_constraintStart_toStartOf="@id/textEditTeam"
             app:layout_constraintEnd_toEndOf="@id/textEditTeam"

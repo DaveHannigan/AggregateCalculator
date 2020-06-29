@@ -17,31 +17,27 @@ class DashboardActivity : AppCompatActivity() {
         val binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.buttonCheckResults.setOnClickListener {
+            val intent = Intent(this, results::class.java)
+            startActivity(intent)
+            Toast.makeText(this, "your having a laugh", Toast.LENGTH_LONG).show()
+        }
+
         binding.buttonFixtures.setOnClickListener {
             val intent = Intent(this, FixtureResultsActivity::class.java)
             startActivity(intent)
         }
+
+        binding.buttonEditTeams.setOnClickListener {
+            val intent = Intent(this, NewTeam::class.java)
+            startActivity(intent)
+        }
+
+        binding.buttonEditPlayers.setOnClickListener {
+            val intent = Intent(this, EditPlayers::class.java)
+            startActivity(intent)
+        }
     }
 
-    fun editTeam(view: View){
-        val intent = Intent(this, NewTeam::class.java)
-        startActivity(intent)
 
-    }
-
-    fun enterScores(view: View){
-        val intent = Intent(this, ChooseLeague::class.java)
-        startActivity(intent)
-    }
-
-    fun editPlayers(view: View){
-        val intent = Intent(this, EditPlayers::class.java)
-        startActivity(intent)
-    }
-
-    fun checkResults(view: View){
-        val intent = Intent(this, results::class.java)
-        startActivity(intent)
-        Toast.makeText(this, "your having a laugh", Toast.LENGTH_LONG).show()
-    }
 }

@@ -46,6 +46,19 @@
         app:layout_constraintStart_toStartOf="@id/spinChooseLeague"
         app:layout_constraintEnd_toEndOf="@id/spinChooseLeague"
         />
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonCancel"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/recycleTeams"
+        app:layout_constraintStart_toStartOf="@id/spinChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/spinChooseLeague"
+        android:textAlignment="center"
+        android:text="@string/cancel"
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

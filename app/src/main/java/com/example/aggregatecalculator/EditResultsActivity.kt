@@ -82,6 +82,8 @@ class EditResultsActivity : AppCompatActivity() {
 
         binding.textMatchDate.setOnClickListener{ pickDate(binding, context) }
 
+        binding.buttonCancel?.setOnClickListener { finish() }
+
         binding.buttonSave.setOnClickListener {
             if (saveResults(binding, id)){
                 finish()
@@ -110,9 +112,9 @@ class EditResultsActivity : AppCompatActivity() {
                 for (doclist in task){
                     players.add(doclist["player"].toString().trim())
                 }
-                ArrayAdapter(this, android.R.layout.simple_spinner_item, players)
+                ArrayAdapter(this, R.layout.custom_spinner_item, players)
                     .also { adapter ->
-                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+                        adapter.setDropDownViewResource(R.layout.custom_spinner_item)
                         var count = 0
                         for (x in playerSpinners){
                             x.adapter = adapter

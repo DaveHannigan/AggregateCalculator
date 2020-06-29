@@ -32,8 +32,8 @@
     <string name="password2">Re-enter Password</string>
     <string name="first_name">First Name</string>
     <string name="surname">Surname</string>
-    <string name="edit_teams">Edit team displayed or add new</string>
-    <string name="saveExistingTeam">Save edited team</string>
+    <string name="edit_teams">Add new team or edit existing team</string>
+    <string name="saveExistingTeam">Save team</string>
     <string name="save_new">Save new team</string>
     <string name="go_to_score_sheet">Enter Result</string>
     <string name="team_league">League the team play in</string>
@@ -72,17 +72,18 @@
     <string name="dialog">Are you sure?</string>
     <string name="dialog_yes">Yes</string>
     <string name="dialog_no">No</string>
-    <string name="checkResults">Get results</string>
+    <string name="checkResults">Check results and fixtures</string>
     <string name="league_and_date">League and date</string>
     <string name="home_player_1">player</string>
     <string name="_0">1</string>
     <string name="aggregate_score">Aggregate Score</string>
     <string name="games_score">Games Score</string>
     <string name="edit_this_result">Edit this result</string>
-    <string name="fixtures">Fixtures</string>
+    <string name="fixtures">Add Fixtures</string>
     <string name="add_fixtures">See Fixtures</string>
     <string name="enter_match_date">Enter match date</string>
     <string name="get_possible_teams">Get possible teams</string>
     <string name="add_as_fixture">Add as fixture</string>
     <string name="enter_result">Enter result</string>
+    <string name="team_aggregate">Team aggregate</string>
 </resources>

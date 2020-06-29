@@ -319,7 +319,7 @@ class ResultsFragment : DialogFragment() {
                     intent.putExtra("result", result)
                     startActivity(intent)
                      dismiss()
-                    Toast.makeText(context, "you clicked", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(context, "you clicked", Toast.LENGTH_LONG).show()
                 }
 
 

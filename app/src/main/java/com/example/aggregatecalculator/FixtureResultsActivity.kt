@@ -23,6 +23,8 @@ class FixtureResultsActivity : AppCompatActivity() {
         val binding = ActivityFixtureResultsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.buttonCancel.setOnClickListener { finish() }
+
         ArrayAdapter.createFromResource(this, R.array.league, android.R.layout.simple_spinner_item)
             .also { adapter ->
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
@@ -133,7 +135,7 @@ class FixtureResultsActivity : AppCompatActivity() {
                          Toast.makeText(this, "Fixture already exists", Toast.LENGTH_SHORT).show()
                          return@addOnSuccessListener}
                     exists.size == 0 && fixture == true ->{
-                        Toast.makeText(this, "Fixture already exists", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Fixture added", Toast.LENGTH_SHORT).show()
                         saveFixture(binding)}
                     exists.size > 0 && fixture == false ->{
                         val intent = Intent(this, MainActivity::class.java)
@@ -157,16 +159,7 @@ class FixtureResultsActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                     }
-/*                if (exists.size > 0 && fixture == true){
-                    Toast.makeText(this, "Fixture already exists", Toast.LENGTH_SHORT).show()
 
-                    return@addOnSuccessListener
-                }else{
-                    Toast.makeText(this, "Fixture added", Toast.LENGTH_SHORT).show()
-                    saveFixture(binding)
-                }
-
- */
             }
     }
 

@@ -79,11 +79,22 @@ class NewTeamFragment : DialogFragment() {
                 rootView.findViewById<EditText>(R.id.editTextNewTeamName).text.toString().trim()
             Log.i("New Team Fragment", "new team is $newTeam")
 
+            if (league == "Choose league"){
+                Toast.makeText(context, "Team must be in a league", Toast.LENGTH_LONG).show()
+                popUp?.dismiss()
+                //return@setOnClickListener
+            }
 
+            if (division == ""){
+                Toast.makeText(context, "Team must be in a division", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
 
+            }
 
             if (newTeam == "") {
-                popUp?.dismiss()
+                Toast.makeText(context, "Team must have a name", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+                //popUp?.dismiss()
             } else {
                 newTeam = standardiseNames(newTeam).trim()
                 val check = checkTeamName(newTeam, league, division, context!!)
