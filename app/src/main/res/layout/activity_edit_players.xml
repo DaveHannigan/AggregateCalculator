@@ -50,6 +50,16 @@
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
         />
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonNewPlayer"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/searchPlayers"
+        app:layout_constraintStart_toStartOf="@id/spinChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/spinChooseLeague"
+        android:background="@drawable/rounded"
+        android:text="@string/add_player"/>
 
     <Button
         android:layout_width="0dp"
@@ -60,7 +70,7 @@
         android:textAlignment="center"
         android:text="@string/cancel"
 
-        app:layout_constraintTop_toBottomOf="@id/searchPlayers"
+        app:layout_constraintTop_toBottomOf="@id/buttonNewPlayer"
         android:layout_marginTop="@dimen/margin_top"
 
         app:layout_constraintStart_toStartOf="@id/spinChooseLeague"

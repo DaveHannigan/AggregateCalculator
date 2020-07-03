@@ -6,6 +6,7 @@
     <dimen name="margin_mid_score">4dp</dimen>
     <dimen name="padding">3dp</dimen>
     <dimen name="small_text">10sp</dimen>
+    <dimen name="mid_text">12sp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
 
 </resources>

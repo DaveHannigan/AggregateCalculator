@@ -1,12 +1,15 @@
 package com.example.aggregatecalculator
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.aggregatecalculator.databinding.ActivityEditPlayersBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_edit_players.*
 
@@ -14,23 +17,22 @@ class EditPlayers : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_players)
+        val binding = ActivityEditPlayersBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         val passedLeague = intent.getStringExtra("league")
 
-       // val search = findViewById<SearchView>(R.id.searchPlayers)
- /*       searchPlayers.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                adapter.filter.filter(newText)
-                return false
-            }
-        })
-*/
 
 
+        binding.buttonNewPlayer.setOnClickListener {
+            val intent = Intent(this, NewPlayer::class.java)
+            val b = Bundle()
+            intent.putExtra("name", "")
+            intent.putExtra("handicap", "")
+            intent.putExtra("league", "")
+            intent.putExtra("team", "")
+            intent.putExtra("id", "")
+            startActivity(intent,b)
+        }
 
         val spin = findViewById<Spinner>(R.id.spinChooseLeague)
         ArrayAdapter.createFromResource(this, R.array.league, android.R.layout.simple_spinner_item)
@@ -121,7 +123,7 @@ class EditPlayers : AppCompatActivity() {
 
 
 
-        Toast.makeText(this, "selected league is $league", Toast.LENGTH_LONG).show()
+        //Toast.makeText(this, "selected league is $league", Toast.LENGTH_LONG).show()
     }
 
     fun editPlayer(player: Player){

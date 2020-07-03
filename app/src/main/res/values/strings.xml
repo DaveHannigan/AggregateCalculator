@@ -17,8 +17,8 @@
     <string name="away_team">Away Team</string>
     <string name="home_team">Home Team</string>
     <string name="enter_player">Add new Player</string>
-    <string name="enter_player_name">Enter new players name</string>
-    <string name="enter_player_handicap">Enter player handicap</string>
+    <string name="enter_player_name">Player name</string>
+    <string name="enter_player_handicap">Player handicap</string>
     <string name="cancel">Cancel</string>
     <string name="new_team">New Team</string>
     <string name="enter_team">Enter new team</string>
@@ -32,12 +32,12 @@
     <string name="password2">Re-enter Password</string>
     <string name="first_name">First Name</string>
     <string name="surname">Surname</string>
-    <string name="edit_teams">Add new team or edit existing team</string>
+    <string name="edit_teams">Add new team or edit existing</string>
     <string name="saveExistingTeam">Save team</string>
     <string name="save_new">Save new team</string>
     <string name="go_to_score_sheet">Enter Result</string>
-    <string name="team_league">League the team play in</string>
-    <string name="choose_team">Choose team</string>
+    <string name="team_league">League</string>
+    <string name="choose_team">Team</string>
     <string name="choose_league_team">Choose League and Division you are playing in</string>
     <string name="choose_league">Which League</string>
     <string name="chooseDivision">Which division?</string>
@@ -46,7 +46,7 @@
     <string name="add_new_player">Add a new player to team below</string>
     <string name="division_team_play_in">Division the team play in</string>
     <string name="teamName">Team Name</string>
-    <string name="editPlayers">Edit Players</string>
+    <string name="editPlayers">Add new player or edit existing</string>
     <string name="get_players">Get the players</string>
     <string name="delete_team">Delete selected team</string>
     <string-array name="divisions">
@@ -86,4 +86,6 @@
     <string name="add_as_fixture">Add as fixture</string>
     <string name="enter_result">Enter result</string>
     <string name="team_aggregate">Team aggregate</string>
+    <string name="add_player">Add new player</string>
+    <string name="delete_player">Delete player</string>
 </resources>
