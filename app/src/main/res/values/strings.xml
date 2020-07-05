@@ -88,4 +88,5 @@
     <string name="team_aggregate">Team aggregate</string>
     <string name="add_player">Add new player</string>
     <string name="delete_player">Delete player</string>
+    <string name="check_a_teams_players">Check a teams players</string>
 </resources>

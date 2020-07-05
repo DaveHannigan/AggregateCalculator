@@ -227,7 +227,8 @@ class NewPlayer : AppCompatActivity() {
     }
 
     fun cancel(view: View){
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        onBackPressed()
+       // val intent = Intent(this, MainActivity::class.java)
+        //startActivity(intent)
     }
 }

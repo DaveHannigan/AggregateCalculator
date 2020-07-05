@@ -13,9 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".FixtureResultsActivity"
-            android:windowSoftInputMode = "stateAlwaysHidden" >
-        </activity>
+        <activity android:name=".SeeTeamPlayers"></activity>
+        <activity
+            android:name=".FixtureResultsActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity android:name=".FixtureListActivity" />
         <activity android:name=".EditResultsActivity" />
         <activity android:name=".results" />
