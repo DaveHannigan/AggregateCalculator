@@ -29,7 +29,7 @@
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textDivision"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="@dimen/margin_end"
         android:textAlignment="center"
 
@@ -42,13 +42,10 @@
 
         android:id="@+id/textDivision"
 
-        android:layout_marginStart="@dimen/margin_end"
-        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/textLeague"
 
-        app:layout_constraintTop_toTopOf="@id/textLeague"
-        app:layout_constraintBottom_toBottomOf="@id/textLeague"
-
-        app:layout_constraintStart_toEndOf="@id/textLeague"
+        app:layout_constraintStart_toStartOf="@id/textLeague"
         app:layout_constraintEnd_toStartOf="@id/textMatchDate"
 
         android:textAlignment="center"
@@ -63,11 +60,10 @@
 
         android:id="@+id/textMatchDate"
 
-        app:layout_constraintTop_toTopOf="@id/textLeague"
-        app:layout_constraintBottom_toBottomOf="@id/textLeague"
+        app:layout_constraintTop_toTopOf="@id/textDivision"
+        app:layout_constraintBottom_toBottomOf="@id/textDivision"
         app:layout_constraintStart_toEndOf="@id/textDivision"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/margin_end"
+        app:layout_constraintEnd_toEndOf="@id/textLeague"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"

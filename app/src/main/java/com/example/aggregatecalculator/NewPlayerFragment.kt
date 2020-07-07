@@ -81,6 +81,7 @@ class NewPlayerFragment : DialogFragment(){
                     for(x in playerObject!!){
                         array?.add(x.playerName)
                     }
+                    array?.add(0, "Choose Player")
                     array?.add("New Player")
 
                     newPlayerEntered.newPlayer(player, team, array!!, callingSpinner!!,

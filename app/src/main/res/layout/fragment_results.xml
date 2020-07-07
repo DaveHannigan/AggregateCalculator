@@ -764,12 +764,23 @@
         android:id="@+id/buttonEditTeam"
         android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintTop_toBottomOf="@id/matchScore"
-        android:layout_marginBottom="@dimen/margin_top"
         app:layout_constraintStart_toStartOf="@id/homePlayer1"
         app:layout_constraintEnd_toEndOf="@id/awayPlayer1Score"
         android:background="@drawable/rounded"
         android:textAlignment="center"
         android:text="@string/edit_this_result"
+        />
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonCancel"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/buttonEditTeam"
+        app:layout_constraintStart_toStartOf="@id/homeTeam"
+        app:layout_constraintEnd_toEndOf="@id/awayTeam"
+        android:background="@drawable/rounded"
+        android:textAlignment="center"
+        android:text="@string/cancel"
         />
 
 

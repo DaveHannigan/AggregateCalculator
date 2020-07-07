@@ -171,8 +171,13 @@ class MainActivity : AppCompatActivity(), NewPlayerFragment.onNewPlayer {
 
                       }
 
+                      var handicap = ""
+                      //if (id.toInt() == 0){
+                        //  handicap = playerObject[id.toInt()].playerHandicap
+                      //}else {
+                          handicap = playerObject[id.toInt() - 1].playerHandicap
+                     // }
 
-                      val handicap = playerObject[id.toInt()-1].playerHandicap
                       editTexts[spinIndex].setText(handicap)
                   }
               }

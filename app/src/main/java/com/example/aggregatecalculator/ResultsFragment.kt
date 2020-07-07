@@ -322,6 +322,9 @@ class ResultsFragment : DialogFragment() {
                     //Toast.makeText(context, "you clicked", Toast.LENGTH_LONG).show()
                 }
 
+                val cancelButton = rootView.findViewById<Button>(R.id.buttonCancel)
+                cancelButton.setOnClickListener { dismiss() }
+
 
                 //= result .homeTeam
 

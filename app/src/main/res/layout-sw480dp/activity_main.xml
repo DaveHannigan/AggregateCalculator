@@ -32,8 +32,9 @@
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textDivision"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="@dimen/margin_end"
+        android:layout_marginEnd="@dimen/margin_end"
         android:textAlignment="center"
 
         android:background="@drawable/rounded"
@@ -45,15 +46,12 @@
 
         android:id="@+id/textDivision"
 
-        android:layout_marginStart="@dimen/margin_end"
-        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/textLeague"
 
-        app:layout_constraintTop_toTopOf="@id/textLeague"
-        app:layout_constraintBottom_toBottomOf="@id/textLeague"
-
-        app:layout_constraintStart_toEndOf="@id/textLeague"
+        app:layout_constraintStart_toStartOf="@id/textLeague"
         app:layout_constraintEnd_toStartOf="@id/textMatchDate"
-
+        android:layout_marginEnd="@dimen/margin_mid_score"
         android:textAlignment="center"
 
         android:background="@drawable/rounded"
@@ -66,11 +64,10 @@
 
         android:id="@+id/textMatchDate"
 
-        app:layout_constraintTop_toTopOf="@id/textLeague"
-        app:layout_constraintBottom_toBottomOf="@id/textLeague"
+        app:layout_constraintTop_toTopOf="@id/textDivision"
+        app:layout_constraintBottom_toBottomOf="@id/textDivision"
         app:layout_constraintStart_toEndOf="@id/textDivision"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/margin_end"
+        app:layout_constraintEnd_toEndOf="@id/textLeague"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
@@ -88,15 +85,12 @@
         android:text="@string/home_team"
         android:textAlignment="center"
 
-        app:layout_constraintTop_toBottomOf="@id/textLeague"
+        app:layout_constraintTop_toBottomOf="@id/textDivision"
         android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/textDivision"
 
-        android:layout_marginStart="@dimen/margin_end"
-        android:layout_marginEnd="@dimen/margin_mid"
 
-        app:layout_constraintEnd_toStartOf="@id/awayTeam"
-        app:layout_constraintRight_toLeftOf="@id/awayTeam"
+        app:layout_constraintEnd_toEndOf="@id/textDivision"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
@@ -115,11 +109,8 @@
         app:layout_constraintTop_toTopOf="@id/homeTeam"
         app:layout_constraintBottom_toBottomOf="@id/homeTeam"
 
-        android:layout_marginEnd="@dimen/margin_end"
-        android:layout_marginStart="@dimen/margin_mid"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/homeTeam"
+        app:layout_constraintStart_toStartOf="@id/textMatchDate"
+        app:layout_constraintEnd_toEndOf="@id/textMatchDate"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
@@ -160,23 +151,20 @@
 
     <Spinner
         android:id="@+id/spinHomePlayer1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:text="@string/match_1"
 
         android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintTop_toBottomOf="@id/spinHomeTeam"
-        android:layout_marginStart="@dimen/margin_end"
+        app:layout_constraintStart_toStartOf="@id/textLeague"
         android:layout_marginEnd="@dimen/margin_mid_score"
-
         app:layout_constraintEnd_toStartOf="@+id/editHomePlayer1Handicap"
-        app:layout_constraintStart_toStartOf="parent"
 
         android:textAlignment="viewStart"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
-
+        android:background="@color/colorBeige"
+        app:layout_constraintHorizontal_weight="4"
          />
 
     <EditText
@@ -189,15 +177,13 @@
         app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer1"
         app:layout_constraintStart_toEndOf="@id/spinHomePlayer1"
         app:layout_constraintEnd_toStartOf="@id/homeScore1"
-        android:layout_marginStart="@dimen/margin_mid_score"
         android:layout_marginEnd="@dimen/margin_mid_score"
-
         android:inputType="numberSigned"
         android:singleLine="true"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        app:layout_constraintHorizontal_weight="1"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -210,36 +196,30 @@
         app:layout_constraintBottom_toBottomOf="@+id/spinHomePlayer1"
 
         app:layout_constraintStart_toEndOf="@id/editHomePlayer1Handicap"
-        app:layout_constraintEnd_toStartOf="@id/spinAwayPlayer1"
-        android:layout_marginStart="@dimen/margin_mid_score"
-        android:layout_marginEnd="@dimen/margin_mid_score"
-
+        app:layout_constraintEnd_toEndOf="@id/textDivision"
+        android:textSize="16sp"
         android:inputType="numberSigned"
         android:singleLine="true"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        app:layout_constraintHorizontal_weight="1"
+        android:background="@color/colorBeige"
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinAwayPlayer1"
 
-        android:spinnerMode="dropdown"
 
         app:layout_constraintTop_toTopOf="@id/spinHomePlayer1"
         app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer1"
-        app:layout_constraintStart_toEndOf="@id/homeScore1"
+        app:layout_constraintStart_toStartOf="@id/textMatchDate"
         app:layout_constraintEnd_toStartOf="@id/editAwayPlayer1Handicap"
-        android:layout_marginStart="@dimen/margin_mid_score"
         android:layout_marginEnd="@dimen/margin_mid_score"
-
+        app:layout_constraintHorizontal_weight="4"
         android:textAlignment="viewStart"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -252,14 +232,12 @@
         app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer1"
         app:layout_constraintStart_toEndOf="@id/spinAwayPlayer1"
         app:layout_constraintEnd_toStartOf="@id/awayScore1"
-        android:layout_marginStart="@dimen/margin_mid_score"
         android:layout_marginEnd="@dimen/margin_mid_score"
-
         android:inputType="numberSigned"
+        android:textSize="16sp"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        app:layout_constraintHorizontal_weight="1"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -274,20 +252,17 @@
         app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer1"
 
         app:layout_constraintStart_toEndOf="@id/editAwayPlayer1Handicap"
-        android:layout_marginEnd="@dimen/margin_end"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="@dimen/margin_mid_score"
+        app:layout_constraintEnd_toEndOf="@id/textLeague"
 
-
+        android:textSize="16sp"
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        app:layout_constraintHorizontal_weight="1"
+        android:background="@color/colorBeige"
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinHomePlayer2"
@@ -301,8 +276,7 @@
         app:layout_constraintEnd_toEndOf="@id/spinHomePlayer1"
 
         android:textAlignment="viewStart"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -316,11 +290,10 @@
 
         app:layout_constraintStart_toStartOf="@id/editHomePlayer1Handicap"
         app:layout_constraintEnd_toEndOf="@id/editHomePlayer1Handicap"
-
+        android:textSize="16sp"
         android:inputType="numberSigned"
         android:textAlignment="center"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -336,15 +309,14 @@
 
         app:layout_constraintStart_toStartOf="@id/homeScore1"
         app:layout_constraintEnd_toEndOf="@+id/homeScore1"
-
+        android:textSize="16sp"
         android:inputType="numberSigned"
         android:textAlignment="center"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinAwayPlayer2"
@@ -355,8 +327,7 @@
         app:layout_constraintEnd_toEndOf="@id/spinAwayPlayer1"
 
         android:textAlignment="viewStart"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -369,11 +340,10 @@
         app:layout_constraintBottom_toBottomOf="@id/spinHomePlayer2"
         app:layout_constraintStart_toStartOf="@id/editAwayPlayer1Handicap"
         app:layout_constraintEnd_toEndOf="@id/editAwayPlayer1Handicap"
-
+        android:textSize="16sp"
         android:inputType="numberSigned"
         android:textAlignment="center"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -389,15 +359,14 @@
 
         app:layout_constraintStart_toStartOf="@id/awayScore1"
         app:layout_constraintEnd_toEndOf="@id/awayScore1"
-
+        android:textSize="16sp"
         android:inputType="numberSigned"
         android:textAlignment="center"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinHomePlayer3"
@@ -409,8 +378,7 @@
         app:layout_constraintEnd_toEndOf="@id/spinHomePlayer2"
 
         android:textAlignment="viewStart"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -426,9 +394,8 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -447,13 +414,12 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinAwayPlayer3"
@@ -466,8 +432,7 @@
 
         android:textAlignment="viewStart"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -484,9 +449,8 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -505,13 +469,12 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinHomePlayer4"
@@ -523,8 +486,7 @@
         app:layout_constraintEnd_toEndOf="@id/spinHomePlayer3"
 
         android:textAlignment="viewStart"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -538,11 +500,10 @@
 
         app:layout_constraintStart_toStartOf="@id/editHomePlayer1Handicap"
         app:layout_constraintEnd_toEndOf="@id/editHomePlayer1Handicap"
-
+        android:textSize="16sp"
         android:inputType="numberSigned"
         android:textAlignment="center"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -557,15 +518,14 @@
 
         app:layout_constraintStart_toStartOf="@id/homeScore3"
         app:layout_constraintEnd_toEndOf="@id/homeScore3"
-
+        android:textSize="16sp"
         android:inputType="numberSigned"
         android:textAlignment="center"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinAwayPlayer4"
@@ -577,8 +537,7 @@
         app:layout_constraintEnd_toEndOf="@id/spinAwayPlayer3"
 
         android:textAlignment="viewStart"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -595,9 +554,8 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -613,15 +571,14 @@
 
         app:layout_constraintStart_toStartOf="@id/awayScore3"
         app:layout_constraintEnd_toEndOf="@id/awayScore3"
-
+        android:textSize="16sp"
         android:inputType="numberSigned"
         android:textAlignment="center"
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinHomePlayer5"
@@ -633,8 +590,7 @@
 
         android:textAlignment="viewStart"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -651,9 +607,8 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -672,13 +627,12 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinAwayPlayer5"
@@ -691,8 +645,7 @@
 
         android:textAlignment="viewStart"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -709,9 +662,8 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -730,13 +682,12 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinHomePlayer6"
@@ -749,8 +700,7 @@
 
         android:textAlignment="viewStart"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
     <EditText
         android:layout_width="0dp"
@@ -766,9 +716,8 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -786,13 +735,12 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinAwayPlayer6"
@@ -805,8 +753,7 @@
 
         android:textAlignment="viewStart"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -823,9 +770,8 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -843,13 +789,12 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinHomePlayer7"
@@ -861,8 +806,7 @@
 
         android:textAlignment="viewStart"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -879,9 +823,8 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -900,13 +843,12 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinAwayPlayer7"
@@ -919,8 +861,7 @@
 
         android:textAlignment="viewStart"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -937,9 +878,8 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
 
@@ -958,13 +898,12 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinHomePlayer8"
@@ -976,8 +915,7 @@
 
         android:textAlignment="viewStart"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -994,9 +932,8 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -1015,13 +952,12 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/spinAwayPlayer8"
@@ -1034,8 +970,7 @@
 
         android:textAlignment="viewStart"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -1052,9 +987,8 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
     <EditText
@@ -1071,9 +1005,8 @@
 
         android:inputType="numberSigned"
         android:textAlignment="center"
-
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:textSize="16sp"
+        android:background="@color/colorBeige"
         />
 
 
@@ -1092,8 +1025,7 @@
         android:text="@string/initial_score"
         android:textAlignment="center"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <TextView
@@ -1110,8 +1042,7 @@
         android:text="@string/initial_score"
         android:textAlignment="center"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <TextView
@@ -1128,8 +1059,7 @@
 
         android:textAlignment="center"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <TextView
@@ -1146,8 +1076,7 @@
 
         android:textAlignment="center"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <TextView
@@ -1164,8 +1093,7 @@
 
         android:textAlignment="center"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <TextView
@@ -1182,8 +1110,7 @@
 
         android:textAlignment="center"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <TextView
@@ -1200,8 +1127,7 @@
 
         android:textAlignment="center"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <TextView
@@ -1218,8 +1144,7 @@
 
         android:textAlignment="center"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <TextView
@@ -1236,8 +1161,7 @@
         android:text="@string/aggregate_difference"
         android:textAlignment="center"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
 
     <TextView
@@ -1254,39 +1178,43 @@
 
         android:textAlignment="center"
 
-        android:background="@drawable/rounded"
-        android:padding="@dimen/padding"
+        android:background="@color/colorBeige"
         />
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:onClick="saveInfo"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/aggregateDifference"
+        app:layout_constraintStart_toStartOf="@id/textLeague"
+        app:layout_constraintEnd_toEndOf="@id/textLeague"/>
 
     <Button
         android:id="@+id/clearButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/clear_scores"
         android:onClick="clearScores"
 
-        app:layout_constraintTop_toBottomOf="@id/aggregateDifference"
+        app:layout_constraintTop_toBottomOf="@id/buttonSave"
         android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/aggregateDifference"
-        app:layout_constraintEnd_toEndOf="@id/result"
-
+        app:layout_constraintStart_toStartOf="@id/textLeague"
+        app:layout_constraintEnd_toEndOf="@id/textLeague"
         />
     <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/save"
-        android:onClick="saveInfo"
-
-        app:layout_constraintTop_toTopOf="@id/clearButton"
-        app:layout_constraintBottom_toBottomOf="@id/clearButton"
-
-        app:layout_constraintEnd_toStartOf="@id/clearButton"/>
-
-
-
-
+        android:id="@+id/buttonCancel"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/clearButton"
+        app:layout_constraintStart_toStartOf="@id/textLeague"
+        app:layout_constraintEnd_toEndOf="@id/textLeague"
+        android:text="@string/cancel"
+        android:textAlignment="center"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
