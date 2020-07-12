@@ -101,6 +101,19 @@
                 android:background="@drawable/rounded"
                 android:padding="@dimen/padding"
                 />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonMeritTable"
+                android:layout_marginTop="@dimen/margin_top"
+                app:layout_constraintTop_toBottomOf="@id/buttonCheckTeamPlayers"
+                app:layout_constraintStart_toStartOf="@id/buttonCheckResults"
+                app:layout_constraintEnd_toEndOf="@id/buttonCheckResults"
+                android:textAlignment="center"
+                android:text="@string/check_teams_merit_table"
+                android:background="@drawable/rounded"
+                android:padding="@dimen/padding"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

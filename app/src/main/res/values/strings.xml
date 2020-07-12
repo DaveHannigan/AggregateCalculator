@@ -89,4 +89,5 @@
     <string name="add_player">Add new player</string>
     <string name="delete_player">Delete player</string>
     <string name="check_a_teams_players">Check a teams players</string>
+    <string name="check_teams_merit_table">Check teams merit table</string>
 </resources>

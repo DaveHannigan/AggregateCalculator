@@ -41,7 +41,13 @@ class DashboardActivity : AppCompatActivity() {
         binding.buttonCheckTeamPlayers.setOnClickListener {
             val intent = Intent(this, SeeTeamPlayers::class.java)
             startActivity(intent)
-            Toast.makeText(this, "check players", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.buttonMeritTable.setOnClickListener {
+            val intent = Intent(this, MeritActivity::class.java)
+            startActivity(intent)
+           // Toast.makeText(this, "check players merit", Toast.LENGTH_SHORT).show()
+
         }
     }
 
