@@ -8,45 +8,44 @@
     android:fillViewport="true">
 
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".NewTeam"
+    tools:context=".EditPlayers"
     android:background="@color/colorGreen">
 
 
-
     <Spinner
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:id="@+id/spinNewTeamLeague"
+        android:id="@+id/spinChooseLeague"
 
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toTopOf="parent"
 
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/margin_end"
-
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="@dimen/margin_end"
 
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
         android:textAlignment="center"
+        android:autofillHints="@string/choose_league"
 
         android:background="@drawable/rounded"
-        android:padding="@dimen/padding"/>
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchTeam"
+        android:padding="@dimen/margin_mid_score"
+        />
+    <SearchView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
+        android:id="@+id/searchPlayers"
 
-        app:layout_constraintTop_toBottomOf="@id/spinNewTeamLeague"
+        app:layout_constraintTop_toBottomOf="@id/spinChooseLeague"
         android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/spinNewTeamLeague"
-        app:layout_constraintEnd_toEndOf="@id/spinNewTeamLeague"
+        app:layout_constraintStart_toStartOf="@id/spinChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/spinChooseLeague"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
@@ -54,46 +53,53 @@
     <Button
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonNewTeam"
+        android:id="@+id/buttonNewPlayer"
         android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintTop_toBottomOf="@id/searchTeam"
-        app:layout_constraintStart_toStartOf="@id/spinNewTeamLeague"
-        app:layout_constraintEnd_toEndOf="@id/spinNewTeamLeague"
-        android:text="@string/new_team"
-        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/searchPlayers"
+        app:layout_constraintStart_toStartOf="@id/spinChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/spinChooseLeague"
         android:background="@drawable/rounded"
-        />
+        android:text="@string/add_player"/>
 
     <Button
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:id="@+id/buttonCancel"
+
+        android:textAlignment="center"
         android:text="@string/cancel"
 
-        app:layout_constraintTop_toBottomOf="@id/buttonNewTeam"
+        app:layout_constraintTop_toBottomOf="@id/buttonNewPlayer"
         android:layout_marginTop="@dimen/margin_top"
 
-        app:layout_constraintStart_toStartOf="@id/spinNewTeamLeague"
-        app:layout_constraintEnd_toEndOf="@id/spinNewTeamLeague"
+        app:layout_constraintStart_toStartOf="@id/spinChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/spinChooseLeague"
 
         android:background="@drawable/rounded"
         android:padding="@dimen/padding"
-        android:onClick="cancelNewTeam"/>
+
+        android:onClick="cancel"
+        />
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
-        android:id="@+id/listTeams"
+        android:id="@+id/recyclePlayers"
 
-        app:layout_constraintTop_toBottomOf="@id/buttonCancel"
         android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/buttonCancel"
 
-        app:layout_constraintEnd_toEndOf="@id/spinNewTeamLeague"
-        app:layout_constraintStart_toStartOf="@id/spinNewTeamLeague"
-        android:paddingBottom="30dp"
+        app:layout_constraintStart_toStartOf="@id/spinChooseLeague"
+        app:layout_constraintEnd_toEndOf="@id/spinChooseLeague"
+
+        android:padding="@dimen/padding"
+        android:paddingBottom="100dp"
         />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

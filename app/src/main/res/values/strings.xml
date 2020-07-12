@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">Aggregate Calculator</string>
     <string name="initial_score">0</string>
-    <string name="our_score">Our score</string>
-    <string name="their_score">Their score</string>
     <string name="match_1">Match 1</string>
     <string name="match_2">Match 2</string>
     <string name="match_3">Match 3</string>
@@ -11,8 +9,6 @@
     <string name="match_6">Match 6</string>
     <string name="match_7">Match 7</string>
     <string name="match_8">Match 8</string>
-    <string name="match_9">Match 9</string>
-    <string name="update_button">Update</string>
     <string name="clear_scores">Clear all scores</string>
     <string name="save">save</string>
     <string name="aggregate_difference">Aggregate difference</string>
@@ -21,16 +17,76 @@
     <string name="away_team">Away Team</string>
     <string name="home_team">Home Team</string>
     <string name="enter_player">Add new Player</string>
-    <string name="enter_player_name">Enter new players name</string>
-    <string name="enter_player_handicap">Enter player handicap</string>
+    <string name="enter_player_name">Player name</string>
+    <string name="enter_player_handicap">Player handicap</string>
     <string name="cancel">Cancel</string>
     <string name="new_team">New Team</string>
     <string name="enter_team">Enter new team</string>
     <string name="enter_division">Enter new team\'s division</string>
+    <string name="login_greet">Enter email address and password below</string>
+    <string name="login">Login</string>
+    <string name="results">Enter results</string>
+    <string name="register">Register</string>
+    <string name="email_address">Enter email address</string>
+    <string name="password">Enter Password</string>
+    <string name="password2">Re-enter Password</string>
+    <string name="first_name">First Name</string>
+    <string name="surname">Surname</string>
+    <string name="edit_teams">Add new team or edit existing</string>
+    <string name="saveExistingTeam">Save team</string>
+    <string name="save_new">Save new team</string>
+    <string name="go_to_score_sheet">Enter Result</string>
+    <string name="team_league">League</string>
+    <string name="choose_team">Team</string>
+    <string name="choose_league_team">Choose League and Division you are playing in</string>
+    <string name="choose_league">Which League</string>
+    <string name="chooseDivision">Which division?</string>
+    <string name="choose_home_team">Choose the home team</string>
+    <string name="choose_away_team">Choose the away team</string>
+    <string name="add_new_player">Add a new player to team below</string>
+    <string name="division_team_play_in">Division the team play in</string>
+    <string name="teamName">Team Name</string>
+    <string name="editPlayers">Add new player or edit existing</string>
+    <string name="get_players">Get the players</string>
+    <string name="delete_team">Delete selected team</string>
     <string-array name="divisions">
+        <item>Choose division</item>
         <item>Division 1</item>
         <item>Division 2</item>
         <item>Division 3</item>
-        <item>Division 4</item>
     </string-array>
+    <string-array name="league">
+        <item>Choose league</item>
+        <item>Big Table Monday</item>
+        <item>Small Table Thursday</item>
+    </string-array>
+    <string-array name="season">
+        <item>Choose Season</item>
+        <item>2019/20</item>
+        <item>2020/21</item>
+    </string-array>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dialog">Are you sure?</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
+    <string name="checkResults">Check results and fixtures</string>
+    <string name="league_and_date">League and date</string>
+    <string name="home_player_1">player</string>
+    <string name="_0">1</string>
+    <string name="aggregate_score">Aggregate Score</string>
+    <string name="games_score">Games Score</string>
+    <string name="edit_this_result">Edit this result</string>
+    <string name="fixtures">Add Fixtures</string>
+    <string name="add_fixtures">See Fixtures</string>
+    <string name="enter_match_date">Enter match date</string>
+    <string name="get_possible_teams">Get possible teams</string>
+    <string name="add_as_fixture">Add as fixture</string>
+    <string name="enter_result">Enter result</string>
+    <string name="team_aggregate">Team aggregate</string>
+    <string name="add_player">Add new player</string>
+    <string name="delete_player">Delete player</string>
+    <string name="check_a_teams_players">Check a teams players</string>
 </resources>

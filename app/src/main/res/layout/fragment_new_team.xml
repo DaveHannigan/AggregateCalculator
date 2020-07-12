@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewTeamFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textNewTeam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/new_team"
+
+            android:layout_marginTop="@dimen/margin_top"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginEnd="@dimen/margin_end"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/newTeamName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/enter_team"
+
+            app:layout_constraintTop_toBottomOf="@id/textNewTeam"
+            android:layout_marginTop="@dimen/margin_top"
+
+
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginRight="@dimen/margin_end"
+            android:layout_marginEnd="@dimen/margin_end"
+            app:layout_constraintEnd_toStartOf="@id/editTextNewTeamName"/>
+
+        <EditText
+            android:id="@+id/editTextNewTeamName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:hint="@string/enter_team"
+
+            app:layout_constraintTop_toTopOf="@id/newTeamName"
+            app:layout_constraintBottom_toBottomOf="@id/newTeamName"
+            app:layout_constraintStart_toEndOf="@id/newTeamName"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginRight="@dimen/margin_end"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/textNewTeamLeague"
+
+            app:layout_constraintTop_toBottomOf="@id/newTeamName"
+            android:layout_marginTop="@dimen/margin_top"
+            app:layout_constraintStart_toStartOf="@id/newTeamName"
+            app:layout_constraintEnd_toEndOf="@id/editTextNewTeamName"
+            />
+
+
+
+        <TextView
+            android:id="@+id/newTeamDivision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_marginTop="@dimen/margin_top"
+
+
+            app:layout_constraintTop_toBottomOf="@id/textNewTeamLeague"
+            app:layout_constraintStart_toStartOf="@id/newTeamName"
+            app:layout_constraintEnd_toEndOf="@id/editTextNewTeamName"
+
+            />
+
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/save"
+
+            app:layout_constraintTop_toBottomOf="@id/newTeamDivision"
+            android:layout_marginTop="@dimen/margin_top"
+            app:layout_constraintStart_toStartOf="@id/newTeamName"
+            app:layout_constraintEnd_toStartOf="@id/buttonCancel"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonCancel"
+
+            android:text="@string/cancel"
+
+            app:layout_constraintTop_toTopOf="@id/buttonSave"
+            app:layout_constraintBottom_toBottomOf="@id/buttonSave"
+
+            app:layout_constraintStart_toEndOf="@id/buttonSave"
+            app:layout_constraintEnd_toEndOf="@id/editTextNewTeamName"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

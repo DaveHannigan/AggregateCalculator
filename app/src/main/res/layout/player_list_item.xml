@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/playerHandicap"
+        android:layout_marginEnd="@dimen/margin_mid_score"
+
+        android:id="@+id/playerName"
+        android:textSize="24sp"
+        android:padding="2dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toTopOf="@id/playerName"
+        app:layout_constraintBottom_toBottomOf="@id/playerName"
+        app:layout_constraintStart_toEndOf="@id/playerName"
+        android:layout_marginStart="@dimen/margin_mid_score"
+
+        android:id="@+id/playerHandicap"
+        android:padding="2dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toTopOf="@id/playerName"
+        app:layout_constraintBottom_toBottomOf="@id/playerName"
+        app:layout_constraintStart_toEndOf="@id/playerHandicap"
+
+        android:id="@+id/playerId"
+        android:visibility="invisible"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/playerName"
+        android:layout_marginTop="@dimen/margin_mid_score"
+        app:layout_constraintStart_toStartOf="@id/playerName"
+        app:layout_constraintEnd_toStartOf="@id/playerLeague"
+
+        android:padding="2dp"
+        android:id="@+id/playerTeam"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toTopOf="@id/playerTeam"
+        app:layout_constraintBottom_toBottomOf="@id/playerTeam"
+        app:layout_constraintStart_toEndOf="@id/playerTeam"
+        android:layout_marginStart="@dimen/margin_mid_score"
+
+        android:padding="2dp"
+        android:id="@+id/playerLeague"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

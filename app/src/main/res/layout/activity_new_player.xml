@@ -4,95 +4,204 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewPlayer">
+    tools:context=".NewPlayer"
+    android:background="@color/colorGreen">
 
     <TextView
         android:id="@+id/addNewPlayer"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:text="@string/enter_player"
         android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="@dimen/margin_end"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:layout_marginStart="@dimen/margin_end"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/rounded"
+        android:textAlignment="center"
+        />
 
     <TextView
         android:id="@+id/textAddPlayer"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:text="@string/enter_player_name"
-
+        android:textSize="@dimen/mid_text"
         android:layout_marginTop="@dimen/margin_top"
         app:layout_constraintTop_toBottomOf="@id/addNewPlayer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNewPlayer"/>
+        app:layout_constraintStart_toStartOf="@id/addNewPlayer"
+        app:layout_constraintEnd_toStartOf="@+id/editTextNewPlayer"
+        android:layout_marginEnd="@dimen/margin_mid_score"
+        android:background="@color/colorBeige"
+        app:layout_constraintHorizontal_weight="1"
+        />
 
     <EditText
         android:id="@+id/editTextNewPlayer"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/enter_player_name"
         app:layout_constraintTop_toTopOf="@id/textAddPlayer"
         app:layout_constraintBottom_toBottomOf="@id/textAddPlayer"
-        android:layout_marginLeft="@dimen/margin_mid"
-        android:layout_marginRight="@dimen/margin_end"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:inputType="text"/>
+        app:layout_constraintStart_toEndOf="@id/textAddPlayer"
+        app:layout_constraintEnd_toEndOf="@id/addNewPlayer"
+        android:inputType="text"
+        android:textSize="@dimen/mid_text"
+        android:background="@color/colorBeige"
+        app:layout_constraintHorizontal_weight="2"
+        />
 
     <TextView
         android:id="@+id/textAddHandicap"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:text="@string/enter_player_handicap"
+        android:textSize="@dimen/mid_text"
 
         android:layout_marginTop="@dimen/margin_top"
 
         app:layout_constraintTop_toBottomOf="@id/textAddPlayer"
         app:layout_constraintStart_toStartOf="@id/textAddPlayer"
-        app:layout_constraintEnd_toEndOf="@id/textAddPlayer"/>
+        app:layout_constraintEnd_toEndOf="@id/textAddPlayer"
+
+        android:background="@color/colorBeige"
+        />
 
     <EditText
-        android:id="@+id/editTextHandicap"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:id="@+id/editTextPlayerHandicap"
 
         android:hint="@string/enter_player_handicap"
-        android:inputType="number"
+        android:inputType="numberSigned"
+        android:textSize="@dimen/mid_text"
 
         app:layout_constraintTop_toTopOf="@id/textAddHandicap"
         app:layout_constraintBottom_toBottomOf="@id/textAddHandicap"
 
         app:layout_constraintStart_toStartOf="@id/editTextNewPlayer"
-        app:layout_constraintEnd_toEndOf="@id/editTextNewPlayer"/>
+        app:layout_constraintEnd_toEndOf="@id/editTextNewPlayer"
+
+        android:background="@color/colorBeige"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/textChooseLeague"
+
+        app:layout_constraintTop_toBottomOf="@id/textAddHandicap"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/textAddPlayer"
+        app:layout_constraintEnd_toEndOf="@id/textAddPlayer"
+
+        android:text="@string/team_league"
+        android:textSize="@dimen/mid_text"
+
+        android:background="@color/colorBeige"
+
+        />
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinChooseLeague"
+
+        app:layout_constraintTop_toTopOf="@id/textChooseLeague"
+        app:layout_constraintBottom_toBottomOf="@id/textChooseLeague"
+
+        app:layout_constraintStart_toStartOf="@id/editTextNewPlayer"
+        app:layout_constraintEnd_toEndOf="@id/editTextNewPlayer"
+
+        android:background="@color/colorBeige"
+
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/textChooseTeam"
+
+        app:layout_constraintTop_toBottomOf="@id/textChooseLeague"
+        android:layout_marginTop="@dimen/margin_top"
+
+        app:layout_constraintStart_toStartOf="@id/textAddPlayer"
+        app:layout_constraintEnd_toEndOf="@id/textAddPlayer"
+
+        android:background="@color/colorBeige"
+
+        android:text="@string/choose_team"
+        android:textSize="@dimen/mid_text"/>
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/spinChooseTeam"
+
+        app:layout_constraintTop_toTopOf="@id/textChooseTeam"
+        app:layout_constraintBottom_toBottomOf="@id/textChooseTeam"
+
+        app:layout_constraintStart_toStartOf="@id/editTextNewPlayer"
+        app:layout_constraintEnd_toEndOf="@id/editTextNewPlayer"
+        android:background="@color/colorBeige"
+        />
 
     <Button
         android:id="@+id/buttonSave"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         android:text="@string/save"
 
         android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintTop_toBottomOf="@id/textAddHandicap"
-        app:layout_constraintStart_toStartOf="@id/textAddHandicap"
-        app:layout_constraintEnd_toEndOf="@+id/textAddHandicap"/>
+        app:layout_constraintTop_toBottomOf="@id/textChooseTeam"
+        app:layout_constraintStart_toStartOf="@id/addNewPlayer"
+        app:layout_constraintEnd_toEndOf="@id/addNewPlayer"
+        android:background="@color/colorBeige"
+        />
+
 
     <Button
-        android:id="@+id/buttonCancel"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-
+        android:id="@+id/buttonCancel"
         android:text="@string/cancel"
 
         android:layout_marginTop="@dimen/margin_top"
-        app:layout_constraintTop_toTopOf="@id/buttonSave"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonSave"
-        android:layout_marginLeft="@dimen/margin_mid"
-        android:layout_marginRight="@dimen/margin_end"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/buttonSave"
+        app:layout_constraintStart_toStartOf="@id/addNewPlayer"
+        app:layout_constraintEnd_toEndOf="@id/addNewPlayer"
 
+        android:background="@color/colorBeige"
+        android:onClick="cancel"/>
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonDeletePlayer"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/buttonCancel"
+        app:layout_constraintStart_toStartOf="@id/addNewPlayer"
+        app:layout_constraintEnd_toEndOf="@id/addNewPlayer"
+        android:text="@string/delete_player"
+        android:textAlignment="center"
+        android:background="@color/colorBeige"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textPlayerID"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/buttonDeletePlayer"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

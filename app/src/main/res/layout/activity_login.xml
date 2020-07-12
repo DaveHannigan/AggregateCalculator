@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@color/colorGreen">
+
+    <TextView
+        android:id="@+id/text_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/editUserName"
+
+        android:layout_marginTop="@dimen/margin_end"
+        android:layout_marginRight="@dimen/margin_end"
+        android:layout_marginLeft="@dimen/margin_end"
+        android:textAlignment="center"
+        android:text="@string/login_greet"
+        android:textSize="20dp"
+        android:textColor="@color/colorBlack"
+        android:background="@drawable/rounded"/>
+
+
+    <EditText
+        android:id="@+id/editUserName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/margin_top"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@id/text_login"
+
+        app:layout_constraintStart_toStartOf="@id/text_login"
+
+
+        app:layout_constraintTop_toBottomOf="@id/text_login"
+
+        android:textAlignment="center"
+        android:padding="@dimen/padding"
+        android:background="@drawable/rounded"
+        android:text="dave@dhgasltd.co.uk"/>
+
+    <EditText
+        android:id="@+id/editPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/margin_top"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@id/text_login"
+
+        app:layout_constraintStart_toStartOf="@id/text_login"
+
+        app:layout_constraintTop_toBottomOf="@id/editUserName"
+
+        android:text="jaffacake"
+        android:textAlignment="center"
+        android:padding="@dimen/padding"
+        android:background="@drawable/rounded"/>
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/margin_top"
+        android:text="@string/login"
+        android:textAlignment="center"
+
+        app:layout_constraintEnd_toEndOf="@id/text_login"
+
+        app:layout_constraintStart_toStartOf="@id/text_login"
+        app:layout_constraintTop_toBottomOf="@id/editPassword"
+
+        android:background="@drawable/rounded"
+        android:padding="@dimen/padding"
+        android:onClick="login"/>
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:text="@string/register"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintEnd_toEndOf="@id/text_login"
+
+        app:layout_constraintStart_toStartOf="@id/text_login"
+        app:layout_constraintTop_toBottomOf="@id/buttonLogin"
+        android:padding="@dimen/padding"
+        android:background="@drawable/rounded"
+
+        android:onClick="register"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
