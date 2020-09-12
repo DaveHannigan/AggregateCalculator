@@ -19,20 +19,32 @@ import kotlin.coroutines.coroutineContext
 fun getSeason(date: String): String{
     val dateSplit = date.split("-")
     var season = ""
+    if (dateSplit[2].toInt() == 2020){
+        if (dateSplit[1].toInt() < 10){
+            val  firstYear = dateSplit[2].toInt() - 1
+            val secondYear = dateSplit[2].removeRange(0,2)
+            return "$firstYear/$secondYear"
+        }else{
+            val firstYear = dateSplit[2]
+            var secondYear = dateSplit[2].toInt() + 1
+            secondYear.toString().removeRange(0,2)
+            return "$firstYear/$secondYear"
+        }
+
+    }
 
     if (dateSplit[1].toInt() < 7){
         val firstYear = dateSplit[2].toInt() - 1
         val secondYear = dateSplit[2].removeRange(0,2)
-         season = "$firstYear/$secondYear"
+         return "$firstYear/$secondYear"
     }else{
         val firstYear = dateSplit[2]
         var secondYear = dateSplit[2].toInt() + 1
         var secondYear1 = secondYear.toString()
         secondYear1 =secondYear1.removeRange(0,2)
-        season = "$firstYear/$secondYear1"
+        return "$firstYear/$secondYear1"
     }
 
-    return season
 }
 
 fun pickDate(binding: ActivityMainBinding, context: Context){

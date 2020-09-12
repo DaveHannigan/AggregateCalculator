@@ -49,6 +49,11 @@ class DashboardActivity : AppCompatActivity() {
            // Toast.makeText(this, "check players merit", Toast.LENGTH_SHORT).show()
 
         }
+
+        binding.buttonHandicap.setOnClickListener {
+            val intent = Intent(this, HandicapGuess::class.java)
+            startActivity(intent)
+        }
     }
 
 
