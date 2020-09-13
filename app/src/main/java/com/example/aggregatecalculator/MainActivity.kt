@@ -327,7 +327,7 @@ Log.i("datePicker", "Your here")
 
         val dateFormat = SimpleDateFormat("dd-MM-yyyy")
         val date = findViewById<TextView>(R.id.textMatchDate).text.toString()
-        val timeStamp = dateFormat.parse(date)
+        val timeStamp = Timestamp(dateFormat.parse(date))
         val season = getSeason(date)
 
         val data = hashMapOf(

@@ -31,11 +31,9 @@ import kotlin.collections.ArrayList
                     var awayPlayer8: String = "", var awayPlayer8H: String = "", var awayPlayer8S: String = "",
                     var homeTeamScore: String = "", var awayTeamScore: String = ""):  Parcelable {
 
-    //var league: String = ""
-    //var homeTeam: String =""
-    //var homeTeamScore: String = ""
-    //var awayTeam: String = ""
-    //var awayTeamScore = ""
-    //var matchDate: com.google.firebase.Timestamp = com.google.firebase.Timestamp(Date())
+
 
 }
+
+data class meritResults(val game: Int = 0, val teamGames: Int = 0, val player1: String = "", val player1Hcap: Int = 0, val player1Score: Int = 0,
+                            val player2: String = "", val player2Hcap: Int = 0, val player2Score: Int = 0)
