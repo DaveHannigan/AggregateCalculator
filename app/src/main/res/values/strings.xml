@@ -90,4 +90,11 @@
     <string name="delete_player">Delete player</string>
     <string name="check_a_teams_players">Check a teams players</string>
     <string name="check_teams_merit_table">Check teams merit table</string>
+    <string name="player_name">Player Name</string>
+    <string name="hcap">Hcap</string>
+    <string name="p">P</string>
+    <string name="w">W</string>
+    <string name="l">L</string>
+    <string name="won">% won</string>
+    <string name="my_best_guess_at_new_handicaps">My best guess at new monday night handicaps</string>
 </resources>

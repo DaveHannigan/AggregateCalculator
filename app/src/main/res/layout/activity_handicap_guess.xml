@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGreen"
+    tools:context=".HandicapGuess">
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinChooseTeam"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/rounded"
+        android:textAlignment="center"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerHandicap"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/spinChooseTeam"
+        app:layout_constraintStart_toStartOf="@id/spinChooseTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinChooseTeam"
+        />
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonCancel"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/recyclerHandicap"
+        app:layout_constraintStart_toStartOf="@id/spinChooseTeam"
+        app:layout_constraintEnd_toEndOf="@id/spinChooseTeam"
+        android:textAlignment="center"
+        android:text="@string/cancel"
+        android:background="@drawable/rounded"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
