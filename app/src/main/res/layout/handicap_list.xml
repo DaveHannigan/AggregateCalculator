@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/playerName"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/margin_end"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gamesPlayed"
+        app:layout_constraintHorizontal_weight="3"
+
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/gamesPlayed"
+        app:layout_constraintTop_toTopOf="@id/playerName"
+        app:layout_constraintBottom_toBottomOf="@id/playerName"
+        app:layout_constraintStart_toEndOf="@id/playerName"
+        app:layout_constraintEnd_toStartOf="@id/existingHandicap"
+        android:textAlignment="viewEnd"
+        app:layout_constraintHorizontal_weight="1"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/existingHandicap"
+        app:layout_constraintTop_toTopOf="@id/playerName"
+        app:layout_constraintBottom_toBottomOf="@id/playerName"
+        app:layout_constraintStart_toEndOf="@id/gamesPlayed"
+        app:layout_constraintEnd_toStartOf="@+id/handicapChange"
+        android:textAlignment="viewEnd"
+        app:layout_constraintHorizontal_weight="1"
+
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/handicapChange"
+        app:layout_constraintTop_toTopOf="@id/playerName"
+        app:layout_constraintBottom_toBottomOf="@id/playerName"
+        app:layout_constraintStart_toEndOf="@id/existingHandicap"
+        app:layout_constraintEnd_toStartOf="@+id/newHandicap"
+        android:textAlignment="viewEnd"
+        app:layout_constraintHorizontal_weight="1"
+
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/newHandicap"
+        app:layout_constraintTop_toTopOf="@id/playerName"
+        app:layout_constraintBottom_toBottomOf="@id/playerName"
+        android:layout_marginEnd="@dimen/margin_end"
+        app:layout_constraintStart_toEndOf="@id/handicapChange"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="viewEnd"
+        app:layout_constraintHorizontal_weight="1"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

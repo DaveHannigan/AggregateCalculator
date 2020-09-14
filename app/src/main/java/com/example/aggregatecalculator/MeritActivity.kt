@@ -44,15 +44,8 @@ class MeritActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-               /* if (binding.spinChooseSeason.selectedItem.toString() == "Choose Season"){
-                    binding.spinChooseTeam.visibility = View.INVISIBLE
-                    return
-                }
-                binding.spinChooseTeam.visibility = View.VISIBLE
 
-                */
                val league = parent?.getItemAtPosition(position).toString()
-               // val leagueToken = league
                 if (league == "Choose league"){
                     binding.spinChooseTeam.visibility = View.INVISIBLE
                     binding.spinChooseSeason.visibility = View.INVISIBLE
@@ -68,13 +61,11 @@ class MeritActivity : AppCompatActivity() {
                         id: Long
                     ) {
                         var season = parent?.getItemAtPosition(position).toString()
-                       // if (league != leagueToken){season = "Choose Season"}
                         if (season == "Choose Season"){
                             binding.spinChooseTeam.visibility = View.INVISIBLE
                             return
                         }else{
                             binding.spinChooseTeam.visibility = View.VISIBLE
-                            //Toast.makeText(this@MeritActivity, "now query databse, league is $league", Toast.LENGTH_LONG).show()
                            val db = FirebaseFirestore.getInstance()
                             db.collection("snookerTeams")
                                 .whereEqualTo("league", league)
@@ -88,10 +79,6 @@ class MeritActivity : AppCompatActivity() {
                                     }
                                     teamArray.add(0, "Choose team")
 
-
-
-                           // var teamArray = arrayListOf<String>()
-                           // runBlocking { teamArray = getTeams(league) }
 
                                     ArrayAdapter(this@MeritActivity, android.R.layout.simple_spinner_item, teamArray)
                                         .also { adapter ->
@@ -120,97 +107,115 @@ class MeritActivity : AppCompatActivity() {
                                                         player.playerHandicap =
                                                             doclist["playerHandicap"].toString()
                                                         players.add(player)
-                                                        Log.i("merit", player.playerName)
                                                     }
 
-                                                       // val result = arrayListOf<String>()
                                                         val results = arrayListOf<meritResults>()
                                                             var gameCount = 0
 
                                                         db.collection("snookerResults")
-                                                            //.whereEqualTo("homeTeam", team)
                                                             .whereEqualTo("awayTeam", team)
                                                             .whereEqualTo("season", season)
                                                             .get()
                                                             .addOnSuccessListener { task ->
                                                                 for (doclist in task) {
-                                                                    if (doclist["home player 1"] == null){continue}
+                                                                    if (doclist["home player 1"] == null) {
+                                                                        continue
+                                                                    }
                                                                     val result =
-                                                                       arrayListOf<String>()
+                                                                        arrayListOf<String>()
                                                                     for (i in 1..8) {
                                                                         gameCount++
-                                                                        val result1 = resultSplit(doclist["home player $i"].toString())
-                                                                        val result2 = resultSplit(doclist["away player $i"].toString())
-                                                                        val result3 = meritResults(gameCount, 0, result1[0],
-                                                                        result1[1].toInt(), result1[2].toInt(), result2[0],
-                                                                        result2[1].toInt(), result2[2].toInt())
+                                                                        val result1 =
+                                                                            resultSplit(doclist["home player $i"].toString())
+                                                                        val result2 =
+                                                                            resultSplit(doclist["away player $i"].toString())
+                                                                        val result3 = meritResults(
+                                                                            gameCount,
+                                                                            0,
+                                                                            result1[0],
+                                                                            result1[1].toInt(),
+                                                                            result1[2].toInt(),
+                                                                            result2[0],
+                                                                            result2[1].toInt(),
+                                                                            result2[2].toInt()
+                                                                        )
                                                                         results.add(result3)
-                                                                       // Log.i("merit2", "result added is $result3 " +
-                                                                         //       "and game was between ${result3.player1} and ${result3.player2}")
                                                                     }
 
                                                                 }
-                                                                //Log.i("merit","results are ${results}")
-                                                                //Toast.makeText(this@MeritActivity, players[0].playerName,
-                                                                //  Toast.LENGTH_LONG).show()
-
-                                                            }
-                                                    db.collection("snookerResults")
-                                                        .whereEqualTo("homeTeam", team)
-                                                        .whereEqualTo("season", season)
-                                                        .get()
-                                                        .addOnSuccessListener { task ->
-                                                            for (doclist in task){
-                                                                if (doclist["home player 1"] == null){continue}
-                                                                val result = arrayListOf<String>()
-                                                                for (i in 1..8) {
-                                                                    gameCount++
-                                                                   val result1 = resultSplit(doclist["home player $i"].toString())
-                                                                   // Log.i("merit", "result 1 is $result1")
-                                                                    val result2 = resultSplit(doclist["away player $i"].toString())
-                                                                    val result3 = meritResults(gameCount, 0, result1[0],
-                                                                        result1[1].toInt(), result1[2].toInt(), result2[0],
-                                                                        result2[1].toInt(), result2[2].toInt())
-                                                            results.add(result3)
-                                                                }
-                                                               // result.clear()
-                                                            }
-                                                            for (player in players) {
-                                                                for (result in results) {
-                                                                    if (result.player1 == player.playerName || result.player2 == player.playerName) {
-                                                                        player.gamesPlayed++
-                                                                        if (result.player1 == player.playerName) {
-                                                                            if (result.player1Score > result.player2Score) {
-                                                                                player.gamesWon++
-                                                                                //Log.i("merit1stIf", "${player.playerName} has won ${player.gamesWon} games")
+                                                                db.collection("snookerResults")
+                                                                    .whereEqualTo("homeTeam", team)
+                                                                    .whereEqualTo("season", season)
+                                                                    .get()
+                                                                    .addOnSuccessListener { task ->
+                                                                        for (doclist in task) {
+                                                                            if (doclist["home player 1"] == null) {
+                                                                                continue
+                                                                            }
+                                                                            val result =
+                                                                                arrayListOf<String>()
+                                                                            for (i in 1..8) {
+                                                                                gameCount++
+                                                                                val result1 =
+                                                                                    resultSplit(
+                                                                                        doclist["home player $i"].toString()
+                                                                                    )
+                                                                                val result2 =
+                                                                                    resultSplit(
+                                                                                        doclist["away player $i"].toString()
+                                                                                    )
+                                                                                val result3 =
+                                                                                    meritResults(
+                                                                                        gameCount,
+                                                                                        0,
+                                                                                        result1[0],
+                                                                                        result1[1].toInt(),
+                                                                                        result1[2].toInt(),
+                                                                                        result2[0],
+                                                                                        result2[1].toInt(),
+                                                                                        result2[2].toInt()
+                                                                                    )
+                                                                                results.add(result3)
                                                                             }
                                                                         }
-                                                                        if (result.player2 == player.playerName) {
-                                                                            if (result.player2Score > result.player1Score) {
-                                                                                player.gamesWon++
-                                                                                //Log.i("merit2ndIf", "${player.playerName} has won ${player.gamesWon} games")
+                                                                        for (player in players) {
+                                                                            for (result in results) {
+                                                                                if (result.player1 == player.playerName || result.player2 == player.playerName) {
+                                                                                    player.gamesPlayed++
+                                                                                    if (result.player1 == player.playerName) {
+                                                                                        if (result.player1Score > result.player2Score) {
+                                                                                            player.gamesWon++
+                                                                                        }
+                                                                                    }
+                                                                                    if (result.player2 == player.playerName) {
+                                                                                        if (result.player2Score > result.player1Score) {
+                                                                                            player.gamesWon++
 
+                                                                                        }
+                                                                                    }
+                                                                                }
                                                                             }
                                                                         }
-                                                                        // Log.i("merit", "${player.playerName} has played ${player.gamesPlayed} games" +
-                                                                        //       " and has won ${player.gamesWon}")
+                                                                        val sortedPlayers =
+                                                                            players.sortedWith(
+                                                                                compareByDescending<Player> { it.gamesWon }.thenByDescending { it.winPercent() })
+
+                                                                        val adapter = MeritAdapter(
+                                                                            this@MeritActivity,
+                                                                            sortedPlayers
+                                                                        )
+                                                                        val layoutManager =
+                                                                            LinearLayoutManager(
+                                                                                this@MeritActivity,
+                                                                                LinearLayoutManager.VERTICAL,
+                                                                                false
+                                                                            )
+                                                                        binding.recyclerViewMerit.layoutManager =
+                                                                            layoutManager
+                                                                        binding.recyclerViewMerit.adapter =
+                                                                            adapter
                                                                     }
-                                                                }
                                                             }
-                                                               // players.sortByDescending{player: Player -> player.gamesWon}
-                                                            val sortedPlayers = players.sortedWith (
-                                                                compareByDescending<Player> { it.gamesWon }.thenByDescending {it.winPercent()})
-
-                                                                Log.i("merit4", "players $players")
-                                                               val adapter = MeritAdapter(this@MeritActivity, sortedPlayers)
-                                                                val layoutManager = LinearLayoutManager(this@MeritActivity, LinearLayoutManager.VERTICAL, false)
-                                                                binding.recyclerViewMerit.layoutManager = layoutManager
-                                                                binding.recyclerViewMerit.adapter = adapter
-    //                                                            Log.i(
-  //                                                                  "merit1",
-//
-
-                                                        }
 
                                                 }
                                         }
@@ -242,7 +247,6 @@ fun resultSplit( resultArray: String): ArrayList<String>{
     val list = resultArray.split(",")
     val list2 = arrayListOf<String>()
     for(i in list) {
-        //var j = i.replace(" ", "")
         var j = i.replace("[", "")
         j = j.replace("]", "")
         j = j.trim()
@@ -275,9 +279,6 @@ class MeritAdapter(context: Context, players: List<Player> ): RecyclerView.Adapt
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val player1 = player[position]
         val ph = holder as PlayerHolder
-        //val gamesLost = player1.gamesPlayed-player1.gamesWon
-        //val winPercent = (player1.gamesWon.toFloat()/player1.gamesPlayed.toFloat()*100)
-        //val winPercent1 = "%.2f".format(winPercent) + "%"
 
 
         ph.pl_name.text = player1.playerName

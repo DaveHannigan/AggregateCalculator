@@ -21,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.sql.Time
 import java.text.SimpleDateFormat
 import java.util.Calendar.*
+import kotlin.concurrent.thread
 import kotlin.math.log
 
 class HandicapGuess : AppCompatActivity() {
@@ -140,53 +141,63 @@ fun getNewHcap(context: Context, binding: ActivityHandicapGuessBinding, team: St
                     }
 
 
-                }
+                    // }
                     db.collection("snookerResults")
                         .whereEqualTo("awayTeam", team)
                         .whereGreaterThan("date", startDate)
                         .whereLessThan("date", endDate)
                         .get()
                         .addOnSuccessListener { task ->
-                            for (docList in task){
-                                if (docList["home player 1"] == null){continue}
-                                for (i in 1..8){
+                            for (docList in task) {
+                                if (docList["home player 1"] == null) {
+                                    continue
+                                }
+                                for (i in 1..8) {
                                     teamGamesCount++
                                     val result1 = resultSplit(docList["home player $i"].toString())
                                     val result2 = resultSplit(docList["away player $i"].toString())
-                                    val result3 = meritResults(teamGamesCount,0, result1[0],
-                                    result1[1].toInt(), result1[2].toInt(), result2[0],
-                                    result2[1].toInt(), result2[2].toInt())
+                                    val result3 = meritResults(
+                                        teamGamesCount, 0, result1[0],
+                                        result1[1].toInt(), result1[2].toInt(), result2[0],
+                                        result2[1].toInt(), result2[2].toInt()
+                                    )
                                     results.add(result3)
                                 }
                             }
-                            for (player in players){
+                            for (player in players) {
                                 //Log.i("handicap", "player is $player")
-                                for (result in results){
+                                for (result in results) {
                                     //Log.i("handicap", "result is ${result.player1}")
-                                    if (result.player1 == player.playerName){
-                                        player.gamesPlayed ++
+                                    if (result.player1 == player.playerName) {
+                                        player.gamesPlayed++
                                         //Log.i("handicap", " ${player.playerName}")
                                         player.aggregateTotalfor += result.player1Score
-                                       // Log.i("handicap", "result score ${result.player1Score}")
+                                        // Log.i("handicap", "result score ${result.player1Score}")
                                         player.aggregateTotalAgainst += result.player2Score
-                                        if (result.player1Score - result.player2Score > 7 || result.player1Score - result.player2Score < -7){
-                                            Log.i("handicap player 1", "${player.playerName}, ${result.player1Score}, ${result.player2Score}")
+                                        if (result.player1Score - result.player2Score > 7 || result.player1Score - result.player2Score < -7) {
+                                            Log.i(
+                                                "handicap player 1",
+                                                "${player.playerName}, ${result.player1Score}, ${result.player2Score}"
+                                            )
                                             if (result.player1Score - result.player2Score < 0) {
                                                 player.aggregateHandicap += (result.player1Score - result.player2Score) + 7
-                                            }else{
+                                            } else {
                                                 player.aggregateHandicap += (result.player1Score - result.player2Score) - 7
                                             }
                                         }
                                     }
-                                    if (result.player2 == player.playerName){
-                                        player.gamesPlayed ++
+                                    if (result.player2 == player.playerName) {
+                                        player.gamesPlayed++
                                         player.aggregateTotalfor += result.player2Score
                                         player.aggregateTotalAgainst += result.player1Score
-                                        if (result.player2Score - result.player1Score > 7 || result.player2Score - result.player1Score < -7){
-                                            Log.i("handicap player 2", "${player.playerName}, ${result.player2Score}, ${result.player1Score}")
+                                        if (result.player2Score - result.player1Score > 7 || result.player2Score - result.player1Score < -7) {
+                                            Log.i(
+                                                "handicap player 2",
+                                                "${player.playerName}, ${result.player2Score}, ${result.player1Score}"
+                                            )
                                             if (result.player2Score - result.player1Score < 0) {
                                                 player.aggregateHandicap += (result.player2Score - result.player1Score) + 7
-                                            }else{
+                                            } else {
                                                 player.aggregateHandicap += (result.player2Score - result.player1Score) - 7
                                             }
                                         }
@@ -195,19 +206,17 @@ fun getNewHcap(context: Context, binding: ActivityHandicapGuessBinding, team: St
                                     }
                                 }
                             }
-                           // val context = Context
-                            players.sortBy { player: Player -> player.playerHandicap.toInt()}
+                            // val context = Context
+                            players.sortBy { player: Player -> player.playerHandicap.toInt() }
+                            Thread.sleep(500)
                             val adapter = HandicapAdapter(context, players)
-                            val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                            val layoutManager =
+                                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                             binding.recyclerHandicap.layoutManager = layoutManager
                             binding.recyclerHandicap.adapter = adapter
 
-for (i in 0 until players.size) {
-    Log.i(
-        "handicap",
-        "results  is ${players[i].playerName} handicap aggregate is ${players[i].handicapChange()}")
-}
                         }
+                }
 
         }
 }

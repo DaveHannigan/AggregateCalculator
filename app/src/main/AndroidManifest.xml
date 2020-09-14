@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MeritActivity"></activity>
+        <activity android:name=".HandicapGuess" />
+        <activity android:name=".MeritActivity" />
         <activity android:name=".SeeTeamPlayers" />
         <activity
             android:name=".FixtureResultsActivity"
